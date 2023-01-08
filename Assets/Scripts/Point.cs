@@ -4,20 +4,19 @@ using UnityEngine;
 
 public class Point : MonoBehaviour
 {
-    [SerializeField] float Voltage { get; }
+    int static PointsCountID = 0;
+    [SerializeField] float Voltage { get; set; }
+    int ID { get; }
     List<Point> ConnectedPoints;
-    private void Start()
-    {
-        
+    
+    Point(){
+        ID = PointsCountID++;
+        ConnectedPoints = new List<Point>();
     }
-    public List<Point> GetConnectedPoints;
+
+    
     public void ConnectToPoint(Point point)
     {
         ConnectedPoints.Add(point);
-    }
-
-    public int Compare(Point x, Point y)
-    {
-        throw new System.NotImplementedException();
     }
 }
