@@ -10,9 +10,14 @@ public class Point : MonoBehaviour
     {
         
     }
-    void AddPointToConnection(Point point)
+    public List<Point> GetConnectedPoints;
+    public void ConnectToPoint(Point point)
     {
         ConnectedPoints.Add(point);
     }
 
+    public int Compare(Point x, Point y)
+    {
+        throw new System.NotImplementedException();
+    }
 }
