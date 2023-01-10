@@ -22,11 +22,6 @@ public class ConnectionGraphBuilder : MonoBehaviour
             addNewPointToGraph(b);
         ConnectionGraph.AdjacencyList[a].Add(new ConnectioPoint(b,0));
 
-        foreach(Point connectedPoint in b.GetConnectedPoints)
-        {
-            if(ConnectionGraph.AdjacencyList[a].Contains(new ConnectioPoint(connectedPoint, 0)) )
-            ConnectionGraph.AdjacencyList[a].Add(new ConnectioPoint(connectedPoint, 0));
-        }
 
     }
     void RemovePointFromGraph(Point point)

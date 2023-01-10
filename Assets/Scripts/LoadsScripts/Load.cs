@@ -1,15 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Load : MonoBehaviour,ILoad
 {
     [SerializeField] float resistance = 10f;
     [SerializeField] LoadType loadType;
+    [SerializeField] Transform PosativePointPlace;
+    [SerializeField] Transform NegativePointPlace;
+    [SerializeField] GameObject PointPrefab;
+    Point posativePoint;
+    Point negativePoint;
     ILoad loadBehovier;
 
     private void Start()
     {
+        iniciatePoints();
         switch (loadType)
         {
             case LoadType.Lamp: 
@@ -22,6 +29,15 @@ public class Load : MonoBehaviour,ILoad
             default: break;
         }
     }
+    public void iniciatePoints()
+    {
+        posativePoint = Instantiate(PointPrefab, PosativePointPlace).GetComponent<Point>();
+        negativePoint = Instantiate(PointPrefab, NegativePointPlace).GetComponent<Point>();
+        posativePoint.PairPoint = negativePoint;
+        negativePoint.PairPoint = posativePoint;
+        posativePoint.ParentLoad = this;
+        negativePoint.ParentLoad = this;
+    }
     public float getResistance()
     {
         return resistance;
@@ -33,5 +49,9 @@ public class Load : MonoBehaviour,ILoad
     public void TurnOff()
     {
         loadBehovier.TurnOff();
+    }
+    public string GetLoadType()
+    {
+        return loadType.ToString();
     }
 }

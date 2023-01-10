@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Lamp : ILoad
 {
-
+    
     public  void TurnOn()
     {
         Debug.Log("Light is On");
@@ -13,6 +13,12 @@ public class Lamp : ILoad
     public  void TurnOff()
     {
         Debug.Log("Light is Off");
+        throw new System.NotImplementedException();
+    }
+
+    public string GetLoadType()
+    {
+        return LoadType.Lamp.ToString();
         throw new System.NotImplementedException();
     }
 }

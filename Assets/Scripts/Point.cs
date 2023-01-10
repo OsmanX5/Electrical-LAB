@@ -1,17 +1,26 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Point : MonoBehaviour,IComparer<Point>
+public class Point :MonoBehaviour
 {
     static int PointsCountID = 0;
-    [SerializeField] float Voltage { get; set; }
-    int ID { get; }
-    List<Point> ConnectedPoints;
+    int ID { get;}
     
-    Point(){
+    List<Point> ConnectedPoints;
+    public Point PairPoint { get; set; }
+    public ILoad ParentLoad { get; set; }
+    public Point()
+    {
         ID = PointsCountID++;
+        Debug.Log("Point created with ID: " + ID);
         ConnectedPoints = new List<Point>();
+    }
+
+    public List<Point> GetConnectedPoints()
+    {
+        return ConnectedPoints;
     }
     public void ConnectToPoint(Point point)
     {
@@ -21,4 +30,5 @@ public class Point : MonoBehaviour,IComparer<Point>
     {
         ConnectedPoints.Remove(point);
     }
+
 }
