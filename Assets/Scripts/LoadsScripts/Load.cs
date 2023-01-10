@@ -14,7 +14,7 @@ public class Load : MonoBehaviour,ILoad
     Point negativePoint;
     ILoad loadBehovier;
 
-    private void Start()
+    private void Awake()
     {
         iniciatePoints();
         switch (loadType)
@@ -31,10 +31,13 @@ public class Load : MonoBehaviour,ILoad
     }
     public void iniciatePoints()
     {
+        Debug.Log(" posative point at load "+name);
         posativePoint = Instantiate(PointPrefab, PosativePointPlace).GetComponent<Point>();
+        Debug.Log(" negative point at load " + name);
         negativePoint = Instantiate(PointPrefab, NegativePointPlace).GetComponent<Point>();
         posativePoint.PairPoint = negativePoint;
         negativePoint.PairPoint = posativePoint;
+        Debug.Log(posativePoint.ID +" - "+ negativePoint.ID + "Are pairs now");
         posativePoint.ParentLoad = this;
         negativePoint.ParentLoad = this;
     }
