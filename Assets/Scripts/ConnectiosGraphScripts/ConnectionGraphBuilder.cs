@@ -22,6 +22,11 @@ public class ConnectionGraphBuilder : MonoBehaviour
     }
     public static void AddPointToIDConnections(int PointId,Point PointToAdd,float resistance =0 )
     {
+        if (PointId == PointToAdd.ID)
+        {
+            Debug.Log("Cannot connect point with itself");
+            return;
+        }
         Debug.Log("try Adding point with ID" + PointToAdd.ID + "to ID" + PointId);
         foreach (var connection in ConnectionGraph.AdjacencyList[PointId]){
             if (connection.point.ID == PointToAdd.ID)
@@ -39,6 +44,7 @@ public class ConnectionGraphBuilder : MonoBehaviour
             addNewPointToGraph(a);
         if (ConnectionGraph.AdjacencyList.ContainsKey(b.ID) == false)
             addNewPointToGraph(b);
+        
         AddPointToIDConnections(a.ID, b,resistance);
         AddPointToIDConnections(b.ID, a,resistance);
     }
