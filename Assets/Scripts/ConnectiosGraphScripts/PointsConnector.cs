@@ -33,6 +33,6 @@ public class PointsConnector : MonoBehaviour
         Debug.Log("Try connecting" + a.ID +" <=> " + b.ID);
         //a.ConnectedPoints.Add(b);
         //b.ConnectedPoints.Add(a);
-        ConnectionGraphBuilder.addNewConnectioBetween2NodesInGraph(a, b);
+        ConnectionGraphBuilder.AddConnectionBetweenNodes(a, b);
     }
 }
