@@ -16,7 +16,8 @@ public class ConnectionGraphBuilder : MonoBehaviour
                     return;
                 }
         }
-        ConnectionGraph.AdjacencyList.Add(newPoint.ID,new List<ConnectioPoint>());
+        ConnectionGraph.AdjacencyList.Add(newPoint.ID,new List<ConnectionPoint>());
+        ConnectionGraph.DisJointSet.AddPoint(newPoint.ID);
         Debug.Log("POINT WITH ID : " + newPoint.ID + " Added to graph");
         ConnectionGraph.nodesCount += 1;
     }
@@ -35,18 +36,33 @@ public class ConnectionGraphBuilder : MonoBehaviour
                 return;
             }
         }
-        ConnectionGraph.AdjacencyList[PointId].Add(new ConnectioPoint(PointToAdd,resistance));
+        ConnectionGraph.AdjacencyList[PointId].Add(new ConnectionPoint(PointToAdd,resistance));
         Debug.Log("Successfully  Added point with ID" + PointToAdd.ID + "to ID" + PointId);
     }
-    public static void addNewConnectioBetween2NodesInGraph(Point a,Point b,float resistance=0)
+    public static void addNewConnectioBetween2NodesInGraph(Point a,Point b)
     {
         if (ConnectionGraph.AdjacencyList.ContainsKey(a.ID) == false)
             addNewPointToGraph(a);
         if (ConnectionGraph.AdjacencyList.ContainsKey(b.ID) == false)
             addNewPointToGraph(b);
-        
-        AddPointToIDConnections(a.ID, b,resistance);
-        AddPointToIDConnections(b.ID, a,resistance);
+        if (a == b.PairPoint)
+        {
+            Debug.Log("Cannot connect point with its pair");
+            return;
+        }
+        if (ConnectionGraph.DisJointSet.IsConnected(a.ID, b.ID))
+        {
+            Debug.Log("Points are already connected");
+            return;
+        }
+        AddPointToIDConnections(a.ID, b);
+        AddPointToIDConnections(b.ID, a);
+        ConnectionGraph.DisJointSet.Union(a.ID, b.ID);
+    }
+    public static void ConnectToThePair(Point a,float resistance)
+    {
+        AddPointToIDConnections(a.ID, a.PairPoint,resistance);
+        AddPointToIDConnections(a.PairPoint.ID, a,resistance);
     }
     public static void RemovePointFromGraph(Point point)
     {
@@ -57,4 +73,6 @@ public class ConnectionGraphBuilder : MonoBehaviour
         }
         ConnectionGraph.AdjacencyList.Remove(point.ID);
     }
+
+
 }

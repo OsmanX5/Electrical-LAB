@@ -9,7 +9,7 @@ public class Point :MonoBehaviour
     public static List<Point> Points = new List<Point>();
     public int ID { get; set; }
     
-    public List<Point> ConnectedPoints;
+    //public List<Point> ConnectedPoints;
     public Point PairPoint { get; set; }
     public Load ParentLoad { get ; set; }
     private void Awake()
@@ -17,7 +17,7 @@ public class Point :MonoBehaviour
         ID = PointsCountID++;
         Debug.Log("Point created with ID: " + ID);
         gameObject.name = "Point " + ID;
-        ConnectedPoints = new List<Point>();
+        //ConnectedPoints = new List<Point>();
         Points.Add(this);
     }
     void Start()
@@ -25,13 +25,18 @@ public class Point :MonoBehaviour
         ConnectionGraphBuilder.addNewPointToGraph(this);
         if (ConnectionGraph.AdjacencyList.ContainsKey(PairPoint.ID))
         {
-            ConnectionGraphBuilder.addNewConnectioBetween2NodesInGraph(this, PairPoint,ParentLoad.getResistance());
+            ConnectionGraphBuilder.ConnectToThePair(this,ParentLoad.getResistance());
         }
     }
 
-    public List<Point> GetConnectedPoints()
+    //public List<Point> GetConnectedPoints()=> ConnectedPoints;
+    
+    public static bool operator ==(Point a, Point b)
     {
-        return ConnectedPoints;
+        return a.ID == b.ID;
     }
-
+    public static bool operator !=(Point a, Point b)
+    {
+        return !(a==b);
+    }
 }

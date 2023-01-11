@@ -6,11 +6,14 @@ using TMPro;
 public class ConnectionGraph : MonoBehaviour
 {
     public static int nodesCount;
-    public static Dictionary<int,List<ConnectioPoint>> AdjacencyList;
+    public static Dictionary<int,List<ConnectionPoint>> AdjacencyList;
+    public static DisJointSet DisJointSet;
     [SerializeField] TMP_Text TextTMP;
+    [SerializeField] TMP_Text TMP_DISJOINT;
     private void Awake()
     {
-        AdjacencyList = new Dictionary<int, List<ConnectioPoint>>();
+        AdjacencyList = new Dictionary<int, List<ConnectionPoint>>();
+        DisJointSet = new DisJointSet(0);
     }
     private void FixedUpdate()
     {
@@ -20,6 +23,7 @@ public class ConnectionGraph : MonoBehaviour
     void UpdateTMPtext()
     {
         TextTMP.text = GetAdjacencyListText();
+        TMP_DISJOINT.text = DisJointSet.GetDisjointSetText();
     }
     public static string GetAdjacencyListText()
     {

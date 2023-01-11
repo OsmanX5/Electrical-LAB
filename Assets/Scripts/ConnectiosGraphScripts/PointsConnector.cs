@@ -30,8 +30,9 @@ public class PointsConnector : MonoBehaviour
     }
     public static void ConnectNodes(Point a,Point b)
     {
-        a.ConnectedPoints.Add(b);
-        b.ConnectedPoints.Add(a);
-        ConnectionGraphBuilder.addNewConnectioBetween2NodesInGraph(a, b, 0);
+        Debug.Log("Try connecting" + a.ID +" <=> " + b.ID);
+        //a.ConnectedPoints.Add(b);
+        //b.ConnectedPoints.Add(a);
+        ConnectionGraphBuilder.addNewConnectioBetween2NodesInGraph(a, b);
     }
 }

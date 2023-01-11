@@ -1,0 +1,76 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.Xml.Serialization;
+using UnityEngine;
+
+public class DisJointSet 
+{
+    List<int> roots;
+    public int JointsCount;
+    Dictionary<int , HashSet<int>> Joints;
+    public DisJointSet(int n)
+    {
+        JointsCount = n;
+        roots = new List<int>();
+        Joints = new Dictionary<int, HashSet<int>>();
+        for (int i = 0; i < n; i++)
+        {
+            AddPoint(i);
+        }
+        
+    }
+    public void AddPoint(int id)
+    {
+        Debug.Log("AddingPoint: " + id + " to DisJointSet");
+        roots.Add(id);
+        Joints[id] =  new HashSet<int>() { id };
+        JointsCount += 1;
+        Debug.Log("Dis joint set after adding : " + id);
+        Debug.Log(GetDisjointSetText());
+    }
+    public int Find(int x)
+    {
+        //Debug.Log("Searching for: " + x);
+        while (x != roots[x])
+            x = roots[x];
+        //Debug.Log("The root is : " + x);
+        return x;
+    }
+    public void Union(int a,int b)
+    {
+        Debug.Log("Unioning: " + a + " and " + b);
+        int roota = Find(a);
+        int rootb = Find(b);
+        if(roota != rootb)
+        {
+            Debug.Log("Start union");
+            roots[rootb] = roota;
+            Joints[roota].UnionWith(Joints[rootb]);
+            Joints.Remove(rootb);
+            JointsCount -= 1;
+            Debug.Log("Succsfully Connected Joints Count now is" + JointsCount);
+            Debug.Log(GetDisjointSetText());
+            Debug.Log("Successfuly Unioned " + a + " and " + b);
+            return;
+        }
+        Debug.Log("Joints are already connected");
+    }
+    public bool IsConnected(int a, int b)
+    {
+        return Find(a) == Find(b);
+    }
+    public string GetDisjointSetText()
+    {
+        string result = "";
+        foreach (var pair in Joints)
+        {
+            result += "Joint: " + pair.Key + " Contains: ";
+            foreach (var point in pair.Value)
+            {
+                result += point + " ";
+            }
+            result += "\n";
+        }
+        return result;
+    }
+}
