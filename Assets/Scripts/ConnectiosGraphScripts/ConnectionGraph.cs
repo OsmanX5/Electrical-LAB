@@ -3,9 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
+
 public class ConnectionGraph : MonoBehaviour
 {
-    public static int nodesCount;
     public static Dictionary<int,List<ConnectionPoint>> AdjacencyList;
     public static DisJointSet DisJointSet;
     [SerializeField] TMP_Text TextTMP;
@@ -14,6 +15,7 @@ public class ConnectionGraph : MonoBehaviour
     {
         AdjacencyList = new Dictionary<int, List<ConnectionPoint>>();
         DisJointSet = new DisJointSet(0);
+        this.AddComponent<ConnectionGraphBuilder>();
     }
     private void FixedUpdate()
     {
@@ -39,4 +41,7 @@ public class ConnectionGraph : MonoBehaviour
         }
         return adjacencyListSTR;
     }
+
+    public static bool IsInGraph(Point point) => IsInGraph(point.ID);
+    public static bool IsInGraph(int ID)=> AdjacencyList.ContainsKey(ID);
 }

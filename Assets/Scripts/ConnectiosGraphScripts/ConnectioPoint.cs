@@ -11,4 +11,13 @@ public class ConnectionPoint
         this.point = point;
         this.resistance = resistance;
     }
+
+    public static bool operator ==(ConnectionPoint a, ConnectionPoint b)
+    {
+        return (a.point == b.point) && (a.resistance == b.resistance);
+    }
+    public static bool operator !=(ConnectionPoint a, ConnectionPoint b)
+    {
+        return !(a==b);
+    }
 }

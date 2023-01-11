@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class DisJointSet 
 {
-    List<int> roots;
     public int JointsCount;
+    List<int> roots;
     Dictionary<int , HashSet<int>> Joints;
     public DisJointSet(int n)
     {
@@ -17,7 +17,6 @@ public class DisJointSet
         {
             AddPoint(i);
         }
-        
     }
     public void AddPoint(int id)
     {
@@ -28,7 +27,7 @@ public class DisJointSet
         Debug.Log("Dis joint set after adding : " + id);
         Debug.Log(GetDisjointSetText());
     }
-    public int Find(int x)
+    int Find(int x)
     {
         //Debug.Log("Searching for: " + x);
         while (x != roots[x])

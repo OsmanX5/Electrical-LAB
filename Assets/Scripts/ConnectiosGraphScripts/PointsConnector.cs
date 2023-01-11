@@ -6,6 +6,7 @@ using System.ComponentModel;
 
 public class PointsConnector : MonoBehaviour
 {
+    
     public TMP_InputField inp1;
     public TMP_InputField inp2;
     int id1;
@@ -26,13 +27,11 @@ public class PointsConnector : MonoBehaviour
     }
     public static void ConnectNodes(int id1, int id2)
     {
-        ConnectNodes(Point.Points[id1], Point.Points[id2]);
+        ConnectNodes(PointsManger.GetPointWithID(id1), PointsManger.GetPointWithID(id2));
     }
     public static void ConnectNodes(Point a,Point b)
     {
         Debug.Log("Try connecting" + a.ID +" <=> " + b.ID);
-        //a.ConnectedPoints.Add(b);
-        //b.ConnectedPoints.Add(a);
-        ConnectionGraphBuilder.AddConnectionBetweenNodes(a, b);
+        ConnectionGraphBuilder.ConnectNodes(a, b);
     }
 }
