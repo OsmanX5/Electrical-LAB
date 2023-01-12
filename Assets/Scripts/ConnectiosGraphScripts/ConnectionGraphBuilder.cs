@@ -5,68 +5,84 @@ using UnityEngine;
 
 public class ConnectionGraphBuilder : MonoBehaviour
 {
+    public static event Action OnAddNewPoint ;
+    public static event Action OnConnectTwoNodes;
     // New Points Functions
     public static void AddNewPoint(Point point)
     {
-        Debug.Log("Point catched event with ID: " + point.ID);
-        addNewPointToGraph(point);
-        connectToPair(point); //if  not created not a problem
+        bool addingSuccess = addNewPointToGraph(point);
+        if (addingSuccess)
+        {
+            OnAddNewPoint?.Invoke();
+        }
+        connectToPair(point); 
     }
-    private static void addNewPointToGraph(Point newPoint)
+    private static bool addNewPointToGraph(Point newPoint)
     {
         Debug.Log("Adding new point to graph point ID : "+ newPoint.ID);
         if (ConnectionGraph.IsInGraph(newPoint))
         {
             Debug.Log("Point with ID: " + newPoint.ID + " already exists in graph");
-            return;
+            return false;
         }
         ConnectionGraph.AdjacencyList.Add(newPoint.ID,new List<ConnectionPoint>());
         ConnectionGraph.DisJointSet.AddPoint(newPoint.ID);
         Debug.Log("POINT WITH ID : " + newPoint.ID + " Added to graph");
+        return true;
     }
-    private static void connectToPair(Point a)
+    private static bool connectToPair(Point a)
     {
         if (!ConnectionGraph.AdjacencyList.ContainsKey(a.PairPoint.ID))
         {
             Debug.Log("Pair is not Created Yet");
-            return;
+            return false;
         }
         AddPointToID(a.ID, a.PairPoint, a.ParentLoad.getResistance());
         AddPointToID(a.PairPoint.ID, a, a.ParentLoad.getResistance());
+        return true;
     }
 
     // Connect Points Functions
     public static void ConnectNodes(Point a, Point b)
     {
+        bool ConnectingSuccess = ConnectNodesInGraph(a, b);
+        if(ConnectingSuccess)
+        {
+            OnConnectTwoNodes?.Invoke();
+        }
+    }
+    private static bool ConnectNodesInGraph(Point a, Point b)
+    {
         if (!ConnectionGraph.IsInGraph(a))
         {
             Debug.LogError("Point with ID: " + a.ID + " does not exist in graph");
-            return;
+            return false;
         }
         if (!ConnectionGraph.IsInGraph(b))
         {
             Debug.LogError("Point with ID: " + b.ID + " does not exist in graph");
-            return;
+            return false;
         }
         if (a == b)
         {
             Debug.Log("Cannot connect point with itself");
-            return;
+            return false;
         }
         if (a == b.PairPoint)
         {
             Debug.Log("Cannot connect point with its pair");
-            return;
+            return false;
         }
         if (ConnectionGraph.DisJointSet.IsConnected(a.ID, b.ID))
         {
             Debug.Log("Points are already connected");
-            return;
+            return false;
         }
 
-        AddPointToID(a.ID, b);
-        AddPointToID(b.ID, a);
+        bool addSuccess1 = AddPointToID(a.ID, b);
+        bool addSuccess2 =AddPointToID(b.ID, a);
         ConnectionGraph.DisJointSet.Union(a.ID, b.ID);
+        return addSuccess1 && addSuccess2;
     }
     public static bool AddPointToID(int PointId,Point PointToAdd,float resistance =0 )
     {

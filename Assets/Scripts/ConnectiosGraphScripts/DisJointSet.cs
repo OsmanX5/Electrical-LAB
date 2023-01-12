@@ -7,7 +7,8 @@ public class DisJointSet
 {
     public int JointsCount;
     List<int> roots;
-    Dictionary<int , HashSet<int>> Joints;
+    public Dictionary<int, HashSet<int>> Joints { get; set ; }
+
     public DisJointSet(int n)
     {
         JointsCount = n;
