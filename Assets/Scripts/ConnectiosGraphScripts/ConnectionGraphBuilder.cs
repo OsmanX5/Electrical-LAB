@@ -5,15 +5,15 @@ using UnityEngine;
 
 public class ConnectionGraphBuilder : MonoBehaviour
 {
-    public static event Action OnAddNewPoint ;
-    public static event Action OnConnectTwoNodes;
+    public static event Action<Point> OnAddNewPoint ;
+    public static event Action<Point,Point> OnConnectTwoNodes;
     // New Points Functions
     public static void AddNewPoint(Point point)
     {
         bool addingSuccess = addNewPointToGraph(point);
         if (addingSuccess)
         {
-            OnAddNewPoint?.Invoke();
+            OnAddNewPoint?.Invoke(point);
         }
         connectToPair(point); 
     }
@@ -48,7 +48,7 @@ public class ConnectionGraphBuilder : MonoBehaviour
         bool ConnectingSuccess = ConnectNodesInGraph(a, b);
         if(ConnectingSuccess)
         {
-            OnConnectTwoNodes?.Invoke();
+            OnConnectTwoNodes?.Invoke(a,b);
         }
     }
     private static bool ConnectNodesInGraph(Point a, Point b)

@@ -44,4 +44,5 @@ public class ConnectionGraph : MonoBehaviour
 
     public static bool IsInGraph(Point point) => IsInGraph(point.ID);
     public static bool IsInGraph(int ID)=> AdjacencyList.ContainsKey(ID);
+    
 }

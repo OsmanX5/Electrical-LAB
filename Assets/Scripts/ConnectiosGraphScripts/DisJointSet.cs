@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Xml.Serialization;
 using UnityEngine;
 
@@ -36,11 +37,11 @@ public class DisJointSet
         //Debug.Log("The root is : " + x);
         return x;
     }
-    public void Union(int a,int b)
+    public void Union(int master,int sleve)
     {
-        Debug.Log("Unioning: " + a + " and " + b);
-        int roota = Find(a);
-        int rootb = Find(b);
+        Debug.Log("Unioning: " + master + " and " + sleve);
+        int roota = Find(master);
+        int rootb = Find(sleve);
         if(roota != rootb)
         {
             Debug.Log("Start union");
@@ -50,7 +51,7 @@ public class DisJointSet
             JointsCount -= 1;
             Debug.Log("Succsfully Connected Joints Count now is" + JointsCount);
             Debug.Log(GetDisjointSetText());
-            Debug.Log("Successfuly Unioned " + a + " and " + b);
+            Debug.Log("Successfuly Unioned " + master + " and " + sleve);
             return;
         }
         Debug.Log("Joints are already connected");
@@ -73,4 +74,7 @@ public class DisJointSet
         }
         return result;
     }
+
+    public int[] GetJointsHead() => Joints.Keys.ToArray();
+    public int[] GetJointPoints(int jointHead) => Joints[jointHead].ToArray();
 }

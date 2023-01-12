@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PointsManger : MonoBehaviour
 {
@@ -12,5 +14,11 @@ public class PointsManger : MonoBehaviour
         ConnectionGraphBuilder.AddNewPoint(point);
     }
     public static Point GetPointWithID(int id)=>Points[id];
+    public static Point[] GetConnectedPointsToID(int id)
+    {
+        int[] pointsId = ConnectionGraph.DisJointSet.GetJointPoints(id);
+        Point[] points = (from pointId in pointsId select PointsManger.GetPointWithID(pointId)).ToArray();
+        return points;
+    }
 
 }

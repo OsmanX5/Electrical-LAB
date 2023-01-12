@@ -7,47 +7,45 @@ using UnityEngine;
 public class ConnectionGraphRendrer : MonoBehaviour
 {
     public GameObject LRPrefab;
-    [SerializeField] List<LineRenderer> lineRenderers = new List<LineRenderer>();
-    private void Start()
+    [SerializeField] Dictionary<int , LineRenderer> lineRenderers = new Dictionary<int, LineRenderer>();
+    private void Awake()
     {
-        ConnectionGraphBuilder.OnAddNewPoint += UpdateLineRendrers;
-        ConnectionGraphBuilder.OnConnectTwoNodes += UpdateLineRendrers;
+        ConnectionGraphBuilder.OnAddNewPoint += AddLineRendrer;
+        ConnectionGraphBuilder.OnConnectTwoNodes += ConnectToLinePoints;
     }
     private int NumberOfNeededLR() => ConnectionGraph.DisJointSet.JointsCount;
 
-    private void CreateLineRenderes(int n)
+    private void AddLineRendrer(Point point) => AddLineRendrer(point.ID);
+    private void AddLineRendrer(int id)
     {
-        lineRenderers = new List<LineRenderer>();
-        for(int i =0; i < n; i++)
-        {
-            LineRenderer  temp = Instantiate(LRPrefab,this.transform).GetComponent<LineRenderer>();
-            lineRenderers.Add(temp);
-        }
+        LineRenderer temp = Instantiate(LRPrefab, this.transform).GetComponent<LineRenderer>();
+        temp.name = "Line Rendrer to joint " +  id.ToString();
+        lineRenderers[id] = temp;
     }
-    private void DeletOldLineRenderes()
+    
+    private void DeletLineRendrer(int id)
     {
-        foreach(var line in lineRenderers)
-        {
-            Destroy(line.gameObject);
-        }
+        Destroy(lineRenderers[id].gameObject);
+        lineRenderers.Remove(id);
     }
-    private void UpdateLineRendrers()
+
+    private void ConnectToLinePoints(Point a, Point b) => ConnectToLineRendrers(a.ID, b.ID);
+    private void ConnectToLineRendrers(int id1, int id2)
     {
-        DeletOldLineRenderes();
-        CreateLineRenderes(NumberOfNeededLR());
-        DrawNewLineRendrers();
-    }
-    private void DrawNewLineRendrers()
-    {
-        var joints = ConnectionGraph.DisJointSet.Joints;
-        int index = 0;
-        foreach(var joint in joints)
-        {
-            int[] pointsId = joint.Value.ToArray();
-            Point[] points = (from pointId in pointsId select PointsManger.GetPointWithID(pointId)).ToArray();
-            drawLines(lineRenderers[index], points);
-            index += 1;
+        int deletedID;
+        int notDeletedID;
+        if (ConnectionGraph.DisJointSet.GetJointsHead().Contains(id1)) {
+            deletedID = id2;
+            notDeletedID = id1;
         }
+        else
+        {
+            deletedID = id1;
+            notDeletedID = id2;
+        }
+        DeletLineRendrer(deletedID);
+        LineRenderer Line = lineRenderers[notDeletedID];
+        drawLines(Line,PointsManger.GetConnectedPointsToID(notDeletedID));
     }
     private void drawLines(LineRenderer LR, Point[] points)
     {
