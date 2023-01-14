@@ -9,6 +9,8 @@ public class ConnectionGraph : MonoBehaviour
 {
     public static Dictionary<int,List<ConnectionPoint>> AdjacencyList;
     public static DisJointSet DisJointSet;
+    public static int StartID;
+    public static int EndID;
     [SerializeField] TMP_Text TextTMP;
     [SerializeField] TMP_Text TMP_DISJOINT;
     private void Awake()
@@ -39,6 +41,8 @@ public class ConnectionGraph : MonoBehaviour
             }
             adjacencyListSTR += " ] \n";
         }
+        adjacencyListSTR += "Start Id = " + StartID +"\n";
+        adjacencyListSTR += "End ID = " + EndID + "\n";
         return adjacencyListSTR;
     }
 

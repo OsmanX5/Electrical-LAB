@@ -2,7 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PowerSource : IElectricalComponent
+public class PowerSource : MonoBehaviour, IElectricalComponent
 {
-    public float voltage;
+    [SerializeField] float voltage;
+    [SerializeField] Transform PosativePointPlace;
+    [SerializeField] Transform NegativePointPlace;
+    [SerializeField] GameObject PointPrefab;
+    Point posativePoint;
+    Point negativePoint;
+    void Awake()
+    {
+        iniciatePoints();
+    }
+    public void iniciatePoints()
+    {
+        Debug.Log(" posative point at Power " + name);
+        posativePoint = Instantiate(PointPrefab, PosativePointPlace).GetComponent<Point>();
+        Debug.Log(" negative point at Power " + name);
+        negativePoint = Instantiate(PointPrefab, NegativePointPlace).GetComponent<Point>();
+        posativePoint.PairPoint = negativePoint;
+        negativePoint.PairPoint = posativePoint;
+        Debug.Log(posativePoint.ID + " - " + negativePoint.ID + "Are pairs now");
+        ConnectionGraph.StartID = posativePoint.ID;
+        ConnectionGraph.EndID = negativePoint.ID;
+        
+    }
 }

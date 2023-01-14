@@ -4,15 +4,33 @@ using UnityEngine;
 
 public class ConnectionGraphPathCalculator : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
+        ConnectionGraphBuilder.OnConnectTwoNodes += IsPathExist;
+    }
+    public static bool IsPathExist(int startID, int endID)
+    {
+        Dictionary<int, List<ConnectionPoint>> graph = ConnectionGraph.AdjacencyList;
+        bool[] visited = new bool[graph.Count];
+        bool PathExist = false;
+        void DFS(int startID)
+        {
+            if (startID == endID)
+            {
+                Debug.Log("Path Found");
+                PathExist = true;
+                return;
+            }
+            visited[startID] = true;
+            foreach (var connectionPoint in graph[startID])
+            {
+                if (!visited[connectionPoint.point.ID])
+                {
+                    DFS(connectionPoint.point.ID);
+                }
+            }
+        }
+        return PathExist;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
