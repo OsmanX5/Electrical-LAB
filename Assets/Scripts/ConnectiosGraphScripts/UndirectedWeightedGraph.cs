@@ -30,7 +30,23 @@ public class UndirectedWeightedGraph
     }
     public bool IsPathExict(int a,int b)
     {
-        return true;
+        bool pathFound = false;
+        bool[] visited = new bool[n];
+        void DFS(int x)
+        {
+            if (x == b)
+                pathFound = true;
+            visited[x] = true;
+            foreach (var next in AdjacencyList[x])
+            {
+                int nextID = next.Item1;
+                if (visited[nextID]) continue;
+                DFS(nextID);
+            }
+        }
+        DFS(a);
+        
+        return pathFound;
     }
 
 }

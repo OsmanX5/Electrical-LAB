@@ -14,7 +14,7 @@ public class Load : MonoBehaviour,ILoad
     Point negativePoint;
     ILoad loadBehovier;
 
-    private void Awake()
+    private void Start()
     {
         iniciatePoints();
         switch (loadType)
@@ -28,18 +28,23 @@ public class Load : MonoBehaviour,ILoad
 
             default: break;
         }
+        ConnectionGraphPathCalculator.OnCircuitClose += TurnOn;
     }
     public void iniciatePoints()
     {
         Debug.Log(" posative point at load "+name);
         posativePoint = Instantiate(PointPrefab, PosativePointPlace).GetComponent<Point>();
+        posativePoint.Initlize();
         Debug.Log(" negative point at load " + name);
         negativePoint = Instantiate(PointPrefab, NegativePointPlace).GetComponent<Point>();
+        negativePoint.Initlize();
         posativePoint.PairPoint = negativePoint;
         negativePoint.PairPoint = posativePoint;
         Debug.Log(posativePoint.ID +" - "+ negativePoint.ID + "Are pairs now");
         posativePoint.ParentLoad = this;
         negativePoint.ParentLoad = this;
+        posativePoint.AddToManger();
+        negativePoint.AddToManger();
     }
     public float getResistance()
     {
@@ -47,11 +52,13 @@ public class Load : MonoBehaviour,ILoad
     }
     public void TurnOn()
     {
-        loadBehovier.TurnOn();
+        Debug.Log("Turn" + name + "on");
+        this.GetComponent<Renderer>().material.color = Color.green;
+        //loadBehovier.TurnOn();
     }
     public void TurnOff()
     {
-        loadBehovier.TurnOff();
+        //loadBehovier.TurnOff();
     }
     public string GetLoadType()
     {

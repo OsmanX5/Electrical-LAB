@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class ConnectionGraphBuilder : MonoBehaviour
 {
+    public static event Action OnGraphUpdated;
     public static event Action<Point> OnAddNewPoint ;
     public static event Action<Point,Point> OnConnectTwoNodes;
     // New Points Functions
@@ -15,7 +16,8 @@ public class ConnectionGraphBuilder : MonoBehaviour
         {
             OnAddNewPoint?.Invoke(point);
         }
-        connectToPair(point); 
+        if(point.ParentLoad!=null)
+            connectToPair(point); 
     }
     private static bool addNewPointToGraph(Point newPoint)
     {
@@ -47,7 +49,8 @@ public class ConnectionGraphBuilder : MonoBehaviour
         bool ConnectingSuccess = ConnectNodesInGraph(a, b);
         if(ConnectingSuccess)
         {
-            OnConnectTwoNodes?.Invoke(a,b);
+            OnConnectTwoNodes?.Invoke(a,b); 
+            OnGraphUpdated?.Invoke();
         }
     }
     private static bool ConnectNodesInGraph(Point a, Point b)

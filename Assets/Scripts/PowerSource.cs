@@ -10,7 +10,7 @@ public class PowerSource : MonoBehaviour, IElectricalComponent
     [SerializeField] GameObject PointPrefab;
     Point posativePoint;
     Point negativePoint;
-    void Awake()
+    void Start()
     {
         iniciatePoints();
     }
@@ -18,13 +18,17 @@ public class PowerSource : MonoBehaviour, IElectricalComponent
     {
         Debug.Log(" posative point at Power " + name);
         posativePoint = Instantiate(PointPrefab, PosativePointPlace).GetComponent<Point>();
+        posativePoint.Initlize();
         Debug.Log(" negative point at Power " + name);
         negativePoint = Instantiate(PointPrefab, NegativePointPlace).GetComponent<Point>();
+        negativePoint.Initlize(); 
         posativePoint.PairPoint = negativePoint;
         negativePoint.PairPoint = posativePoint;
         Debug.Log(posativePoint.ID + " - " + negativePoint.ID + "Are pairs now");
         ConnectionGraph.StartID = posativePoint.ID;
         ConnectionGraph.EndID = negativePoint.ID;
-        
+        posativePoint.AddToManger();
+        negativePoint.AddToManger();
+
     }
 }

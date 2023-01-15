@@ -9,19 +9,16 @@ public class Point :MonoBehaviour
     public int ID { get; set; }
     public Point PairPoint { get; set; }
     public Load ParentLoad { get ; set; }
-    private void Awake()
-    {
-        Initlize();
-    }
-    private void Start()
-    {
-        PointsManger.AddPoint(this);
-    }
-    void Initlize()
+    public void Initlize()
     {
         ID = PointsManger.CountID++;
         Debug.Log("Point created with ID: " + ID);
         gameObject.name = "Point " + ID;
+        ParentLoad = null;
+    }
+    public void AddToManger()
+    {
+        PointsManger.AddPoint(this);
     }
     public static bool operator ==(Point a, Point b)
     {

@@ -18,6 +18,7 @@ public class ConnectionGraph : MonoBehaviour
         graph = new UndirectedWeightedGraph();
         DisJointSet = new DisJointSet(0);
         this.AddComponent<ConnectionGraphBuilder>();
+        this.AddComponent<ConnectionGraphPathCalculator>();
     }
     private void FixedUpdate()
     {

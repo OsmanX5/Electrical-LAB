@@ -11,6 +11,8 @@ public class PointsConnector : MonoBehaviour
     public TMP_InputField inp2;
     int id1;
     int id2;
+    public static bool firstClick = true;
+    public static Point firstPoint;
     private void Start()
     {
         inp1.text = "0";
