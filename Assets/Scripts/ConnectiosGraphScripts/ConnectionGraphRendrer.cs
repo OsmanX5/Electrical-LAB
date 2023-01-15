@@ -32,20 +32,16 @@ public class ConnectionGraphRendrer : MonoBehaviour
     private void ConnectToLinePoints(Point a, Point b) => ConnectToLineRendrers(a.ID, b.ID);
     private void ConnectToLineRendrers(int id1, int id2)
     {
-        int deletedID;
-        int notDeletedID;
-        if (ConnectionGraph.DisJointSet.GetJointsHead().Contains(id1)) {
-            deletedID = id2;
-            notDeletedID = id1;
-        }
-        else
+        int id1Head = ConnectionGraph.DisJointSet.Find(id1);
+        int id2Head = ConnectionGraph.DisJointSet.Find(id2);
+        foreach (int joint in ConnectionGraph.DisJointSet.GetJointPoints(id1Head))
         {
-            deletedID = id1;
-            notDeletedID = id2;
+            if (lineRenderers.ContainsKey(joint) && joint != id1Head)
+                DeletLineRendrer(joint);
         }
-        DeletLineRendrer(deletedID);
-        LineRenderer Line = lineRenderers[notDeletedID];
-        drawLines(Line,PointsManger.GetConnectedPointsToID(notDeletedID));
+        
+        LineRenderer Line = lineRenderers[id1Head];
+        drawLines(Line,PointsManger.GetConnectedPointsToID(id1Head));
     }
     private void drawLines(LineRenderer LR, Point[] points)
     {

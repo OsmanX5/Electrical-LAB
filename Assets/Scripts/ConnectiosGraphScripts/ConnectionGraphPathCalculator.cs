@@ -6,7 +6,7 @@ public class ConnectionGraphPathCalculator : MonoBehaviour
 {
     private void Start()
     {
-        ConnectionGraphBuilder.OnConnectTwoNodes += IsPathExist;
+        
     }
     public static bool IsPathExist(int startID, int endID)
     {

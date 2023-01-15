@@ -29,7 +29,7 @@ public class DisJointSet
         Debug.Log("Dis joint set after adding : " + id);
         Debug.Log(GetDisjointSetText());
     }
-    int Find(int x)
+    public int Find(int x)
     {
         //Debug.Log("Searching for: " + x);
         while (x != roots[x])
