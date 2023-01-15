@@ -25,20 +25,19 @@ public class ConnectionGraphBuilder : MonoBehaviour
             Debug.Log("Point with ID: " + newPoint.ID + " already exists in graph");
             return false;
         }
-        ConnectionGraph.AdjacencyList.Add(newPoint.ID,new List<ConnectionPoint>());
+        ConnectionGraph.graph.addPoint(newPoint.ID);
         ConnectionGraph.DisJointSet.AddPoint(newPoint.ID);
         Debug.Log("POINT WITH ID : " + newPoint.ID + " Added to graph");
         return true;
     }
     private static bool connectToPair(Point a)
     {
-        if (!ConnectionGraph.AdjacencyList.ContainsKey(a.PairPoint.ID))
+        if (!ConnectionGraph.graph.IsInGraph(a.PairPoint.ID))
         {
             Debug.Log("Pair is not Created Yet");
             return false;
         }
-        AddPointToID(a.ID, a.PairPoint, a.ParentLoad.getResistance());
-        AddPointToID(a.PairPoint.ID, a, a.ParentLoad.getResistance());
+        ConnectionGraph.graph.AddConnection(a.ID, a.PairPoint.ID, a.ParentLoad.getResistance());
         return true;
     }
 
@@ -79,23 +78,8 @@ public class ConnectionGraphBuilder : MonoBehaviour
             return false;
         }
 
-        bool addSuccess1 = AddPointToID(a.ID, b);
-        bool addSuccess2 =AddPointToID(b.ID, a);
+        ConnectionGraph.graph.AddConnection(a.ID, b.ID ,0 );
         ConnectionGraph.DisJointSet.Union(a.ID, b.ID);
-        return addSuccess1 && addSuccess2;
-    }
-    public static bool AddPointToID(int PointId,Point PointToAdd,float resistance =0 )
-    {
-        Debug.Log("try Adding point with ID" + PointToAdd.ID + "to ID" + PointId);
-        foreach (var connection in ConnectionGraph.AdjacencyList[PointId]){
-            if (connection.point == PointToAdd)
-            {
-                Debug.Log("Point with ID: " + PointToAdd.ID + " already connected here");
-                return false;
-            }
-        }
-        ConnectionGraph.AdjacencyList[PointId].Add(new ConnectionPoint(PointToAdd,resistance));
-        Debug.Log("Successfully  Added point with ID" + PointToAdd.ID + "to ID" + PointId);
         return true;
     }
  

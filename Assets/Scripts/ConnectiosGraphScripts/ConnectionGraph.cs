@@ -7,7 +7,7 @@ using Unity.VisualScripting;
 
 public class ConnectionGraph : MonoBehaviour
 {
-    public static Dictionary<int,List<ConnectionPoint>> AdjacencyList;
+    public static UndirectedWeightedGraph graph;
     public static DisJointSet DisJointSet;
     public static int StartID;
     public static int EndID;
@@ -15,7 +15,7 @@ public class ConnectionGraph : MonoBehaviour
     [SerializeField] TMP_Text TMP_DISJOINT;
     private void Awake()
     {
-        AdjacencyList = new Dictionary<int, List<ConnectionPoint>>();
+        graph = new UndirectedWeightedGraph();
         DisJointSet = new DisJointSet(0);
         this.AddComponent<ConnectionGraphBuilder>();
     }
@@ -32,12 +32,12 @@ public class ConnectionGraph : MonoBehaviour
     public static string GetAdjacencyListText()
     {
         string adjacencyListSTR = "";
-        foreach (var item in AdjacencyList)
+        foreach (var item in graph.AdjacencyList)
         {
             adjacencyListSTR += item.Key + " : [";
             foreach (var connectionPoint in item.Value)
             {
-                adjacencyListSTR += $" ({connectionPoint.point.ID} , {connectionPoint.resistance} ) ";
+                adjacencyListSTR += $" ({connectionPoint.Item1} , {connectionPoint.Item2} ) ";
             }
             adjacencyListSTR += " ] \n";
         }
@@ -47,6 +47,6 @@ public class ConnectionGraph : MonoBehaviour
     }
 
     public static bool IsInGraph(Point point) => IsInGraph(point.ID);
-    public static bool IsInGraph(int ID)=> AdjacencyList.ContainsKey(ID);
+    public static bool IsInGraph(int ID)=> graph.AdjacencyList.ContainsKey(ID);
     
 }
