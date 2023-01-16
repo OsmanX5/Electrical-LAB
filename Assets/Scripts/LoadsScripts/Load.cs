@@ -10,8 +10,8 @@ public class Load : MonoBehaviour,ILoad
     [SerializeField] Transform PosativePointPlace;
     [SerializeField] Transform NegativePointPlace;
     [SerializeField] GameObject PointPrefab;
-    Point posativePoint;
-    Point negativePoint;
+    public Point posativePoint;
+    public Point negativePoint;
     ILoad loadBehovier;
 
     private void Start()
@@ -28,7 +28,7 @@ public class Load : MonoBehaviour,ILoad
 
             default: break;
         }
-        ConnectionGraphPathCalculator.OnCircuitClose += TurnOn;
+        LoadsManger.AddLoad(this);
     }
     public void iniciatePoints()
     {
@@ -58,6 +58,7 @@ public class Load : MonoBehaviour,ILoad
     }
     public void TurnOff()
     {
+        this.GetComponent<Renderer>().material.color = Color.gray;
         //loadBehovier.TurnOff();
     }
     public string GetLoadType()

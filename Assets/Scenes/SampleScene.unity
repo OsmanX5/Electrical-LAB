@@ -432,6 +432,8 @@ MonoBehaviour:
   NegativePointPlace: {fileID: 745830036}
   PointPrefab: {fileID: 1814432017630611985, guid: b76e0db0301e08442aba4580f993c1e4,
     type: 3}
+  posativePoint: {fileID: 0}
+  negativePoint: {fileID: 0}
 --- !u!65 &229923516
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1066,6 +1068,8 @@ MonoBehaviour:
   NegativePointPlace: {fileID: 71056063}
   PointPrefab: {fileID: 1814432017630611985, guid: b76e0db0301e08442aba4580f993c1e4,
     type: 3}
+  posativePoint: {fileID: 0}
+  negativePoint: {fileID: 0}
 --- !u!65 &737330418
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1311,6 +1315,8 @@ MonoBehaviour:
   NegativePointPlace: {fileID: 373228081}
   PointPrefab: {fileID: 1814432017630611985, guid: b76e0db0301e08442aba4580f993c1e4,
     type: 3}
+  posativePoint: {fileID: 0}
+  negativePoint: {fileID: 0}
 --- !u!1 &813642062
 GameObject:
   m_ObjectHideFlags: 0
@@ -1429,8 +1435,9 @@ GameObject:
   - component: {fileID: 861007946}
   - component: {fileID: 861007948}
   - component: {fileID: 861007949}
+  - component: {fileID: 861007950}
   m_Layer: 0
-  m_Name: ConnectionManger
+  m_Name: Manger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1493,6 +1500,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LRPrefab: {fileID: 8086125108142990576, guid: bf581d1c1d1e8d148ae3f5176fddb3f8,
     type: 3}
+--- !u!114 &861007950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 861007945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d0f35f531e1c4b40aefa8676e56d8a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &939541435
 GameObject:
   m_ObjectHideFlags: 0
