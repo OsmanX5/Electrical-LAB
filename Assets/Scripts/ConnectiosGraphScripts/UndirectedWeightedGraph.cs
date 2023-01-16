@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class UndirectedWeightedGraph 
@@ -21,12 +22,24 @@ public class UndirectedWeightedGraph
         AdjacencyList[a] = new List<Tuple<int, float>>();
         n += 1;
     }
+    
     public void AddConnection(int a,int b,float w)
     {
         if (!IsInGraph(a)) addPoint(a);
         if (!IsInGraph(b)) addPoint(b);
+        
+        List<Tuple<int, float>> aConnections = AdjacencyList[a];
+        List<Tuple<int, float>> bConnections = AdjacencyList[b];
         AdjacencyList[a].Add(new Tuple<int, float>(b, w));
         AdjacencyList[b].Add(new Tuple<int, float>(a, w));
+    }
+    public bool IsInList(List<Tuple<int, float>> list, Tuple<int, float> a)
+    {
+        foreach (var point in list)
+        {
+            if (point.Item1 == a.Item1) return true;
+        }
+        return false;
     }
     public bool IsPathExict(int a,int b)
     {
@@ -78,35 +91,33 @@ public class UndirectedWeightedGraph
         return path;
     }
 
-    public List<List<int>> GetAllPathes(int a,int b)
+    public List<List<int>> GetAllPaths(int start, int end)
     {
-        List<List<int>> pathes = new List<List<int>>();
-        bool[] visited = new bool[n];
+        List<List<int>> paths = new List<List<int>>();
+
         void DFS(int x, List<int> path)
         {
-            if (x == b)
+            path.Add(x);
+            if (x == end)
             {
-                path.Add(x);
-                pathes.Add(path);
+                paths.Add(path);
                 return;
             }
-            visited[x] = true;
             foreach (var next in AdjacencyList[x])
             {
                 int nextID = next.Item1;
-                if (visited[nextID]) continue;
-                List<int> newPath = new List<int>(path);
-                newPath.Add(x);
-                DFS(nextID, newPath);
+                if (path.Contains(nextID)) continue;
+                DFS(nextID, new List<int>(path));
             }
         }
-        DFS(a, new List<int>());
-        return pathes;
+        DFS(start, new List<int>());
+
+        return paths;
     }
 
     public List<string> GetAllPathesSTR(int a,int b)
     {
-        List<List<int>> pathes = GetAllPathes(a, b);
+        List<List<int>> pathes = GetAllPaths(a, b);
         List<string> res = new List<string>();
         foreach(var path in pathes)
         {

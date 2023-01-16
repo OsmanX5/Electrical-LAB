@@ -7,7 +7,7 @@ using Unity.VisualScripting;
 
 public class ConnectionGraph : MonoBehaviour
 {
-    public static UndirectedWeightedGraph graph;
+    public static ElectricalGraph graph;
     public static DisJointSet DisJointSet;
     public static int StartID;
     public static int EndID;
@@ -15,7 +15,7 @@ public class ConnectionGraph : MonoBehaviour
     [SerializeField] TMP_Text TMP_DISJOINT;
     private void Awake()
     {
-        graph = new UndirectedWeightedGraph();
+        graph = new ElectricalGraph();
         DisJointSet = new DisJointSet(0);
         this.AddComponent<ConnectionGraphBuilder>();
         this.AddComponent<ConnectionGraphPathCalculator>();

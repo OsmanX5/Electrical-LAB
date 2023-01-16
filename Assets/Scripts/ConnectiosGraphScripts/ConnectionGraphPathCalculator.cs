@@ -15,7 +15,7 @@ public class ConnectionGraphPathCalculator : MonoBehaviour
     void CircuitCloseCheck()
     {
         Debug.Log("calculating all pathes of battery");
-        AllPathesOfBattery = ConnectionGraph.graph.GetAllPathes(ConnectionGraph.StartID, ConnectionGraph.EndID);
+        AllPathesOfBattery = ConnectionGraph.graph.GetAllPaths(ConnectionGraph.StartID, ConnectionGraph.EndID);
         Debug.Log("Found" + AllPathesOfBattery.Count + "pathes");
         if (AllPathesOfBattery.Count>0)
         {
