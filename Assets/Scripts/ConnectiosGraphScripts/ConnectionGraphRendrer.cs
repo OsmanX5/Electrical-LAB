@@ -50,11 +50,7 @@ public class ConnectionGraphRendrer : MonoBehaviour
     }
     private void drawLines(LineRenderer LR, Transform[] points)
     {
-        LR.positionCount = points.Length;
-        for (int i = 0; i < points.Length; i++)
-        {
-            LR.SetPosition(i, points[i].position);
-        }
+        WireCalculator.SetWire(LR, points);
     }
 
 }
