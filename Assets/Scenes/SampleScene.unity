@@ -2247,8 +2247,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de74f1bea2882f5438aeba0969ac3ae8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
+  moveSpeed: 5
   target: {fileID: 479490031}
+  path:
+  - {fileID: 966296690}
+  - {fileID: 817912212}
+  - {fileID: 1039923651}
+  - {fileID: 705507995}
 --- !u!1 &1420423461
 GameObject:
   m_ObjectHideFlags: 0

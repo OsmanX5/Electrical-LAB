@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PowerSource : MonoBehaviour, IElectricalComponent
@@ -10,6 +11,10 @@ public class PowerSource : MonoBehaviour, IElectricalComponent
     [SerializeField] GameObject PointPrefab;
     Point posativePoint;
     Point negativePoint;
+    private void Awake()
+    {
+        this.AddComponent<ElectronEmmitingManger>();
+    }
     void Start()
     {
         iniciatePoints();
@@ -31,4 +36,5 @@ public class PowerSource : MonoBehaviour, IElectricalComponent
         negativePoint.AddToManger();
 
     }
+
 }

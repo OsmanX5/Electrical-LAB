@@ -29,7 +29,7 @@ public class PointsConnector : MonoBehaviour
     }
     public static void ConnectNodes(int id1, int id2)
     {
-        ConnectNodes(PointsManger.GetPointWithID(id1), PointsManger.GetPointWithID(id2));
+        ConnectNodes(PointsManger.GetPointByID(id1), PointsManger.GetPointByID(id2));
     }
     public static void ConnectNodes(Point a,Point b)
     {

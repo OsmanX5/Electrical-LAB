@@ -6,6 +6,7 @@ using UnityEngine;
 public class ConnectionGraphPathCalculator : MonoBehaviour
 {
     public static event Action OnCircuitClose;
+    public static event Action OnCircuitOpen;
     public static List<List<int>> AllPathesOfBattery = new List<List<int>>();
     public List<string> allPathes;
     private void Start()

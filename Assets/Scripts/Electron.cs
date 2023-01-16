@@ -6,13 +6,7 @@ using UnityEngine;
 public class Electron : MonoBehaviour
 {
     public float moveSpeed = 10f;
-    public Transform target;
-    bool reachedTheTarget = false;
     public  List<Transform> path;
-    private void Start()
-    {
-        FollowPath(path);
-    }
     public void FollowPath(List<Transform> path)
     {
         StartCoroutine(FollowPathCoroutine(path));
@@ -20,16 +14,18 @@ public class Electron : MonoBehaviour
     IEnumerator FollowPathCoroutine(List<Transform> path)
     {
         int pos = 0;
+        Transform target;
         while (pos < path.Count)
         {
-            if (Vector3.Distance(transform.position, path[pos].position) < 0.1f)
+            target = path[pos];
+            while (Vector3.Distance(transform.position, target.position) > 0.01f)
             {
-                pos++;
-                if (reachedTheTarget == true) 
-                    MoveTo(path[pos]);
-                yield return new WaitForSeconds(0.01f);
+                transform.position = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
+                yield return null;
             }
+            pos += 1;
         }
+        Destroy(this.gameObject);
     }
     public void MoveTo(Transform target)
     {
@@ -38,12 +34,10 @@ public class Electron : MonoBehaviour
     
     IEnumerator MoveToCoroutine(Transform target)
     {
-        reachedTheTarget = false;
         while (Vector3.Distance(transform.position, target.position) > 0.1f)
         {
             transform.position = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
             yield return null;
         }
-        reachedTheTarget = true;
     }
 }
