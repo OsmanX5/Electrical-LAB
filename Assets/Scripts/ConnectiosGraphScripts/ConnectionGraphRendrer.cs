@@ -7,28 +7,34 @@ using UnityEngine;
 public class ConnectionGraphRendrer : MonoBehaviour
 {
     public GameObject LRPrefab;
-    [SerializeField] Dictionary<int , LineRenderer> lineRenderers = new Dictionary<int, LineRenderer>();
+    //[SerializeField] Dictionary<int , LineRenderer> lineRenderers = new Dictionary<int, LineRenderer>();
+    [SerializeField] List<LineRenderer> lineRenderers = new List<LineRenderer>();
+
     private void Awake()
     {
-        ConnectionGraphBuilder.OnAddNewPoint += AddLineRendrer;
-        ConnectionGraphBuilder.OnConnectTwoNodes += ConnectToLinePoints;
+        //ConnectionGraphBuilder.OnAddNewPoint += AddLineRendrer;
+        Wiere.OnConnectionWiereingEnd += WirerConnectionRender;
     }
-    private int NumberOfNeededLR() => ConnectionGraph.DisJointSet.JointsCount;
 
-    private void AddLineRendrer(Point point) => AddLineRendrer(point.ID);
-    private void AddLineRendrer(int id)
-    {
-        LineRenderer temp = Instantiate(LRPrefab, this.transform).GetComponent<LineRenderer>();
-        temp.name = "Line Rendrer to joint " +  id.ToString();
-        lineRenderers[id] = temp;
-    }
     
     private void DeletLineRendrer(int id)
     {
         Destroy(lineRenderers[id].gameObject);
-        lineRenderers.Remove(id);
+        lineRenderers.RemoveAt(id);
     }
+    private void WirerConnectionRender(LineRenderer lr)
+    {
+        LineRenderer temp = Instantiate(LRPrefab, this.transform).GetComponent<LineRenderer>();
+        temp.name = lineRenderers.Count().ToString();
+        temp.positionCount = lr.positionCount;
+        for (int i = 0; i < lr.positionCount; i++) temp.SetPosition(i, lr.GetPosition(i));
+        lineRenderers.Add(temp);        
+    }
+    
+    /*
+    private int NumberOfNeededLR() => ConnectionGraph.DisJointSet.JointsCount;
 
+    private void AddLineRendrer(Point point) => AddLineRendrer(point.ID);
     private void ConnectToLinePoints(Point a, Point b) => ConnectToLineRendrers(a.ID, b.ID);
     private void ConnectToLineRendrers(int id1, int id2)
     {
@@ -50,7 +56,7 @@ public class ConnectionGraphRendrer : MonoBehaviour
     }
     private void drawLines(LineRenderer LR, Transform[] points)
     {
-        WireCalculator.SetWire(LR, points);
+        WireCalculator.SetWireStright(LR, points);
     }
-
+    */
 }
