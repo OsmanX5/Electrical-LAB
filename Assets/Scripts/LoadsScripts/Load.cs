@@ -28,6 +28,7 @@ public class Load : MonoBehaviour,ILoad
 
             default: break;
         }
+        TurnOff();
         LoadsManger.AddLoad(this);
     }
     public void iniciatePoints()
