@@ -13,7 +13,7 @@ public class ConnectionGraphRendrer : MonoBehaviour
     private void Awake()
     {
         //ConnectionGraphBuilder.OnAddNewPoint += AddLineRendrer;
-        Wiere.OnConnectionWiereingEnd += WirerConnectionRender;
+        Wierer.OnConnectionWiereingEnd += WirerConnectionRender;
     }
 
     

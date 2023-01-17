@@ -5,15 +5,24 @@ using UnityEngine;
 
 public class PathManger : MonoBehaviour
 {
-    public static Dictionary<Tuple<int, int>, Vector3[]> Pathes = new Dictionary<Tuple<int, int>, Vector3[]> ();
+    public static Dictionary<Tuple<int, int>, Vector3[]> PointsOdPath = new Dictionary<Tuple<int, int>, Vector3[]> ();
 
-    public static void SetPathBetween(int a, int b, Vector3[] path)
+    public static void SetPathPointsBetween(int a, int b, Vector3[] path)
     {
-        Pathes[new Tuple<int, int>(a, b)] = path;
+        PointsOdPath[new Tuple<int, int>(a, b)] = path;
+        PointsOdPath[new Tuple<int, int>(b, a)] = path;
     }
-    public static Vector3[] GetPathBetween(int a, int b)
+    public static Vector3[] GetPathPointsBetween(int a, int b)
     {
-        return Pathes[new Tuple<int, int>(a,b)];
+        if (!PointsOdPath.ContainsKey(new Tuple<int, int>(a, b)))
+        {
+            return new Vector3[2] { PointsManger.GetPointByID(a).transform.position, PointsManger.GetPointByID(b).transform.position };
+        }
+        else
+        {
+            return  PointsOdPath[new Tuple<int, int>(a, b)];
+        }
+        
     }
 
 }

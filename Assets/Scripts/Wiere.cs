@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-public class Wiere : MonoBehaviour
+public class Wierer : MonoBehaviour
 {
     public static event Action<LineRenderer> OnConnectionWiereingEnd;
     LineRenderer lr;
@@ -69,7 +69,7 @@ public class Wiere : MonoBehaviour
                 else
                 {
                     ConnectionEnd();
-
+                    return;
                 }
                 IsStartWiring = !IsStartWiring;
             }
@@ -80,11 +80,14 @@ public class Wiere : MonoBehaviour
 
     void ConnectionEnd()
     {
+
+        IsStartWiring = false;
         PointsConnector.ConnectNodes(lastPoint.ID, currentPoint.ID);
         Vector3[] points = new Vector3[lr.positionCount];
         for (int i = 0; i < lr.positionCount; i++) points[i] = lr.GetPosition(i);
-        PathManger.SetPathBetween(lastPoint.ID, currentPoint.ID, points);
+        PathManger.SetPathPointsBetween(lastPoint.ID, currentPoint.ID, points);
         OnConnectionWiereingEnd?.Invoke(lr);
+        lr.positionCount = 0;
         lr.positionCount = 1;
     }
 }

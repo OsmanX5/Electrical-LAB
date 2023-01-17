@@ -6,7 +6,7 @@ using UnityEngine;
 public class ElectronEmmitingManger : MonoBehaviour
 {
     public GameObject ElectronPrefab;
-    public float EmmitingFreq = 5;
+    public float EmmitingFreq = 0.2f;
     List<Electron> electrons = new List<Electron>();
     void Start()
     {
@@ -21,7 +21,16 @@ public class ElectronEmmitingManger : MonoBehaviour
         }
         return path;
     }
-    void EmmitElectron(List<Transform> path)
+    List<Point> ConvertPathID2Points(List<int> pathIDs)
+    {
+        List<Point> path = new List<Point>();
+        foreach (int id in pathIDs)
+        {
+            path.Add(PointsManger.GetPointByID(id));
+        }
+        return path;
+    }
+    void EmmitElectron(List<Point> path)
     {
         Debug.Log("Emmiting electron");
         var electron = Instantiate(ElectronPrefab, PointsManger.GetPointByID(ConnectionGraph.StartID).transform.position, Quaternion.identity).GetComponent<Electron>();
@@ -38,7 +47,7 @@ public class ElectronEmmitingManger : MonoBehaviour
         {
             for(int i=0;i< ConnectionGraphPathCalculator.AllPathesOfBattery.Count; i++)
             {
-                EmmitElectron(ConvertPathID2Transform(ConnectionGraphPathCalculator.AllPathesOfBattery[i]));
+                EmmitElectron(ConvertPathID2Points(ConnectionGraphPathCalculator.AllPathesOfBattery[i]));
             }
             yield return new WaitForSeconds(1.0f /EmmitingFreq);
         }
