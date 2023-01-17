@@ -6,7 +6,7 @@ using UnityEngine;
 public class ElectronEmmitingManger : MonoBehaviour
 {
     public GameObject ElectronPrefab;
-    public float EmmitingFreq = 0.2f;
+    public float EmmitingFreq = 1f;
     List<Electron> electrons = new List<Electron>();
     void Start()
     {
