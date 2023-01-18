@@ -11,8 +11,6 @@ public class ConnectionGraph : MonoBehaviour
     public static DisJointSet DisJointSet;
     public static int StartID;
     public static int EndID;
-    [SerializeField] TMP_Text TextTMP;
-    [SerializeField] TMP_Text TMP_DISJOINT;
     private void Awake()
     {
         graph = new ElectricalGraph();
@@ -22,14 +20,9 @@ public class ConnectionGraph : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        UpdateTMPtext();
     }
 
-    void UpdateTMPtext()
-    {
-        TextTMP.text = GetAdjacencyListText();
-        TMP_DISJOINT.text = DisJointSet.GetDisjointSetText();
-    }
+
     public static string GetAdjacencyListText()
     {
         string adjacencyListSTR = "";

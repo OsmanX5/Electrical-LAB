@@ -12,6 +12,8 @@ public class Wierer : MonoBehaviour
     public InputActionReference triggerClicked;
     public GameObject PointPrefab;
     public bool Holding =false;
+    public Material PointOff;
+    public Material PointOn; 
     bool IsStartWiring = false;
     bool IsInPoint = false;
     Point lastPoint,currentPoint;
@@ -31,7 +33,8 @@ public class Wierer : MonoBehaviour
         if (currentPoint)
         {
             IsInPoint = true;
-            other.gameObject.transform.localScale *= 1.4f;
+            other.gameObject.transform.localScale *= 1.3f;
+            other.gameObject.GetComponent<Renderer>().material = PointOn;
         }
     }
     private void OnTriggerExit(Collider other)
@@ -40,7 +43,8 @@ public class Wierer : MonoBehaviour
         if (currentPoint)
         {
             IsInPoint = false;
-            other.gameObject.transform.localScale /= 1.4f;
+            other.gameObject.transform.localScale /= 1.3f;
+            other.gameObject.GetComponent<Renderer>().material = PointOff;
         }
     }
 
