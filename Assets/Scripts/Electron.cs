@@ -7,6 +7,7 @@ using UnityEngine;
 public class Electron : MonoBehaviour
 {
     public float moveSpeed = 10f;
+    public List<int> pathIDS = new List<int>();
     public void FollowPath(List<Point> path)
     {
         StartCoroutine(FollowPathCoroutine(path));
@@ -15,26 +16,15 @@ public class Electron : MonoBehaviour
     {
         int pos = 0;
         Transform target;
-        
-        while (pos < path.Count-1)
+        pathIDS = path.Select(x => x.ID).ToList();
+        while (pos < path.Count)
         {
-            Debug.Log("Start now with POS " + pos);
-
-            List<Vector3> positions = PathManger.GetPathPointsBetween(path[pos].ID, path[pos + 1].ID).ToList();
-            foreach (Vector3 p in positions) Debug.Log(p);
-            foreach (Vector3 nextTargetPos in positions)
-            {
-                Debug.Log("cURRENT POS " + pos);
-                Debug.Log("nexttarget" + nextTargetPos);
-                while (Vector3.Distance(transform.position, nextTargetPos) > 0.01f)
+            target = path[pos].transform;
+            while (Vector3.Distance(transform.position, target.position) > 0.01f)
                 {
-                    transform.position = Vector3.MoveTowards(transform.position, nextTargetPos, moveSpeed * Time.deltaTime);
+                    transform.position = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
                     yield return null;
                 }
-               // Debug.Log("Puse to read");
-                //yield return new WaitForSeconds(3f);
-            }
-            Debug.Log("completed my first path between" + pos + (pos + 1));
             pos += 1;
         }
         Destroy(this.gameObject);

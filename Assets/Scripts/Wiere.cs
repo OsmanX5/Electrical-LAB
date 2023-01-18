@@ -3,12 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Linq;
 public class Wierer : MonoBehaviour
 {
-    public static event Action<LineRenderer> OnConnectionWiereingEnd;
+    public static event Action<List<Point>> OnConnectionWiereingEnd;
     LineRenderer lr;
     public Transform StartPoint;
     public InputActionReference triggerClicked;
+    public GameObject PointPrefab;
     public bool Holding =false;
     bool IsStartWiring = false;
     bool IsInPoint = false;
@@ -80,14 +82,29 @@ public class Wierer : MonoBehaviour
 
     void ConnectionEnd()
     {
-
         IsStartWiring = false;
-        PointsConnector.ConnectNodes(lastPoint.ID, currentPoint.ID);
-        Vector3[] points = new Vector3[lr.positionCount];
-        for (int i = 0; i < lr.positionCount; i++) points[i] = lr.GetPosition(i);
-        PathManger.SetPathPointsBetween(lastPoint.ID, currentPoint.ID, points);
-        OnConnectionWiereingEnd?.Invoke(lr);
+        List<Point> createdPoints = GetTheWiringPoints();
+        PointsConnector.ConnectNodesSeries(createdPoints);
+        OnConnectionWiereingEnd?.Invoke(createdPoints);
         lr.positionCount = 0;
         lr.positionCount = 1;
+    }
+    List<Point> GetTheWiringPoints()
+    {
+        List<Point> PathPoints = new List<Point>();
+        PathPoints.Add(lastPoint);
+        for (int i = 1; i < lr.positionCount - 1; i++)
+        {
+            Point newPoint = Instantiate(PointPrefab, lr.GetPosition(i), Quaternion.identity).GetComponent<Point>();
+            newPoint.Initlize();
+            PathPoints.Add(newPoint);
+        }
+        PathPoints.Add(currentPoint);
+        return PathPoints;
+    }
+    List<int> GetTheWiringPointsIDs()
+    {
+        List<Point> PathPoints = GetTheWiringPoints();
+        return PathPoints.Select(x => x.ID).ToList();
     }
 }

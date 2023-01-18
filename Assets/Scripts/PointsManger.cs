@@ -6,11 +6,11 @@ using UnityEngine.UIElements;
 
 public class PointsManger : MonoBehaviour
 {
-    public static List<Point> Points = new List<Point>();
+    public static Dictionary<int,Point> Points = new Dictionary<int, Point>();
     public static int CountID = 0;
     public static void AddPoint(Point point)
     {
-        Points.Add(point);
+        Points[point.ID] = point;
         ConnectionGraphBuilder.AddNewPoint(point);
     }
     public static Point GetPointByID(int id)=>Points[id];

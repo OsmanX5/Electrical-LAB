@@ -7,14 +7,15 @@ public class Point :MonoBehaviour
 {
 
     public int ID { get; set; }
-    public Point PairPoint { get; set; }
-    public Load ParentLoad { get ; set; }
+    public Point? PairPoint { get; set; }
+    public Load? ParentLoad { get ; set; }
     public void Initlize()
     {
         ID = PointsManger.CountID++;
         Debug.Log("Point created with ID: " + ID);
         gameObject.name = "Point " + ID;
         ParentLoad = null;
+        AddToManger();
     }
     public void AddToManger()
     {

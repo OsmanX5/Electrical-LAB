@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6281561242611019334}
   - component: {fileID: 5719893881031421225}
+  - component: {fileID: 4293448473933695066}
   m_Layer: 0
   m_Name: LineRendrer
   m_TagString: Untagged
@@ -136,3 +137,16 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!114 &4293448473933695066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8086125108142990576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9b10007142184e4b9821b2d8fc44744, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointsIDs: 

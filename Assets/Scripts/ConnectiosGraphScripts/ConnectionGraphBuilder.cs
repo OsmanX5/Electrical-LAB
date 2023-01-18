@@ -70,11 +70,6 @@ public class ConnectionGraphBuilder : MonoBehaviour
             Debug.Log("Cannot connect point with itself");
             return false;
         }
-        if (a == b.PairPoint)
-        {
-            Debug.Log("Cannot connect point with its pair");
-            return false;
-        }
         if (ConnectionGraph.DisJointSet.IsConnected(a.ID, b.ID))
         {
             Debug.Log("Points are already connected");

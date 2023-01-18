@@ -27,6 +27,14 @@ public class PointsConnector : MonoBehaviour
     {
         ConnectNodes(id1, id2);
     }
+    public static void ConnectNodesSeries(List<int> points)
+    {
+        for (int i = 0; i < points.Count - 1; i++) ConnectNodes(points[i], points[i + 1]);
+    }
+    public static void ConnectNodesSeries(List<Point> points)
+    {
+        for (int i = 0; i < points.Count - 1; i++) ConnectNodes(points[i], points[i + 1]);
+    }
     public static void ConnectNodes(int id1, int id2)
     {
         ConnectNodes(PointsManger.GetPointByID(id1), PointsManger.GetPointByID(id2));

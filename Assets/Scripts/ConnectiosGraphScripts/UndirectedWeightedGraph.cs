@@ -100,6 +100,10 @@ public class UndirectedWeightedGraph
             path.Add(x);
             if (x == end)
             {
+                foreach (var path1 in paths)
+                {
+                    if (path1.SequenceEqual(path)) return;
+                }
                 paths.Add(path);
                 return;
             }
