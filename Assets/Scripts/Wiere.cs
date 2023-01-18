@@ -31,7 +31,7 @@ public class Wierer : MonoBehaviour
         if (currentPoint)
         {
             IsInPoint = true;
-            other.gameObject.transform.localScale *= 1.1f;
+            other.gameObject.transform.localScale *= 1.4f;
         }
     }
     private void OnTriggerExit(Collider other)
@@ -40,7 +40,7 @@ public class Wierer : MonoBehaviour
         if (currentPoint)
         {
             IsInPoint = false;
-            other.gameObject.transform.localScale /= 1.1f;
+            other.gameObject.transform.localScale /= 1.4f;
         }
     }
 

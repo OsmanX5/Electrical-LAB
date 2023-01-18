@@ -10,6 +10,8 @@ public class Load : MonoBehaviour,ILoad
     [SerializeField] Transform PosativePointPlace;
     [SerializeField] Transform NegativePointPlace;
     [SerializeField] GameObject PointPrefab;
+    [SerializeField] GameObject loadObject;
+    public GameObject LoadObject { get => loadObject; set=> loadObject = value;  }
     public Point posativePoint;
     public Point negativePoint;
     ILoad loadBehovier;
@@ -19,8 +21,8 @@ public class Load : MonoBehaviour,ILoad
         iniciatePoints();
         switch (loadType)
         {
-            case LoadType.Lamp: 
-                loadBehovier = new Lamp();
+            case LoadType.Lamp:
+                loadBehovier = this.GetComponent<Lamp>();
                 break;
             case LoadType.Buzzer:
                 loadBehovier = new Buzzer();
@@ -54,13 +56,12 @@ public class Load : MonoBehaviour,ILoad
     public void TurnOn()
     {
         Debug.Log("Turn" + name + "on");
-        this.GetComponent<Renderer>().material.color = Color.green;
-        //loadBehovier.TurnOn();
+        
+        loadBehovier.TurnOn();
     }
     public void TurnOff()
     {
-        this.GetComponent<Renderer>().material.color = Color.gray;
-        //loadBehovier.TurnOff();
+        loadBehovier.TurnOff();
     }
     public string GetLoadType()
     {

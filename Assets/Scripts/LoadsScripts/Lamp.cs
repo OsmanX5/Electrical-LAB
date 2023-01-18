@@ -2,18 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Lamp : ILoad
+public class Lamp : MonoBehaviour, ILoad
 {
-    
-    public  void TurnOn()
+    public Material offMaterial;
+    public Material onMaterial;
+    public GameObject LightingBulb;
+    public void TurnOn()
     {
         Debug.Log("Light is On");
-        throw new System.NotImplementedException();
+        LightingBulb.GetComponent<Renderer>().material = onMaterial;
     }
-    public  void TurnOff()
+    public void TurnOff()
     {
+        LightingBulb.GetComponent<Renderer>().material = offMaterial;
         Debug.Log("Light is Off");
-        throw new System.NotImplementedException();
     }
 
     public string GetLoadType()

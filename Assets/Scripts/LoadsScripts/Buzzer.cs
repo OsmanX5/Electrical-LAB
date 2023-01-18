@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Buzzer : MonoBehaviour, ILoad
 {
+    public GameObject LoadObject { get; set; }
+
     public string GetLoadType()
     {
         return LoadType.Buzzer.ToString();
