@@ -72,7 +72,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5010918757709439166}
   - component: {fileID: 5010918757709439139}
-  - component: {fileID: 5010918757709439167}
   - component: {fileID: -507020556549616899}
   m_Layer: 0
   m_Name: LampLoad
@@ -120,27 +119,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.43774337, y: 0.050795887, z: 0.05608487}
   m_Center: {x: -0.2154052, y: 0.021122904, z: -0.014450632}
---- !u!114 &5010918757709439167
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5010918757709439138}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3c6991c81e7e614f987528446f8699f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  resistance: 3
-  loadType: 1
-  PosativePointPlace: {fileID: 5010918757260800531}
-  NegativePointPlace: {fileID: 5010918757569808957}
-  PointPrefab: {fileID: 1814432017630611985, guid: b76e0db0301e08442aba4580f993c1e4,
-    type: 3}
-  loadObject: {fileID: 5901814887899963543}
-  posativePoint: {fileID: 0}
-  negativePoint: {fileID: 0}
 --- !u!114 &-507020556549616899
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -5,20 +5,13 @@ using UnityEngine;
 
 public class Point :MonoBehaviour
 {
-
     public int ID { get; set; }
-    public Point? PairPoint { get; set; }
-    public Load? ParentLoad { get ; set; }
+    public IElectricalComponent ElectricalComponent { get ; set; }
     public void Initlize()
     {
         ID = PointsManger.CountID++;
-        Debug.Log("Point created with ID: " + ID);
-        gameObject.name = "Point " + ID;
-        ParentLoad = null;
-        AddToManger();
-    }
-    public void AddToManger()
-    {
+        transform.parent.name = "Point " + ID;
+        ElectricalComponent = null;
         PointsManger.AddPoint(this);
     }
     public static bool operator ==(Point a, Point b)

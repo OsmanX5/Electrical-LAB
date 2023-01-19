@@ -27,6 +27,6 @@ public class PointsConnector : MonoBehaviour
     public static void ConnectNodes(Point a,Point b)
     {
         Debug.Log("Try connecting" + a.ID +" <=> " + b.ID);
-        ConnectionGraphBuilder.ConnectNodes(a, b);
+        ConnectionGraphBuilder.ConnectPoints(a, b);
     }
 }

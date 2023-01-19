@@ -4,9 +4,33 @@ using UnityEngine;
 
 public class Lamp : MonoBehaviour, ILoad
 {
-    public Material offMaterial;
-    public Material onMaterial;
-    public GameObject LightingBulb;
+    [SerializeField] float resistance = 10f;
+    [SerializeField] Transform PosativePointPlace;
+    [SerializeField] Transform NegativePointPlace;
+    [SerializeField] GameObject PointPrefab;
+    [SerializeField] Material offMaterial;
+    [SerializeField] Material onMaterial;
+    [SerializeField] GameObject LightingBulb;
+    Point posativePoint;
+    Point negativePoint;
+    LoadType loadType = LoadType.Lamp;
+
+    private void Start()
+    {
+        iniciatePoints();
+        TurnOff();
+        LoadsManger.AddLoad(this);
+    }
+    public void iniciatePoints()
+    {
+        posativePoint = Instantiate(PointPrefab, PosativePointPlace).GetComponent<Point>();
+        posativePoint.Initlize();
+        negativePoint = Instantiate(PointPrefab, NegativePointPlace).GetComponent<Point>();
+        negativePoint.Initlize();
+        posativePoint.ElectricalComponent = this;
+        negativePoint.ElectricalComponent = this;
+        ConnectionGraphBuilder.ConnectPoints(posativePoint, negativePoint, resistance);
+    }
     public void TurnOn()
     {
         Debug.Log("Light is On");
@@ -18,9 +42,6 @@ public class Lamp : MonoBehaviour, ILoad
         Debug.Log("Light is Off");
     }
 
-    public string GetLoadType()
-    {
-        return LoadType.Lamp.ToString();
-        throw new System.NotImplementedException();
-    }
+    public Point[] GetPoints() => new Point[] { posativePoint, negativePoint };
+
 }
