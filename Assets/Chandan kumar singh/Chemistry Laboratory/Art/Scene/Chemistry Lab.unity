@@ -98,7 +98,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 1ec7455943602a54d9ee16e1013ef71f,
+    type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: 9ea7d211c73baf4499d50ab5b53116f3,
     type: 2}
 --- !u!196 &4
@@ -1524,6 +1525,31 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 934074809211656429, guid: 25b59f17b5d762e4e8231eb7c4af0ac5,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 934074809211656429, guid: 25b59f17b5d762e4e8231eb7c4af0ac5,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 934074809211656429, guid: 25b59f17b5d762e4e8231eb7c4af0ac5,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 934074809211656429, guid: 25b59f17b5d762e4e8231eb7c4af0ac5,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.1381
+      objectReference: {fileID: 0}
+    - target: {fileID: 934074809211656429, guid: 25b59f17b5d762e4e8231eb7c4af0ac5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.00000011921
+      objectReference: {fileID: 0}
     - target: {fileID: 2135104125834947949, guid: 25b59f17b5d762e4e8231eb7c4af0ac5,
         type: 3}
       propertyPath: m_UseGravity
