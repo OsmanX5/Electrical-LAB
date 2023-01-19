@@ -13,31 +13,8 @@ public class ElectronEmmitingManger : MonoBehaviour
     {
         ConnectionGraphPathCalculator.OnCircuitClose += StartEmmiting;
     }
-    List<Transform> ConvertPathID2Transform(List<int> pathIDs)
+    void EmmitElectron(Point[] path)
     {
-        List<Transform> path = new List<Transform>();
-        foreach (int id in pathIDs)
-        {
-            path.Add(PointsManger.GetPointByID(id).transform);
-        }
-        return path;
-    }
-    List<Point> ConvertPathID2Points(List<int> pathIDs)
-    {
-        List<Point> path = new List<Point>();
-        foreach (int id in pathIDs)
-        {
-            path.Add(PointsManger.GetPointByID(id));
-        }
-        return path;
-    }
-    void EmmitElectron(List<int> pathIDs)
-    {
-        EmmitElectron(ConvertPathID2Points(pathIDs));
-    }
-    void EmmitElectron(List<Point> path)
-    {
-        Debug.Log("Emmiting electron");
         var electron = Instantiate(ElectronPrefab, PointsManger.GetPointByID(ConnectionGraph.StartID).transform.position, Quaternion.identity).GetComponent<Electron>();
         electrons.Add(electron);
         electron.FollowPath(path);
@@ -55,8 +32,8 @@ public class ElectronEmmitingManger : MonoBehaviour
             var pathes = ConnectionGraphPathCalculator.AllPathesOfBattery;
             foreach (var path in pathes)
             {
-                
-                EmmitElectron(path);
+                Point[] ElectronPath = PointsConverter.ToPoints(path);
+                EmmitElectron(ElectronPath);
                 yield return new WaitForSeconds(1.0f / (EmmitingFreq *(pathes.Count*0.2f +1)));
             }
         }

@@ -54,12 +54,8 @@ public class ConnectionGraphBuilder : MonoBehaviour
             Debug.Log("Cannot connect point with itself");
             return false;
         }
-        if (ConnectionGraph.graph.DisJointSet.IsConnected(a.ID, b.ID))
-        {
-            Debug.Log("Points are already connected");
-            return false;
-        }
         ConnectionGraph.graph.AddConnection(a,b,res );
+        Debug.Log("Points connected" + a.ID + "  " + b.ID);
         return true;
     }
  

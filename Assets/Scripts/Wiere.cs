@@ -7,22 +7,24 @@ using System.Linq;
 public class Wierer : MonoBehaviour
 {
     public static event Action<List<Point>> OnConnectionWiereingEnd;
-    LineRenderer lr;
+    
     public Transform StartPoint;
     public InputActionReference triggerClicked;
     public GameObject PointPrefab;
-    public bool Holding =false;
     public Material PointOff;
     public Material PointOn; 
+    
     bool IsStartWiring = false;
     bool IsInPoint = false;
+    bool Holding = false;
+    LineRenderer lr;
     Point lastPoint,currentPoint;
+    
     void Start()
     {
         lr = this.GetComponent<LineRenderer>();
         lr.positionCount = 1;
         triggerClicked.action.started += addThePoint;
-        
     }
     public void StartHolding()=> Holding = true;
     public void relese()=>Holding = false;
@@ -33,8 +35,7 @@ public class Wierer : MonoBehaviour
         if (currentPoint)
         {
             IsInPoint = true;
-            other.gameObject.transform.localScale *= 1.3f;
-            other.gameObject.GetComponent<Renderer>().material = PointOn;
+            PointHoverEffectOn(currentPoint);
         }
     }
     private void OnTriggerExit(Collider other)
@@ -43,11 +44,20 @@ public class Wierer : MonoBehaviour
         if (currentPoint)
         {
             IsInPoint = false;
-            other.gameObject.transform.localScale /= 1.3f;
-            other.gameObject.GetComponent<Renderer>().material = PointOff;
+            PointHoverEffectOff(currentPoint);
         }
     }
 
+    public void PointHoverEffectOn(Point point)
+    {
+        point.gameObject.transform.localScale *= 1.3f;
+        point.gameObject.GetComponent<Renderer>().material = PointOn;
+    }
+    public void PointHoverEffectOff(Point point)
+    {
+        point.gameObject.transform.localScale /= 1.3f;
+        point.gameObject.GetComponent<Renderer>().material = PointOff;
+    }
     private void FixedUpdate()
     {
         if (IsStartWiring)
@@ -58,7 +68,6 @@ public class Wierer : MonoBehaviour
 
     void addThePoint(InputAction.CallbackContext context)
     {
-        Debug.Log("triggerClicked");
         if (Holding)
         {
             Vector3 newPoint = StartPoint.position;
@@ -67,11 +76,7 @@ public class Wierer : MonoBehaviour
             if (IsInPoint)
             {
                 newPoint = currentPoint.transform.position;
-                if (!IsStartWiring)
-                {
-                    lastPoint = currentPoint;
-
-                }
+                if (!IsStartWiring) lastPoint = currentPoint;
                 else
                 {
                     ConnectionEnd();
@@ -81,7 +86,6 @@ public class Wierer : MonoBehaviour
             }
             WireCalculator.AddPointToLine(lr, newPoint);
         }
-
     }
 
     void ConnectionEnd()
@@ -105,10 +109,5 @@ public class Wierer : MonoBehaviour
         }
         PathPoints.Add(currentPoint);
         return PathPoints;
-    }
-    List<int> GetTheWiringPointsIDs()
-    {
-        List<Point> PathPoints = GetTheWiringPoints();
-        return PathPoints.Select(x => x.ID).ToList();
     }
 }

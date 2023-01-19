@@ -13,7 +13,6 @@ public class Lamp : MonoBehaviour, ILoad
     [SerializeField] GameObject LightingBulb;
     Point posativePoint;
     Point negativePoint;
-    LoadType loadType = LoadType.Lamp;
 
     private void Start()
     {
@@ -29,7 +28,7 @@ public class Lamp : MonoBehaviour, ILoad
         negativePoint.Initlize();
         posativePoint.ElectricalComponent = this;
         negativePoint.ElectricalComponent = this;
-        ConnectionGraphBuilder.ConnectPoints(posativePoint, negativePoint, resistance);
+        PointsConnector.ConnectPoints(posativePoint, negativePoint, resistance);
     }
     public void TurnOn()
     {

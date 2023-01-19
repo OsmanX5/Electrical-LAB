@@ -96,7 +96,7 @@ Transform:
   - {fileID: 5010918757260800531}
   - {fileID: 5010918757569808957}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &5010918757709439139
 BoxCollider:
@@ -131,6 +131,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16904b49182728d42a1d22f7d01e4bd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resistance: 10
+  PosativePointPlace: {fileID: 5010918757260800531}
+  NegativePointPlace: {fileID: 5010918757569808957}
+  PointPrefab: {fileID: 1814432017630611985, guid: b76e0db0301e08442aba4580f993c1e4,
+    type: 3}
   offMaterial: {fileID: 2100000, guid: 5ae85b173011c874aa3acac5116fd5b2, type: 2}
   onMaterial: {fileID: 2100000, guid: a6fa9937b68f744469b9792707a5f751, type: 2}
   LightingBulb: {fileID: 5901814887899963543}

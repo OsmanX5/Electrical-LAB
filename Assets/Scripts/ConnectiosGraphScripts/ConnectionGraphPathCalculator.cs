@@ -19,12 +19,12 @@ public class ConnectionGraphPathCalculator : MonoBehaviour
         if (AllPathesOfBattery.Count>0)
         {
             allPathes = ConnectionGraph.graph.GetAllPathesSTR(ConnectionGraph.StartID, ConnectionGraph.EndID);
-            Debug.Log("Circuit closed");
+            //Debug.Log("Circuit closed");
             OnCircuitClose?.Invoke();
         }
         else
         {
-            Debug.Log("Circuit still open");
+           // Debug.Log("Circuit still open");
         }
     }
 }

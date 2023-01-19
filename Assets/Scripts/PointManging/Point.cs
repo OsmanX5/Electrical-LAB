@@ -10,7 +10,7 @@ public class Point :MonoBehaviour
     public void Initlize()
     {
         ID = PointsManger.CountID++;
-        transform.parent.name = "Point " + ID;
+        transform.name = "Point " + ID;
         ElectricalComponent = null;
         PointsManger.AddPoint(this);
     }
