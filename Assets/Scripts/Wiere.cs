@@ -14,11 +14,11 @@ public class Wierer : MonoBehaviour
     public Material PointOff;
     public Material PointOn; 
     
-    bool IsStartWiring = false;
-    bool IsInPoint = false;
-    bool Holding = false;
+    public bool IsStartWiring = false;
+    public bool IsInPoint = false;
+    public bool Holding = false;
     LineRenderer lr;
-    Point lastPoint,currentPoint;
+    public Point lastPoint,currentPoint;
     
     void Start()
     {

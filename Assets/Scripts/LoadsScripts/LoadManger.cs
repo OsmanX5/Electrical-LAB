@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class LoadsManger : MonoBehaviour
 {
-    public static List<ILoad> Loads = new List<ILoad>();
-    public List<ILoad> loads;
+    public static List<Load> Loads = new List<Load>();
+    public List<Load> loads;
     private void Start()
     {
         ConnectionGraphPathCalculator.OnCircuitClose += LoadsTurningOnControl;
@@ -16,11 +16,11 @@ public class LoadsManger : MonoBehaviour
         loads = Loads;
     }
 
-    public static void AddLoad(ILoad load)=>Loads.Add(load);
+    public static void AddLoad(Load load)=>Loads.Add(load);
     public static void LoadsTurningOnControl()
     {
         Debug.Log("I know circuit close");
-        foreach (ILoad load in Loads)
+        foreach (Load load in Loads)
         {
             if (ComponentsCheck.IsConnectedToBattery(load))
             {

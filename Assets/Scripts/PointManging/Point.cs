@@ -6,7 +6,7 @@ using UnityEngine;
 public class Point :MonoBehaviour
 {
     public int ID { get; set; }
-    public IElectricalComponent ElectricalComponent { get ; set; }
+    public ElectricalComponent ElectricalComponent { get ; set; }
     public void Initlize()
     {
         ID = PointsManger.CountID++;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ComponentsCheck 
 {
-    public static bool IsConnectedToBattery(ILoad load)
+    public static bool IsConnectedToBattery(Load load)
     {
         int Point1ID = load.GetPoints()[0].ID;
         int Point2ID = load.GetPoints()[1].ID;
