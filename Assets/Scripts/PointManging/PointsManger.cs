@@ -12,6 +12,6 @@ public class PointsManger : MonoBehaviour
     public static void AddPoint(Point point)
     {
         Points[point.ID] = point;
-        ConnectionGraphBuilder.AddNewPoint(point);
+        ConnectionGraph.builder.AddNewPoint(point);
     }
 }

@@ -10,9 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4961633535817423051}
   - component: {fileID: 4961633535817423050}
-  - component: {fileID: 4961633535817423052}
-  - component: {fileID: 4961633535817423053}
   - component: {fileID: 4961633535817423054}
+  - component: {fileID: 3725917299937531284}
   m_Layer: 0
   m_Name: Manger
   m_TagString: Untagged
@@ -33,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4961633535817423050
 MonoBehaviour:
@@ -47,9 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6211caf4d61e7bd45a6eb30d9118168e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TextTMP: {fileID: 0}
-  TMP_DISJOINT: {fileID: 0}
---- !u!114 &4961633535817423052
+--- !u!114 &4961633535817423054
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -58,12 +55,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4961633535817423049}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2ab275b01b654d4c84e5203f5c67124, type: 3}
+  m_Script: {fileID: 11500000, guid: 9d0f35f531e1c4b40aefa8676e56d8a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inp1: {fileID: 0}
-  inp2: {fileID: 0}
---- !u!114 &4961633535817423053
+  loads: []
+--- !u!114 &3725917299937531284
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -78,16 +74,3 @@ MonoBehaviour:
   LRPrefab: {fileID: 8086125108142990576, guid: bf581d1c1d1e8d148ae3f5176fddb3f8,
     type: 3}
   lineRenderers: []
---- !u!114 &4961633535817423054
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4961633535817423049}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d0f35f531e1c4b40aefa8676e56d8a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  loads: []

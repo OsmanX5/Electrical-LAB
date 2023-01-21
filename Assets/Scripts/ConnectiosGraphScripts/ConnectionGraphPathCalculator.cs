@@ -3,28 +3,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ConnectionGraphPathCalculator : MonoBehaviour
+public class ConnectionGraphChecker : ConnectionGraph
 {
-    public static event Action OnCircuitClose;
-    public static event Action OnCircuitOpen;
-    public static List<List<int>> AllPathesOfBattery = new List<List<int>>();
-    public List<string> allPathes;
-    private void Start()
+    public  event Action OnCircuitClose;
+    
+    public List<string> allPathes;// For debug
+    public  ConnectionGraphChecker()
     {
-        ConnectionGraphBuilder.OnGraphUpdated += CircuitCloseCheck;
+        builder.OnGraphUpdated += CheckCircuitClose;
     }
-    void CircuitCloseCheck()
+    void CheckCircuitClose()
     {
-        AllPathesOfBattery = ConnectionGraph.graph.GetAllPaths(ConnectionGraph.StartID, ConnectionGraph.EndID);
+        List<List<int>> AllPathesOfBattery = pathesProvider.GetAllPathesOfBattery();
         if (AllPathesOfBattery.Count>0)
         {
-            allPathes = ConnectionGraph.graph.GetAllPathesSTR(ConnectionGraph.StartID, ConnectionGraph.EndID);
-            //Debug.Log("Circuit closed");
+            allPathes = graph.GetAllPathesSTR(StartID, EndID);
             OnCircuitClose?.Invoke();
         }
         else
         {
-           // Debug.Log("Circuit still open");
         }
     }
 }

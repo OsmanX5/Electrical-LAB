@@ -4,9 +4,8 @@ using UnityEngine;
 using TMPro;
 using System.ComponentModel;
 
-public class PointsConnector : MonoBehaviour
+public class PointsConnector 
 {
-    
     int id1;
     int id2;
     public static bool firstClick = true;
@@ -28,11 +27,11 @@ public class PointsConnector : MonoBehaviour
     public static void ConnectPoints(Point a, Point b,float res)
     {
         Debug.Log("Try connecting" + a.ID + " <=> " + b.ID);
-        ConnectionGraphBuilder.ConnectPoints(a, b,res);
+        ConnectionGraph.builder.ConnectPoints(a, b,res);
     }
     public static void ConnectNodes(Point a,Point b)
     {
         Debug.Log("Try connecting" + a.ID +" <=> " + b.ID);
-        ConnectionGraphBuilder.ConnectPoints(a, b);
+        ConnectionGraph.builder.ConnectPoints(a, b);
     }
 }

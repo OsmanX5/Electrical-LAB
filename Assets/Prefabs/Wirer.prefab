@@ -170,6 +170,11 @@ MonoBehaviour:
     type: 3}
   PointOff: {fileID: 2100000, guid: 2ddff0e83dfd3ba4894a7a480545c7ea, type: 2}
   PointOn: {fileID: 2100000, guid: e7f89a57d2bda1a4b9c290a948c0ca3a, type: 2}
+  IsStartWiring: 0
+  IsInPoint: 0
+  Holding: 0
+  lastPoint: {fileID: 0}
+  currentPoint: {fileID: 0}
 --- !u!120 &392930357836665880
 LineRenderer:
   serializedVersion: 2
@@ -294,9 +299,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.51883787
-  m_Height: 0.18259764
+  m_Height: 0.103767574
   m_Direction: 1
-  m_Center: {x: 0, y: 0.53839517, z: 0}
+  m_Center: {x: 3.0394354e-10, y: 0.49898013, z: 0.0000000022166262}
 --- !u!54 &6651976280048805952
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -549,8 +554,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.025682507, y: 0.24710974, z: 0.02526918}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.025682507, y: 0.22914986, z: 0.02526918}
+  m_Center: {x: 0, y: -0.008979939, z: 0}
 --- !u!1 &3949813483546970493
 GameObject:
   m_ObjectHideFlags: 0

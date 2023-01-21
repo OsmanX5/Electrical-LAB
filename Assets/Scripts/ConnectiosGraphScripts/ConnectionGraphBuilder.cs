@@ -3,12 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ConnectionGraphBuilder : MonoBehaviour
+public class ConnectionGraphBuilder : ConnectionGraph
 {
-    public static event Action OnGraphUpdated;
-    public static event Action<Point> OnAddNewPoint ;
-    public static event Action<Point,Point> OnConnectTwoNodes;
-    public static void AddNewPoint(Point point)
+    public  event Action OnGraphUpdated;
+    public  event Action<Point> OnAddNewPoint ;
+    public  event Action<Point,Point> OnConnectTwoNodes;
+    public  void AddNewPoint(Point point)
     {
         bool addingSuccess = addNewPointToGraph(point);
         if (addingSuccess)
@@ -16,19 +16,19 @@ public class ConnectionGraphBuilder : MonoBehaviour
             OnAddNewPoint?.Invoke(point);
         }
     }
-    private static bool addNewPointToGraph(Point newPoint)
+    private  bool addNewPointToGraph(Point newPoint)
     {
-        if (ConnectionGraph.graph.IsInGraph(newPoint))
+        if (graph.IsInGraph(newPoint))
         {
             Debug.Log("Point with ID: " + newPoint.ID + " already exists in graph");
             return false;
         }
-        ConnectionGraph.graph.AddNewPoint(newPoint);
+        graph.AddNewPoint(newPoint);
         Debug.Log("POINT WITH ID : " + newPoint.ID + " Added to graph");
         return true;
     }
  
-    public static void ConnectPoints(Point a, Point b, float res = 0)
+    public  void ConnectPoints(Point a, Point b, float res = 0)
     {
         bool ConnectingSuccess = ConnectNodesInGraph(a, b,res);
         if(ConnectingSuccess)
@@ -37,14 +37,14 @@ public class ConnectionGraphBuilder : MonoBehaviour
             OnGraphUpdated?.Invoke();
         }
     }
-    private static bool ConnectNodesInGraph(Point a, Point b,float res = 0)
+    private  bool ConnectNodesInGraph(Point a, Point b,float res = 0)
     {
-        if (!ConnectionGraph.graph.IsInGraph(a))
+        if (!graph.IsInGraph(a))
         {
             Debug.LogError("Point with ID: " + a.ID + " does not exist in graph");
             return false;
         }
-        if (!ConnectionGraph.graph.IsInGraph(b))
+        if (!graph.IsInGraph(b))
         {
             Debug.LogError("Point with ID: " + b.ID + " does not exist in graph");
             return false;
@@ -54,7 +54,7 @@ public class ConnectionGraphBuilder : MonoBehaviour
             Debug.Log("Cannot connect point with itself");
             return false;
         }
-        ConnectionGraph.graph.AddConnection(a,b,res );
+        graph.AddConnection(a,b,res );
         Debug.Log("Points connected" + a.ID + "  " + b.ID);
         return true;
     }
