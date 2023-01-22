@@ -7,13 +7,13 @@ public class ElectricalComponent : MonoBehaviour
     [SerializeField] protected Transform PosativePointPlace;
     [SerializeField] protected Transform NegativePointPlace;
     [SerializeField] protected GameObject PointPrefab;
-    protected Point posativePoint;
-    protected Point negativePoint;
+    protected ComponentPoint posativePoint;
+    protected ComponentPoint negativePoint;
     public void iniciatePoints()
     {
-        posativePoint = Instantiate(PointPrefab, PosativePointPlace).GetComponent<Point>();
+        posativePoint = Instantiate(PointPrefab, PosativePointPlace).GetComponent<ComponentPoint>();
         posativePoint.Initlize();
-        negativePoint = Instantiate(PointPrefab, NegativePointPlace).GetComponent<Point>();
+        negativePoint = Instantiate(PointPrefab, NegativePointPlace).GetComponent<ComponentPoint>();
         negativePoint.Initlize();
         posativePoint.ElectricalComponent = this;
         negativePoint.ElectricalComponent = this;

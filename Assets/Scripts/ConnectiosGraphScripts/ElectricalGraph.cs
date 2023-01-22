@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ElectricalGraph : UndirectedWeightedGraph
+public class ElectricalGraph : UndirectedWeightedGraphPathProvider
 {
     public DisJointSet DisJointSet;
     public ElectricalGraph() : base()
@@ -19,5 +19,9 @@ public class ElectricalGraph : UndirectedWeightedGraph
     {
         AddConnection(a.ID, b.ID, res);
         DisJointSet.Union(a.ID, b.ID);
+    }
+    public void RemovePoint(Point a)
+    {
+        RemovePoint(a.ID);
     }
 }

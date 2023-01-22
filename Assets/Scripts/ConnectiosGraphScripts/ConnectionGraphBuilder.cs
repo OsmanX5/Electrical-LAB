@@ -16,7 +16,7 @@ public class ConnectionGraphBuilder : ConnectionGraph
             OnAddNewPoint?.Invoke(point);
         }
     }
-    private  bool addNewPointToGraph(Point newPoint)
+    private bool addNewPointToGraph(Point newPoint)
     {
         if (graph.IsInGraph(newPoint))
         {
@@ -58,6 +58,24 @@ public class ConnectionGraphBuilder : ConnectionGraph
         Debug.Log("Points connected" + a.ID + "  " + b.ID);
         return true;
     }
- 
 
+    public void DisconnectPoint(Point a)
+    {
+        bool DisconnectingSuccess = DisconnectNodeInGraph(a);
+        if (DisconnectingSuccess)
+        {
+            OnGraphUpdated?.Invoke();
+        }
+    }
+
+    private bool DisconnectNodeInGraph(Point a)
+    {
+        if (!graph.IsInGraph(a))
+        {
+            Debug.LogError("Point with ID: " + a.ID + " does not exist in graph");
+            return false;
+        }
+        graph.RemovePoint(a);
+        throw new NotImplementedException();
+    }
 }

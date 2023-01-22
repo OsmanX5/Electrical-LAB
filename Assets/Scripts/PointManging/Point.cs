@@ -3,23 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Point :MonoBehaviour
+public class Point : MonoBehaviour
 {
     public int ID { get; set; }
-    public ElectricalComponent ElectricalComponent { get ; set; }
-    public void Initlize()
+    public virtual void Initlize()
     {
         ID = PointsManger.CountID++;
-        transform.name = "Point " + ID;
-        ElectricalComponent = null;
+        transform.name = "Point " + ID; 
         PointsManger.AddPoint(this);
-    }
-    public static bool operator ==(Point a, Point b)
-    {
-        return a.ID == b.ID;
-    }
-    public static bool operator !=(Point a, Point b)
-    {
-        return !(a==b);
     }
 }
