@@ -27,7 +27,10 @@ public class UndirectedWeightedGraphBuilder : UndirectedWeightedGraph
         foreach (var ConnectedPoint in AdjacencyList[a])
         {
             int ConnectedPointID = ConnectedPoint.Item1;
-            AdjacencyList[ConnectedPointID].Select(x => x.Item1 != ConnectedPoint.Item1);
+            var ConnectionAfterRemoving = (from point in AdjacencyList[ConnectedPointID]
+                                           where point.Item1 != a
+                                           select point).ToList();
+            AdjacencyList[ConnectedPointID] = ConnectionAfterRemoving;
         }
         AdjacencyList.Remove(a);
     }

@@ -24,4 +24,6 @@ public class ElectricalGraph : UndirectedWeightedGraphPathProvider
     {
         RemovePoint(a.ID);
     }
+
+
 }
