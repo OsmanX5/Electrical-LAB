@@ -24,15 +24,23 @@ public class UndirectedWeightedGraphBuilder : UndirectedWeightedGraph
     }
     public void RemovePoint(int a)
     {
-        foreach (var ConnectedPoint in AdjacencyList[a])
-        {
-            int ConnectedPointID = ConnectedPoint.Item1;
-            var ConnectionAfterRemoving = (from point in AdjacencyList[ConnectedPointID]
-                                           where point.Item1 != a
-                                           select point).ToList();
-            AdjacencyList[ConnectedPointID] = ConnectionAfterRemoving;
-        }
-        AdjacencyList.Remove(a);
+        ClearPoint(a);
+       // AdjacencyList.Remove(a);
     }
     
+    public void ClearPoint(int a)
+    {
+        List<Tuple<int, float>> aConnections = AdjacencyList[a];
+        foreach (var Connection in aConnections)
+        {
+            int ConnectedPointID = Connection.Item1;
+            float ConnectedPointWeight = Connection.Item2;
+            if (ConnectedPointWeight != 0) continue;
+            List<Tuple<int, float>> ConnectedPointConnections = AdjacencyList[ConnectedPointID];
+            List<Tuple<int, float>> ConnectionAfterRemoving =
+                                    ConnectedPointConnections.Where(x =>
+                                    x.Item1 != a).ToList();
+            AdjacencyList[ConnectedPointID] = ConnectionAfterRemoving;
+        }
+    }
 }

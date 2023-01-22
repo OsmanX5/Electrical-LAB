@@ -18,4 +18,9 @@ public class PathRendrer : MonoBehaviour
             WireCalculator.SetWire(lr, positions);
         }
     }
+    public void Remove(Point a)
+    {
+        Debug.Log("deleting from rendrer" + a.ID);
+        points.Remove(a);
+    }
 }

@@ -22,6 +22,7 @@ public class ElectricalGraph : UndirectedWeightedGraphPathProvider
     }
     public void RemovePoint(Point a)
     {
+        Debug.Log("Removing " + a.ID);
         RemovePoint(a.ID);
     }
 

@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class ConnectionGraphBuilder : ConnectionGraph
 {
-    public  event Action OnGraphUpdated;
+    public event Action OnGraphUpdated;
+    public  event Action<Point> OnPointDeleted;
     public  event Action<Point> OnAddNewPoint ;
     public  event Action<Point,Point> OnConnectTwoNodes;
     public  void AddNewPoint(Point point)
@@ -64,6 +65,8 @@ public class ConnectionGraphBuilder : ConnectionGraph
         bool DisconnectingSuccess = DisconnectNodeInGraph(a);
         if (DisconnectingSuccess)
         {
+            Debug.Log("Points disconnected" + a.ID);
+            OnPointDeleted?.Invoke(a);
             OnGraphUpdated?.Invoke();
         }
     }
@@ -76,6 +79,7 @@ public class ConnectionGraphBuilder : ConnectionGraph
             return false;
         }
         graph.RemovePoint(a);
+        return true;
         throw new NotImplementedException();
     }
 }
