@@ -58,6 +58,10 @@ public class Wierer : Tool
 
     void ConnectionEnd()
     {
+        if(lastPoint!=null)
+            PointHoverEffectOff(lastPoint);
+        if (TouchedPoint != null)
+            PointHoverEffectOff(TouchedPoint);
         IsStartWiring = false;
         List<Point> createdPoints = GetTheWiringPoints();
         PointsConnector.ConnectNodesSeries(createdPoints);
