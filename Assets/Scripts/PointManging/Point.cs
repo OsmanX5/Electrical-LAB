@@ -18,4 +18,8 @@ public class Point : MonoBehaviour
         PointsManger.RemovePoint(this);
         Destroy(gameObject);
     }
+    public override string ToString()
+    {
+        return $"[Point ID ={ID} ]";
+    }
 }
