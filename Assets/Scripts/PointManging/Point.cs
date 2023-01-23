@@ -12,4 +12,10 @@ public class Point : MonoBehaviour
         transform.name = "Point " + ID; 
         PointsManger.AddPoint(this);
     }
+    public virtual void Delet()
+    {
+        Debug.Log("deleting " + ID);
+        PointsManger.RemovePoint(this);
+        Destroy(gameObject);
+    }
 }
