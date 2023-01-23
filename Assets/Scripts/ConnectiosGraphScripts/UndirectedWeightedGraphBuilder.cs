@@ -7,40 +7,37 @@ using UnityEngine;
 public class UndirectedWeightedGraphBuilder : UndirectedWeightedGraph
 {
     
-    public void addPoint(int a)
+    public void AddNewPoint(int a)
     {
-        AdjacencyList[a] = new List<Tuple<int, float>>();
+        AdjacencyList[a] = new List<Edge>();
         n += 1;
     }
     public void AddConnection(int a, int b, float w)
     {
-        if (!IsInGraph(a)) addPoint(a);
-        if (!IsInGraph(b)) addPoint(b);
-
-        List<Tuple<int, float>> aConnections = AdjacencyList[a];
-        List<Tuple<int, float>> bConnections = AdjacencyList[b];
-        AdjacencyList[a].Add(new Tuple<int, float>(b, w));
-        AdjacencyList[b].Add(new Tuple<int, float>(a, w));
+        if (!IsInGraph(a)) { Debug.LogError("Point " + a + " is not in graph"); return; }
+        if (!IsInGraph(b)) { Debug.LogError("Point " + b + " is not in graph"); return; }
+        if (a == b) { Debug.LogError("Can't connect point to itself"); return; }
+        var edge2B = new Edge(b, w);
+        var edge2A = new Edge(a, w);
+        if (! IsInList(GetPointConnections(a), edge2B))
+            AdjacencyList[a].Add(new Edge(b, w));
+        if (!IsInList(GetPointConnections(b), edge2A))
+            AdjacencyList[b].Add(edge2A);
     }
     public void RemovePoint(int a)
     {
         ClearPoint(a);
-       // AdjacencyList.Remove(a);
+        AdjacencyList.Remove(a);
     }
-    
     public void ClearPoint(int a)
     {
-        List<Tuple<int, float>> aConnections = AdjacencyList[a];
-        foreach (var Connection in aConnections)
+        if (!IsInGraph(a)){ Debug.LogError("Point " + a + " is not in graph"); return; }
+        foreach (var edge in GetPointConnections(a))
         {
-            int ConnectedPointID = Connection.Item1;
-            float ConnectedPointWeight = Connection.Item2;
-            if (ConnectedPointWeight != 0) continue;
-            List<Tuple<int, float>> ConnectedPointConnections = AdjacencyList[ConnectedPointID];
-            List<Tuple<int, float>> ConnectionAfterRemoving =
-                                    ConnectedPointConnections.Where(x =>
-                                    x.Item1 != a).ToList();
-            AdjacencyList[ConnectedPointID] = ConnectionAfterRemoving;
+            AdjacencyList[edge.NextPoint] = (from connection in AdjacencyList[edge.NextPoint] 
+                                            where connection.NextPoint != a 
+                                            select connection).ToList();
         }
+        AdjacencyList[a] = new List<Edge>();
     }
 }
