@@ -3,21 +3,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ConnectionGraphBuilder : ConnectionGraph
+public class ConnectionGraphBuilder : ConnectionGraphEvents
 {
     public event Action OnGraphUpdated;
-    public  event Action<Point> OnPointDeleted;
-    public  event Action<Point> OnAddNewPoint ;
-    public  event Action<Point,Point> OnConnectTwoNodes;
+    public event Action<Point> OnPointDeleted;
+    public event Action<Point> OnAddNewPoint;
+    public event Action<Point, Point> OnConnectTwoNodes;
+
     public  void AddNewPoint(Point point)
     {
-        bool addingSuccess = addNewPointToGraph(point);
+        
+        bool addingSuccess = AddNewPointToGraph(point);
         if (addingSuccess)
         {
             OnAddNewPoint?.Invoke(point);
         }
     }
-    private bool addNewPointToGraph(Point newPoint)
+    private bool AddNewPointToGraph(Point newPoint)
     {
         if (graph.IsInGraph(newPoint))
         {

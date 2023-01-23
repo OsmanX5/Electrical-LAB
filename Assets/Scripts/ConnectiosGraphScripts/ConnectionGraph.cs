@@ -7,18 +7,14 @@ using Unity.VisualScripting;
 
 public class ConnectionGraph : MonoBehaviour
 {
-    public static ElectricalGraph graph;
-    public static ConnectionGraphBuilder builder;
-    public static ConnectionGraphChecker checker;
-    public static ConnectioGraphPathesProvider pathesProvider;
-    public static int StartID;
-    public static int EndID;
+    public  ElectricalGraph graph;
+    public  int StartID;
+    public  int EndID;
+    
     private void Awake()
     {
         graph = new ElectricalGraph();
-        builder = new ConnectionGraphBuilder();
-        checker = new ConnectionGraphChecker();
-        pathesProvider = new ConnectioGraphPathesProvider();
     }
+
     
 }
