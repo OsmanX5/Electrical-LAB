@@ -24,21 +24,22 @@ public class Tool : MonoBehaviour
     }
     protected virtual void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.GetComponent<Point>() != null)
+        if (other.gameObject.GetComponent<Point>() == TouchedPoint)
         {
             PointHoverEffectOff(TouchedPoint);
             TouchedPoint = null;
             IsInPoint = false;
-            
         }
     }
     public void PointHoverEffectOn(Point point)
     {
-        point.gameObject.GetComponent<Renderer>().material = PointOn;
+        if (point != null)
+            point.gameObject.GetComponent<Renderer>().material = PointOn;
     }
     public void PointHoverEffectOff(Point point)
     {
-        point.gameObject.GetComponent<Renderer>().material = PointOff;
+        if (point != null)
+            point.gameObject.GetComponent<Renderer>().material = PointOff;
     }
 
 }
