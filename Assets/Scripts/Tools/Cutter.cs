@@ -13,7 +13,7 @@ public class Cutter :Tool
     }
     void RemovePoint(InputAction.CallbackContext context)
     {
-        Debug.Log("Deleting the point");
+        Debug.Log("Deleting the point and calling this from cutter");
         if(TouchedPoint != null)
         ConnectionGraph.builder.DisconnectPoint(TouchedPoint);
     }
