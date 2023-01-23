@@ -8,23 +8,13 @@ public class UndirectedWeightedGraphPathProvider : UndirectedWeightedGraphBuilde
     
     public bool IsPathExict(int a, int b)
     {
-        bool pathFound = false;
-        bool[] visited = new bool[n];
-        void DFS(int x)
-        {
-            if (x == b)
-                pathFound = true;
-            visited[x] = true;
-            foreach (var next in AdjacencyList[x])
-            {
-                int nextID = next.Item1;
-                if (visited[nextID]) continue;
-                DFS(nextID);
-            }
-        }
-        DFS(a);
-
-        return pathFound;
+        return GetPath(a, b).Count > 0;
+    }
+    public List<int> GetPath(int a, int b)
+    {
+        var pathes = GetAllPaths(a, b);
+        if (pathes.Count == 0) return new List<int>();
+        return pathes[0];
     }
     public List<List<int>> GetAllPaths(int start, int end)
     {
@@ -42,9 +32,9 @@ public class UndirectedWeightedGraphPathProvider : UndirectedWeightedGraphBuilde
                 paths.Add(path);
                 return;
             }
-            foreach (var next in AdjacencyList[x])
+            foreach (Edge next in AdjacencyList[x])
             {
-                int nextID = next.Item1;
+                int nextID = next.NextPoint;
                 if (path.Contains(nextID)) continue;
                 DFS(nextID, new List<int>(path));
             }
@@ -66,33 +56,6 @@ public class UndirectedWeightedGraphPathProvider : UndirectedWeightedGraphBuilde
         }
         return res;
     }
-    public List<int> GetPath(int a, int b)
-    {
-        List<int> path = new List<int>();
-        bool[] visited = new bool[n];
-        void DFS(int x)
-        {
-            if (x == b)
-            {
-                path.Add(x);
-                return;
-            }
-            visited[x] = true;
-            foreach (var next in AdjacencyList[x])
-            {
-                int nextID = next.Item1;
-                if (visited[nextID]) continue;
-                DFS(nextID);
-                if (path.Count > 0)
-                {
-                    path.Add(x);
-                    return;
-                }
-            }
-        }
-        DFS(a);
-        path.Reverse();
-        return path;
-    }
+   
 
 }
