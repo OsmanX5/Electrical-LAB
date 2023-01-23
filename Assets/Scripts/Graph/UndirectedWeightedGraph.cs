@@ -31,7 +31,7 @@ public class UndirectedWeightedGraph
     }
     public bool IsInGraph(int a) => AdjacencyList.ContainsKey(a);
 
-
+    public Dictionary<int, List<Edge>> GetAdjacencyList() => AdjacencyList;
 
 
 }

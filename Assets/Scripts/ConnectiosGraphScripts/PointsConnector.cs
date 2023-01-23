@@ -27,11 +27,11 @@ public class PointsConnector
     public static void ConnectPoints(Point a, Point b,float res)
     {
         Debug.Log("Try connecting" + a.ID + " <=> " + b.ID);
-        ConnectionGraph.builder.ConnectPoints(a, b,res);
+        GameManger.GraphManger.ConnectPoints(a, b,res);
     }
     public static void ConnectNodes(Point a,Point b)
     {
         Debug.Log("Try connecting" + a.ID +" <=> " + b.ID);
-        ConnectionGraph.builder.ConnectPoints(a, b);
+        GameManger.GraphManger.ConnectPoints(a, b);
     }
 }

@@ -12,13 +12,13 @@ public class ConnectionGraphRendrer : MonoBehaviour
     private void Start()
     {
         Wierer.OnConnectionWiereingEnd += WirerConnectionRender;
-        ConnectionGraph.builder.OnPointDeleted += DeletPointFromLines;
+        GameManger.GraphManger.OnPointDeleted += DeletPointFromLines;
     }
     private void WirerConnectionRender(List<Point> PathPoints)
     {
         GameObject temp = Instantiate(LRPrefab, this.transform);
         temp.name = "LineRendrer" + lineRenderers.Count().ToString();
-        temp.GetComponent<PathRendrer>().points = PathPoints;
+        temp.GetComponent<PathRendrer>().SetPoints(PathPoints);
         lineRenderers.Add(temp);        
     }
     private void DeletPointFromLines(Point deletedPoint) {

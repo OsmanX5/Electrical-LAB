@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ConnectionGraphBuilder : ConnectionGraphEvents
+public class ConnectionGraphBuilder : ConnectionGraph
 {
     public event Action OnGraphUpdated;
     public event Action<Point> OnPointDeleted;
@@ -21,12 +21,12 @@ public class ConnectionGraphBuilder : ConnectionGraphEvents
     }
     private bool AddNewPointToGraph(Point newPoint)
     {
-        if (graph.IsInGraph(newPoint))
+        if (Graph.IsInGraph(newPoint))
         {
             Debug.Log("Point with ID: " + newPoint.ID + " already exists in graph");
             return false;
         }
-        graph.AddNewPoint(newPoint);
+        Graph.AddNewPoint(newPoint);
         Debug.Log("POINT WITH ID : " + newPoint.ID + " Added to graph");
         return true;
     }
@@ -42,12 +42,12 @@ public class ConnectionGraphBuilder : ConnectionGraphEvents
     }
     private  bool ConnectNodesInGraph(Point a, Point b,float res = 0)
     {
-        if (!graph.IsInGraph(a))
+        if (!Graph.IsInGraph(a))
         {
             Debug.LogError("Point with ID: " + a.ID + " does not exist in graph");
             return false;
         }
-        if (!graph.IsInGraph(b))
+        if (!Graph.IsInGraph(b))
         {
             Debug.LogError("Point with ID: " + b.ID + " does not exist in graph");
             return false;
@@ -57,7 +57,7 @@ public class ConnectionGraphBuilder : ConnectionGraphEvents
             Debug.Log("Cannot connect point with itself");
             return false;
         }
-        graph.AddConnection(a,b,res );
+        Graph.AddConnection(a,b,res );
         Debug.Log("Points connected" + a.ID + "  " + b.ID);
         return true;
     }
@@ -75,12 +75,12 @@ public class ConnectionGraphBuilder : ConnectionGraphEvents
 
     private bool DisconnectNodeInGraph(Point a)
     {
-        if (!graph.IsInGraph(a))
+        if (!Graph.IsInGraph(a))
         {
             Debug.LogError("Point with ID: " + a.ID + " does not exist in graph");
             return false;
         }
-        graph.RemovePoint(a);
+        Graph.RemovePoint(a);
         return true;
         throw new NotImplementedException();
     }

@@ -3,21 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ConnectionGraphChecker : ConnectionGraph
+public class ConnectionGraphChecker : ConnectioGraphPathesProvider
 {
     public  event Action OnCircuitClose;
     
     public List<string> allPathes;// For debug
     public  ConnectionGraphChecker()
     {
-        builder.OnGraphUpdated += CheckCircuitClose;
+        OnGraphUpdated += CheckCircuit;
     }
-    void CheckCircuitClose()
+    void CheckCircuit()
     {
-        List<List<int>> AllPathesOfBattery = pathesProvider.GetAllPathesOfBattery();
+        List<List<int>> AllPathesOfBattery = GetAllPathesOfBattery();
         if (AllPathesOfBattery.Count>0)
         {
-            allPathes = graph.GetAllPathesSTR(StartID, EndID);
+            allPathes = Graph.GetAllPathesSTR(StartID, EndID);
             OnCircuitClose?.Invoke();
         }
         else

@@ -20,7 +20,7 @@ public class GraphStatues : MonoBehaviour
     List<Connection> buildConnection()
     {
         List<Connection> res = new List<Connection>();
-        foreach (var item in ConnectionGraph.graph.AdjacencyList)
+        foreach (var item in GameManger.GraphManger.Graph.GetAdjacencyList())
         {
             Connection connection = new Connection();
             connection.Key = item.Key;

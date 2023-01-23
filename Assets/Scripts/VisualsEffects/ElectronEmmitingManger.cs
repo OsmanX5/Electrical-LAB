@@ -10,11 +10,11 @@ public class ElectronEmmitingManger : MonoBehaviour
     bool isEmmiting = false;
     void Start()
     {
-        ConnectionGraph.checker.OnCircuitClose += StartEmmiting;
+        GameManger.GraphManger.OnCircuitClose += StartEmmiting;
     }
     void EmmitElectron(Point[] path)
     {
-        var electron = Instantiate(ElectronPrefab, PointsManger.GetPointByID(ConnectionGraph.StartID).transform.position, Quaternion.identity).GetComponent<Electron>();
+        var electron = Instantiate(ElectronPrefab, PointsManger.GetPointByID(GameManger.GraphManger.StartID).transform.position, Quaternion.identity).GetComponent<Electron>();
         electron.FollowPath(path);
     }
     void StartEmmiting()
@@ -27,7 +27,7 @@ public class ElectronEmmitingManger : MonoBehaviour
         isEmmiting = true;
         while (isEmmiting)
         {
-            var pathes = ConnectionGraph.pathesProvider.GetAllPathesOfBattery();
+            var pathes = GameManger.GraphManger.GetAllPathesOfBattery();
             foreach (var path in pathes)
             {
                 Point[] ElectronPath = PointsConverter.ToPoints(path);

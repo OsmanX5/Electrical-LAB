@@ -12,7 +12,7 @@ public class PointsManger : MonoBehaviour
     public static void AddPoint(Point point)
     {
         Points[point.ID] = point;
-        ConnectionGraph.builder.AddNewPoint(point);
+        GameManger.GraphManger.AddNewPoint(point);
     }
     public static void RemovePoint(Point point)
     {

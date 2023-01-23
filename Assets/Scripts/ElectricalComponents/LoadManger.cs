@@ -8,7 +8,7 @@ public class LoadsManger : MonoBehaviour
     public List<Load> loads;
     private void Start()
     {
-        ConnectionGraph.checker.OnCircuitClose += LoadsTurningOnControl;
+        GameManger.GraphManger.OnCircuitClose += LoadsTurningOnControl;
     }
    
     private void Update()

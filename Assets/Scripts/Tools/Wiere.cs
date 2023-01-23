@@ -52,7 +52,7 @@ public class Wierer : Tool
                 }
                 IsStartWiring = !IsStartWiring;
             }
-            WireCalculator.AddPointToLine(lr, newPoint);
+            LineRendrerOperator.AddPointToLine(lr, newPoint);
         }
     }
 

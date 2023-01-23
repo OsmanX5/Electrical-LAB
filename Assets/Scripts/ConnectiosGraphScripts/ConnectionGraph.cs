@@ -7,13 +7,13 @@ using Unity.VisualScripting;
 
 public class ConnectionGraph : MonoBehaviour
 {
-    public  ElectricalGraph graph;
+    public  ElectricalGraph Graph;
     public  int StartID;
     public  int EndID;
     
     private void Awake()
     {
-        graph = new ElectricalGraph();
+        Graph = new ElectricalGraph();
     }
 
     

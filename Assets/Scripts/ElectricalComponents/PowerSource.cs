@@ -13,8 +13,8 @@ public class PowerSource : ElectricalComponent
     void Start()
     {
         iniciatePoints();
-        ConnectionGraph.StartID = posativePoint.ID;
-        ConnectionGraph.EndID = negativePoint.ID;
+        GameManger.GraphManger.StartID = posativePoint.ID;
+        GameManger.GraphManger.EndID = negativePoint.ID;
     }
 
 }

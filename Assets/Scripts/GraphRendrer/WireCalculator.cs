@@ -4,12 +4,12 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class WireCalculator : MonoBehaviour
+public class LineRendrerOperator : MonoBehaviour
 {
     public static GameObject LRPrefab;
     public Transform StartPoint;
     public Transform EndPoint;
-    public static void SetWire(LineRenderer lr, Vector3[] points)
+    public static void PutPointsInLine(LineRenderer lr, Vector3[] points)
     {
         lr.positionCount = points.Length;
         for (int i = 0; i < points.Length; i++)

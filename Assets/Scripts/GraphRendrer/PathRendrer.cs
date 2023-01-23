@@ -15,8 +15,12 @@ public class PathRendrer : MonoBehaviour
         Vector3[] positions = PointsConverter.ToPositions(points);
         if (points.Count > 0)
         {
-            WireCalculator.SetWire(lr, positions);
+            LineRendrerOperator.PutPointsInLine(lr, positions);
         }
+    }
+    public void SetPoints(List<Point> points)
+    {
+        this.points = points;
     }
     public void Remove(Point a)
     {

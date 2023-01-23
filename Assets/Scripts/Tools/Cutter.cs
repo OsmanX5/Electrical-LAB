@@ -15,6 +15,6 @@ public class Cutter :Tool
     {
         Debug.Log("Deleting the point and calling this from cutter");
         if(TouchedPoint != null)
-        ConnectionGraph.builder.DisconnectPoint(TouchedPoint);
+            GameManger.GraphManger.DisconnectPoint(TouchedPoint);
     }
 }
