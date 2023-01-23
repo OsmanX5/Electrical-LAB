@@ -14,4 +14,8 @@ public class PointsManger : MonoBehaviour
         Points[point.ID] = point;
         ConnectionGraph.builder.AddNewPoint(point);
     }
+    public static void RemovePoint(Point point)
+    {
+        Points.Remove(point.ID);
+    }
 }
