@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PathRendrer : MonoBehaviour
 {
-    List<Point> points = new List<Point>();
+    public List<Point> points = new List<Point>();
     LineRenderer LR;
     private void Start()
     {
@@ -17,10 +17,7 @@ public class PathRendrer : MonoBehaviour
     public void UpdateLR()
     {
         Vector3[] positions = PointsConverter.ToPositions(points);
-        if (points.Count > 0)
-        {
-            LineRendrerOperator.PutPointsInLine(LR, positions);
-        }
+        LineRendrerOperator.PutPointsInLine(LR, positions);
     }
     public void SetPoints(List<Point> points)
     {
@@ -28,7 +25,9 @@ public class PathRendrer : MonoBehaviour
     }
     public void Remove(Point a)
     {
-        Debug.Log("deleting from rendrer" + a.ID);
-        points.Remove(a);
+        if (points.Contains(a))
+        {
+            points.Clear();    
+        }
     }
 }

@@ -22,7 +22,6 @@ public class ConnectionGraphRendrer : MonoBehaviour
         lineRenderers.Add(temp);        
     }
     private void DeletPointFromLines(Point deletedPoint) {
-        Debug.Log("deleting from rendrer" + deletedPoint.ID);
         foreach (var line in lineRenderers)
         {
             line.GetComponent<PathRendrer>().Remove(deletedPoint);
