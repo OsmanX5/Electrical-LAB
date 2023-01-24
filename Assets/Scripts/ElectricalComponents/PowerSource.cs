@@ -6,15 +6,15 @@ using UnityEngine;
 public class PowerSource : ElectricalComponent
 {
     [SerializeField] float voltage;
-    private void Awake()
-    {
-        this.AddComponent<ElectronEmmitingManger>();
-    }
     void Start()
     {
-        iniciatePoints();
+        InitiatePowerSource();
+    }
+    protected void InitiatePowerSource()
+    {
+        this.AddComponent<ElectronEmmitingManger>();
+        IniciatePoints();
         GameManger.GraphManger.StartID = posativePoint.ID;
         GameManger.GraphManger.EndID = negativePoint.ID;
     }
-
 }

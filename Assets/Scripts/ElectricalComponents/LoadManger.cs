@@ -19,7 +19,6 @@ public class LoadsManger : MonoBehaviour
     public static void AddLoad(Load load)=>Loads.Add(load);
     public static void LoadsTurningOnControl()
     {
-        Debug.Log("I know circuit close");
         foreach (Load load in Loads)
         {
             if (ComponentsCheck.IsConnectedToBattery(load))

@@ -7,7 +7,11 @@ public class Load : ElectricalComponent
     [SerializeField] float resistance = 10f;
     private void Start()
     {
-        iniciatePoints();
+        InitiateLoad();
+    }
+    protected void InitiateLoad()
+    {
+        IniciatePoints();
         PointsConnector.ConnectPoints(posativePoint, negativePoint, resistance);
         LoadsManger.AddLoad(this);
     }

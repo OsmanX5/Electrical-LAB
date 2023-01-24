@@ -9,7 +9,7 @@ public class ElectricalComponent : MonoBehaviour
     [SerializeField] protected GameObject PointPrefab;
     protected ComponentPoint posativePoint;
     protected ComponentPoint negativePoint;
-    public void iniciatePoints()
+    protected void IniciatePoints()
     {
         posativePoint = Instantiate(PointPrefab, PosativePointPlace).GetComponent<ComponentPoint>();
         posativePoint.Initlize();
