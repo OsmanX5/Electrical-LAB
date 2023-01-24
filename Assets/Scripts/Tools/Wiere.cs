@@ -4,22 +4,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Linq;
-public class Wierer : Tool
+public class Wierer : PointInteractiveTool
 {
     public static event Action<List<Point>> OnConnectionWiereingEnd;
     
-    public Transform StartPoint;
-    public GameObject PointPrefab;
+    [SerializeField] Transform StartPoint;
     
-    public bool IsStartWiring = false;
+    List<Vector3> WieringPositions = new List<Vector3>();
     LineRenderer lr;
-    public Point lastPoint;
-    
+    Point FirstWiringPoint;
+    bool IsStartWiring = false;
+
     void Start()
     {
         lr = this.GetComponent<LineRenderer>();
-        lr.positionCount = 1;
-        triggerClicked.action.started += addThePoint;
+        triggerClicked.action.started += WirerClicked;
     }
 
     private void FixedUpdate()
@@ -28,45 +27,44 @@ public class Wierer : Tool
         {
             lr.SetPosition(lr.positionCount - 1, StartPoint.position);
         }
-    }
-
-    void addThePoint(InputAction.CallbackContext context)
-    {
-        if (Holding)
+        if (!Holding && IsStartWiring)
         {
-            Debug.Log("You are holding");
-            Vector3 newPoint = StartPoint.position;
-            if (!IsStartWiring && !IsInPoint) 
-                return;
-            if (IsInPoint)
-            {
-                Debug.Log("You are in Point");
-                Debug.Log("currentPoint: " + TouchedPoint.ID);
-                newPoint = TouchedPoint.transform.position;
-                Debug.Log("Saved the position");
-                if (!IsStartWiring) lastPoint = TouchedPoint;
-                else
-                {
-                    ConnectionEnd();
-                    return;
-                }
-                IsStartWiring = !IsStartWiring;
-            }
-            LineRendrerOperator.AddPointToLine(lr, newPoint);
+            clear();
         }
     }
 
-    void ConnectionEnd()
+    void WirerClicked(InputAction.CallbackContext context)
     {
-        if(lastPoint!=null)
-            PointHoverEffectOff(lastPoint);
-        if (TouchedPoint != null)
-            PointHoverEffectOff(TouchedPoint);
+        if (!Holding) return;
+        if (!IsStartWiring && !IsInPoint) return;
+        if (IsInPoint)
+        {
+            // this is the first point
+            if (!IsStartWiring) startWiring();
+            else  EndWiring();
+            return;
+        }
+        Vector3 NewClickedPosition = StartPoint.position;
+        WieringPositions.Add(NewClickedPosition);
+        LineRendrerOperator.AddPointToLine(lr, NewClickedPosition);
+        lr.positionCount++;
+    }
+
+    void startWiring()
+    {
+        IsStartWiring = true;
+        FirstWiringPoint = TouchedPoint;
+        lr.positionCount = 2;
+        lr.SetPosition(0, TouchedPoint.transform.position);
+    }
+    void EndWiring()
+    {
+        
         IsStartWiring = false;
         List<Point> createdPoints = GetTheWiringPoints();
         PointsConnector.ConnectNodesSeries(createdPoints);
         OnConnectionWiereingEnd?.Invoke(createdPoints);
-        lastPoint = null;
+        FirstWiringPoint = null;
         TouchedPoint = null;
         lr.positionCount = 0;
         lr.positionCount = 1;
@@ -74,14 +72,19 @@ public class Wierer : Tool
     List<Point> GetTheWiringPoints()
     {
         List<Point> PathPoints = new List<Point>();
-        PathPoints.Add(lastPoint);
-        for (int i = 1; i < lr.positionCount - 1; i++)
-        {
-            Point newPoint = Instantiate(PointPrefab, lr.GetPosition(i), Quaternion.identity).GetComponent<Point>();
-            newPoint.Initlize();
-            PathPoints.Add(newPoint);
-        }
+        PathPoints.Add(FirstWiringPoint);
+        List<NodePoint> NodesPoints = NodePointsCreator.BuildePoints(WieringPositions);
+        PathPoints.AddRange(NodesPoints);
         PathPoints.Add(TouchedPoint);
         return PathPoints;
     }
+    void clear()
+    {
+        IsStartWiring = false;
+        lr.positionCount = 0;
+        WieringPositions = new List<Vector3>();
+        FirstWiringPoint = null;
+    }
+
+
 }

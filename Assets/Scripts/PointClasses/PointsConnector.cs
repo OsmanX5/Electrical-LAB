@@ -6,11 +6,6 @@ using System.ComponentModel;
 
 public class PointsConnector 
 {
-    int id1;
-    int id2;
-    public static bool firstClick = true;
-    public static Point firstPoint;
-
     public static void ConnectNodesSeries(List<int> points)
     {
         for (int i = 0; i < points.Count - 1; i++) ConnectNodes(points[i], points[i + 1]);
@@ -22,7 +17,7 @@ public class PointsConnector
     
     public static void ConnectNodes(int id1, int id2)
     {
-        ConnectNodes(PointsManger.GetPointByID(id1), PointsManger.GetPointByID(id2));
+        ConnectNodes(PointsManger.GetPoint(id1), PointsManger.GetPoint(id2));
     }
     public static void ConnectPoints(Point a, Point b,float res)
     {

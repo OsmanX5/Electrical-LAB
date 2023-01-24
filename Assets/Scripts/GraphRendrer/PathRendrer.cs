@@ -4,18 +4,22 @@ using UnityEngine;
 
 public class PathRendrer : MonoBehaviour
 {
-    public List<Point> points = new List<Point>();
-    public LineRenderer lr;
+    List<Point> points = new List<Point>();
+    LineRenderer LR;
     private void Start()
     {
-        lr = GetComponent<LineRenderer>();
+        LR = GetComponent<LineRenderer>();
     }
     void FixedUpdate()
+    {
+        UpdateLR();
+    }
+    public void UpdateLR()
     {
         Vector3[] positions = PointsConverter.ToPositions(points);
         if (points.Count > 0)
         {
-            LineRendrerOperator.PutPointsInLine(lr, positions);
+            LineRendrerOperator.PutPointsInLine(LR, positions);
         }
     }
     public void SetPoints(List<Point> points)

@@ -4,14 +4,14 @@ using System.Drawing;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Cutter :Tool
+public class Cutter : PointInteractiveTool
 {
 
     void Start()
     {
-        triggerClicked.action.started += RemovePoint;
+        triggerClicked.action.started += RemoveTouchedPoint;
     }
-    void RemovePoint(InputAction.CallbackContext context)
+    void RemoveTouchedPoint(InputAction.CallbackContext context)
     {
         Debug.Log("Deleting the point and calling this from cutter");
         if(TouchedPoint != null)

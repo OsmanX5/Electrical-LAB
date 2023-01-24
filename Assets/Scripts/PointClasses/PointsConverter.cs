@@ -6,7 +6,7 @@ using UnityEngine;
 public class PointsConverter 
 {
     public static Point ToPoint(int id)
-        => PointsManger.GetPointByID(id);
+        => PointsManger.GetPoint(id);
     public static Point ToPoint(Transform transform) 
         => transform.GetComponent<Point>();
     public static Point ToPoint(GameObject obj) 

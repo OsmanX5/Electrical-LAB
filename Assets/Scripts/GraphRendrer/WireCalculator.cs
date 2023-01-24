@@ -4,11 +4,8 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class LineRendrerOperator : MonoBehaviour
-{
-    public static GameObject LRPrefab;
-    public Transform StartPoint;
-    public Transform EndPoint;
+public class LineRendrerOperator 
+{    
     public static void PutPointsInLine(LineRenderer lr, Vector3[] points)
     {
         lr.positionCount = points.Length;
@@ -21,7 +18,16 @@ public class LineRendrerOperator : MonoBehaviour
     public static void AddPointToLine(LineRenderer lr, Vector3 point)
     {
         lr.positionCount++;
-        lr.SetPosition(lr.positionCount - 2, point);
         lr.SetPosition(lr.positionCount - 1, point);
     }
+    public static Vector3[] GetLineRendrerPoints(LineRenderer lr)
+    {
+        Vector3[] points = new Vector3[lr.positionCount];
+        for (int i = 0; i < lr.positionCount; i++)
+        {
+            points[i] = lr.GetPosition(i);
+        }
+        return points;
+    }
+    
 }
