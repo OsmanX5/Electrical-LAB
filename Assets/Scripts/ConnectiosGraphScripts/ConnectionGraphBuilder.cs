@@ -21,13 +21,8 @@ public class ConnectionGraphBuilder : ConnectionGraph
     }
     private bool AddNewPointToGraph(Point newPoint)
     {
-        if (Graph.IsInGraph(newPoint))
-        {
-            Debug.Log("Point with ID: " + newPoint.ID + " already exists in graph");
-            return false;
-        }
+        Debug.Log("Adding New Point to electric graph  with ID"+newPoint.ID);
         Graph.AddNewPoint(newPoint);
-        Debug.Log("POINT WITH ID : " + newPoint.ID + " Added to graph");
         return true;
     }
  
@@ -42,12 +37,12 @@ public class ConnectionGraphBuilder : ConnectionGraph
     }
     private  bool ConnectNodesInGraph(Point a, Point b,float res = 0)
     {
-        if (!Graph.IsInGraph(a))
+        if (!Graph.IsInGraph(a.ID))
         {
             Debug.LogError("Point with ID: " + a.ID + " does not exist in graph");
             return false;
         }
-        if (!Graph.IsInGraph(b))
+        if (!Graph.IsInGraph(b.ID))
         {
             Debug.LogError("Point with ID: " + b.ID + " does not exist in graph");
             return false;
@@ -75,7 +70,7 @@ public class ConnectionGraphBuilder : ConnectionGraph
 
     private bool DisconnectNodeInGraph(Point a)
     {
-        if (!Graph.IsInGraph(a))
+        if (!Graph.IsInGraph(a.ID))
         {
             Debug.LogError("Point with ID: " + a.ID + " does not exist in graph");
             return false;

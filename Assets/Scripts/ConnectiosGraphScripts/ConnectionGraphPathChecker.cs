@@ -7,7 +7,6 @@ public class ConnectionGraphChecker : ConnectioGraphPathesProvider
 {
     public  event Action OnCircuitClose;
     
-    public List<string> allPathes;// For debug
     public  ConnectionGraphChecker()
     {
         OnGraphUpdated += CheckCircuit;
@@ -17,7 +16,6 @@ public class ConnectionGraphChecker : ConnectioGraphPathesProvider
         List<List<int>> AllPathesOfBattery = GetAllPathesOfBattery();
         if (AllPathesOfBattery.Count>0)
         {
-            allPathes = Graph.GetAllPathesSTR(StartID, EndID);
             OnCircuitClose?.Invoke();
         }
         else

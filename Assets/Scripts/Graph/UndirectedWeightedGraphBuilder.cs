@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class UndirectedWeightedGraphBuilder : UndirectedWeightedGraph
+public class UndirectedWeightedGraphBuilder : UndirectedWeightedGraphBody
 {
     
     public void AddNewPoint(int a)
@@ -14,15 +14,12 @@ public class UndirectedWeightedGraphBuilder : UndirectedWeightedGraph
     }
     public void AddConnection(int a, int b, float w)
     {
-        if (!IsInGraph(a)) { Debug.LogError("Point " + a + " is not in graph"); return; }
-        if (!IsInGraph(b)) { Debug.LogError("Point " + b + " is not in graph"); return; }
-        if (a == b) { Debug.LogError("Can't connect point to itself"); return; }
-        var edge2B = new Edge(b, w);
-        var edge2A = new Edge(a, w);
-        if (! IsInList(GetPointConnections(a), edge2B))
-            AdjacencyList[a].Add(new Edge(b, w));
-        if (!IsInList(GetPointConnections(b), edge2A))
-            AdjacencyList[b].Add(edge2A);
+        if (!IsInGraph(a)) { Debug.LogWarning("Point " + a + " is not in graph"); return; }
+        if (!IsInGraph(b)) { Debug.LogWarning("Point " + b + " is not in graph"); return; }
+        if (a == b) { Debug.LogWarning("Can't connect point to itself"); return; }
+        if (IsConnected(a, b)) { Debug.LogWarning("Points are already connected"); return; }
+        AdjacencyList[a].Add(new Edge(b, w));
+        AdjacencyList[b].Add(new Edge(a, w));
     }
     public void RemovePoint(int a)
     {

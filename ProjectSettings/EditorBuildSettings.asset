@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Chandan kumar singh/Chemistry Laboratory/Art/Scene/Chemistry Lab.unity
+    path: Assets/Scenes/ElectricalLab/ElectricalLab.unity
     guid: 9f4a082bb238eb949a98bd79bc697072
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: bfa1182bd221b4ca89619141f66f1260,

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-
+using TMPro;
 [Serializable]
 public struct Connection
 {
@@ -13,9 +13,11 @@ public struct Connection
 public class GraphStatues : MonoBehaviour
 {
     public List<Connection> connections = new List<Connection>();
+    public TMP_Text text;
     void Update()
     {
         connections = buildConnection();
+        text.text = GameManger.GraphManger.Graph.ToString();
     }
     List<Connection> buildConnection()
     {

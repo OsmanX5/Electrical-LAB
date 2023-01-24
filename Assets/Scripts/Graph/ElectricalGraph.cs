@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class ElectricalGraph : UndirectedWeightedGraphPathProvider
 {
-    public bool IsInGraph(Point point) => IsInGraph(point.ID);
+    public ElectricalGraph()
+    {
+        AdjacencyList = new Dictionary<int, List<Edge>>();
+    }
     public void AddNewPoint(Point point)
     {
         AddNewPoint(point.ID);
@@ -23,5 +26,8 @@ public class ElectricalGraph : UndirectedWeightedGraphPathProvider
         ClearPoint(a.ID);
     }
 
-
+    public override string ToString()
+    {
+        return GetAdjacencyListSTR();
+    }
 }
