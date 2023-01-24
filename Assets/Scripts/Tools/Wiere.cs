@@ -53,6 +53,7 @@ public class Wierer : PointInteractiveTool
 
     void startWiring()
     {
+        WieringPositions = new List<Vector3>();
         IsStartWiring = true;
         FirstWiringPoint = TouchedPoint;
         lr.positionCount = 2;
@@ -60,15 +61,11 @@ public class Wierer : PointInteractiveTool
     }
     void EndWiring()
     {
-        
         IsStartWiring = false;
         List<Point> createdPoints = GetTheWiringPoints();
         PointsConnector.ConnectNodesSeries(createdPoints);
         OnConnectionWiereingEnd?.Invoke(createdPoints);
-        FirstWiringPoint = null;
-        TouchedPoint = null;
-        lr.positionCount = 0;
-        lr.positionCount = 1;
+        clear();
     }
     List<Point> GetTheWiringPoints()
     {

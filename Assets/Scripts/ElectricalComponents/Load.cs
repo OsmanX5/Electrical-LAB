@@ -15,7 +15,9 @@ public class Load : ElectricalComponent
         PointsConnector.ConnectPoints(posativePoint, negativePoint, resistance);
         LoadsManger.AddLoad(this);
     }
-    public virtual void TurnOn() { }
+    public virtual void TurnOn() {
+        Debug.Log("Load is on");
+    }
     public virtual void TurnOff() { }
 
 }

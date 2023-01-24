@@ -509,6 +509,7 @@ GameObject:
   - component: {fileID: 476346113}
   - component: {fileID: 476346114}
   - component: {fileID: 476346115}
+  - component: {fileID: 476346116}
   m_Layer: 0
   m_Name: GameManger
   m_TagString: Untagged
@@ -572,6 +573,19 @@ MonoBehaviour:
   LRPrefab: {fileID: 8086125108142990576, guid: bf581d1c1d1e8d148ae3f5176fddb3f8,
     type: 3}
   lineRenderers: []
+--- !u!114 &476346116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 476346111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d0f35f531e1c4b40aefa8676e56d8a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loads: []
 --- !u!1 &584559339
 GameObject:
   m_ObjectHideFlags: 0
@@ -4193,7 +4207,7 @@ PrefabInstance:
     - target: {fileID: 8171070694601634907, guid: cf75c0ea923c1c64c9d72984ac3cb959,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8804160335262379745, guid: cf75c0ea923c1c64c9d72984ac3cb959,
         type: 3}

@@ -13,8 +13,15 @@ public class Cutter : PointInteractiveTool
     }
     void RemoveTouchedPoint(InputAction.CallbackContext context)
     {
-        Debug.Log("Deleting the point and calling this from cutter");
         if(TouchedPoint != null)
-            GameManger.GraphManger.DisconnectPoint(TouchedPoint);
+        {
+            if(TouchedPoint is NodePoint)
+            {
+                GameManger.GraphManger.RemovePoint(TouchedPoint);
+                TouchedPoint.Delet();
+                TouchedPoint = null;
+            }
+        }
+          
     }
 }

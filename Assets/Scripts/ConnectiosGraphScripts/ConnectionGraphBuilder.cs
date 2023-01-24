@@ -56,9 +56,9 @@ public class ConnectionGraphBuilder : ConnectionGraph
         return true;
     }
 
-    public void DisconnectPoint(Point a)
+    public void RemovePoint(Point a)
     {
-        bool DisconnectingSuccess = DisconnectNodeInGraph(a);
+        bool DisconnectingSuccess = RemovePointInGraph(a);
         if (DisconnectingSuccess)
         {
             Debug.Log("Points disconnected" + a.ID);
@@ -67,7 +67,7 @@ public class ConnectionGraphBuilder : ConnectionGraph
         }
     }
 
-    private bool DisconnectNodeInGraph(Point a)
+    private bool RemovePointInGraph(Point a)
     {
         if (!Graph.IsInGraph(a.ID))
         {
