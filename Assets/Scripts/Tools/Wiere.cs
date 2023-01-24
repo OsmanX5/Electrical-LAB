@@ -9,7 +9,8 @@ public class Wierer : PointInteractiveTool
     public static event Action<List<Point>> OnConnectionWiereingEnd;
     
     [SerializeField] Transform StartPoint;
-    
+    [SerializeField] GameObject PointPrefab;
+
     List<Vector3> WieringPositions = new List<Vector3>();
     LineRenderer lr;
     Point FirstWiringPoint;
@@ -73,7 +74,7 @@ public class Wierer : PointInteractiveTool
     {
         List<Point> PathPoints = new List<Point>();
         PathPoints.Add(FirstWiringPoint);
-        List<NodePoint> NodesPoints = NodePointsCreator.BuildePoints(WieringPositions);
+        List<NodePoint> NodesPoints =  NodePointsCreator.BuildePoints(WieringPositions, PointPrefab);
         PathPoints.AddRange(NodesPoints);
         PathPoints.Add(TouchedPoint);
         return PathPoints;

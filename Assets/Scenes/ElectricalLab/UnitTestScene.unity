@@ -508,6 +508,7 @@ GameObject:
   - component: {fileID: 476346112}
   - component: {fileID: 476346113}
   - component: {fileID: 476346114}
+  - component: {fileID: 476346115}
   m_Layer: 0
   m_Name: GameManger
   m_TagString: Untagged
@@ -556,6 +557,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   connections: []
   text: {fileID: 1751364930}
+--- !u!114 &476346115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 476346111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e9c370901581574590b65253190caf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LRPrefab: {fileID: 8086125108142990576, guid: bf581d1c1d1e8d148ae3f5176fddb3f8,
+    type: 3}
+  lineRenderers: []
 --- !u!1 &584559339
 GameObject:
   m_ObjectHideFlags: 0
@@ -1806,7 +1822,11 @@ PrefabInstance:
     - {fileID: 2135104125834947949, guid: 25b59f17b5d762e4e8231eb7c4af0ac5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6534121309583737901, guid: 25b59f17b5d762e4e8231eb7c4af0ac5,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2139209837}
   m_SourcePrefab: {fileID: 100100000, guid: 25b59f17b5d762e4e8231eb7c4af0ac5, type: 3}
 --- !u!1 &1454730010
 GameObject:
@@ -3278,6 +3298,27 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 1
+--- !u!1 &2139209831 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6534121309583737901, guid: 25b59f17b5d762e4e8231eb7c4af0ac5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1452992427}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2139209837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2139209831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7889fd7773ccb3469ff1677625ec32d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ElectronPrefab: {fileID: 6238652264511336125, guid: f6098649b7e4bc64998ba66a89f69e72,
+    type: 3}
+  EmmitingFreq: 4
 --- !u!4 &543450652127852455 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7220482129043746400, guid: 2bdc22ee16de05640a534ea8f6da426b,

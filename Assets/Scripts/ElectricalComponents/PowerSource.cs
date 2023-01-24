@@ -12,7 +12,6 @@ public class PowerSource : ElectricalComponent
     }
     protected void InitiatePowerSource()
     {
-        this.AddComponent<ElectronEmmitingManger>();
         IniciatePoints();
         GameManger.GraphManger.StartID = posativePoint.ID;
         GameManger.GraphManger.EndID = negativePoint.ID;

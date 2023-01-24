@@ -21,7 +21,6 @@ public class ConnectionGraphBuilder : ConnectionGraph
     }
     private bool AddNewPointToGraph(Point newPoint)
     {
-        Debug.Log("Adding New Point to electric graph  with ID"+newPoint.ID);
         Graph.AddNewPoint(newPoint);
         return true;
     }

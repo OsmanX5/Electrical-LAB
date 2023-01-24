@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class NodePointsCreator : MonoBehaviour
 {
-    [SerializeField] static GameObject PointPrefab;
+    
 
-    public static List<NodePoint> BuildePoints(List<Vector3> pointsPos)
+    public static List<NodePoint> BuildePoints(List<Vector3> pointsPos,GameObject PointPrefab)
     {
         List<NodePoint> result = new List<NodePoint>();
         for (int i = 0; i < pointsPos.Count; i++)

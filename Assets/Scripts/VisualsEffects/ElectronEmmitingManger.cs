@@ -14,7 +14,8 @@ public class ElectronEmmitingManger : MonoBehaviour
     }
     void EmmitElectron(Point[] path)
     {
-        var electron = Instantiate(ElectronPrefab, PointsManger.GetPoint(GameManger.GraphManger.StartID).transform.position, Quaternion.identity).GetComponent<Electron>();
+        Vector3 CreatePosition = PointsManger.GetPoint(GameManger.GraphManger.StartID).transform.position;
+        var electron = Instantiate(ElectronPrefab, CreatePosition, Quaternion.identity).GetComponent<Electron>();
         electron.FollowPath(path);
     }
     void StartEmmiting()
