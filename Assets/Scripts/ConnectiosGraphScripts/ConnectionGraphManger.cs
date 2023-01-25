@@ -6,6 +6,8 @@ public class ConnectionGraphManger : ConnectionGraphChecker
 {
     public ConnectionGraphManger(){
         Graph = new ElectricalGraph();
+        IsCircuitClosed = false;
+        Debug.Log("Is Circuit close = " + IsCircuitClosed);
     }
     public List<NodePoint> GetConnectedNodePoints(Point point)
     {

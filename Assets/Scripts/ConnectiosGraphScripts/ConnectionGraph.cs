@@ -10,11 +10,6 @@ public class ConnectionGraph : MonoBehaviour
     public  ElectricalGraph Graph;
     public  int StartID;
     public  int EndID;
-    
-    private void Awake()
-    {
-        Graph = new ElectricalGraph();
-    }
-
+    public bool IsCircuitClosed = false;
     
 }

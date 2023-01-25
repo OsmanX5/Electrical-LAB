@@ -29,6 +29,8 @@ public class ElectricalGraph : UndirectedWeightedGraphPathProvider
 
     public override string ToString()
     {
-        return GetAdjacencyListSTR();
+        string result = "";
+        result += "Graph: \n" + GetAdjacencyListSTR();
+        return result;
     }
 }

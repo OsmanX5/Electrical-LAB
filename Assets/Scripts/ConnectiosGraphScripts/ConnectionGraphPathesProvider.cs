@@ -8,4 +8,9 @@ public class ConnectioGraphPathesProvider : ConnectionGraphBuilder
     {
         return Graph.GetAllPaths(StartID, EndID);
     }
+    public string GetPathesOfBatterySTR() {
+        string res = "Pathes : \n";
+        res += Graph.GetAllPathesSTR(StartID, EndID);
+        return res;
+    }
 }

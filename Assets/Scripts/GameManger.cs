@@ -5,4 +5,5 @@ using UnityEngine;
 public class GameManger : MonoBehaviour
 {
     public static ConnectionGraphManger GraphManger = new ConnectionGraphManger();
+
 }

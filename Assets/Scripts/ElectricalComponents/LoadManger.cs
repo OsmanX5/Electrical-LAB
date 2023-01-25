@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,8 +10,17 @@ public class LoadsManger : MonoBehaviour
     private void Start()
     {
         GameManger.GraphManger.OnCircuitClose += LoadsTurningOnControl;
+        GameManger.GraphManger.OnCircuitOpen += LoadsTurningOffControl;
     }
-   
+
+    private void LoadsTurningOffControl()
+    {
+        foreach (Load load in Loads)
+        {
+            load.TurnOff();
+        }
+    }
+
     private void Update()
     {
         loads = Loads;

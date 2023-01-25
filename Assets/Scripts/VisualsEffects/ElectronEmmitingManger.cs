@@ -11,11 +11,15 @@ public class ElectronEmmitingManger : MonoBehaviour
     void Start()
     {
         GameManger.GraphManger.OnCircuitClose += StartEmmiting;
+        GameManger.GraphManger.OnCircuitOpen += StopEmmiting;
     }
     void EmmitElectron(Point[] path)
     {
         Vector3 CreatePosition = PointsManger.GetPoint(GameManger.GraphManger.StartID).transform.position;
-        var electron = Instantiate(ElectronPrefab, CreatePosition, Quaternion.identity).GetComponent<Electron>();
+        var electronObj = Instantiate(ElectronPrefab, CreatePosition, Quaternion.identity);
+        electronObj.SetActive(true);
+        var electron = electronObj.GetComponent<Electron>();
+        electron.AddToManger();
         electron.FollowPath(path);
     }
     void StartEmmiting()
@@ -37,6 +41,12 @@ public class ElectronEmmitingManger : MonoBehaviour
             }
         }
     }
-    
-    
+
+    void StopEmmiting()
+    {
+        Debug.Log("StopEmmiting");
+        isEmmiting = false;
+        ElectronsManger.DeletAllElectrons();
+    }
+
 }

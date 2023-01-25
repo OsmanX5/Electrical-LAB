@@ -7,7 +7,7 @@ using UnityEngine;
 public class Electron : MonoBehaviour
 {
     public float moveSpeed = 10f;
-    public Electron()
+    public void AddToManger()
     {
         ElectronsManger.AddElectron(this);
     }
@@ -29,6 +29,13 @@ public class Electron : MonoBehaviour
                 }
             pos += 1;
         }
+        delet();
+    }
+    public void delet() {
         Destroy(this.gameObject);
     }
+        
+    
+
+
 }

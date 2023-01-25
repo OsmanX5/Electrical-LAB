@@ -16,7 +16,6 @@ public class Lamp : Load
     public override void TurnOff()
     {
         LightingBulb.GetComponent<Renderer>().material = offMaterial;
-        Debug.Log("Light is Off");
     }
 
 

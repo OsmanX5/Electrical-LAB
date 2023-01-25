@@ -29,6 +29,7 @@ public class UndirectedWeightedGraphPathProvider : UndirectedWeightedGraphBuilde
                 {
                     if (path1.SequenceEqual(path)) return;
                 }
+                if (path.Count < 2) return;
                 paths.Add(path);
                 return;
             }
@@ -43,16 +44,16 @@ public class UndirectedWeightedGraphPathProvider : UndirectedWeightedGraphBuilde
 
         return paths;
     }
-    public List<string> GetAllPathesSTR(int a, int b)
+    public string GetAllPathesSTR(int a, int b)
     {
         List<List<int>> pathes = GetAllPaths(a, b);
-        List<string> res = new List<string>();
+        string res = "";
         foreach (var path in pathes)
         {
             string str = "";
             foreach (var point in path)
                 str += point.ToString() + " - ";
-            res.Add(str);
+            res+= str +"\n";
         }
         return res;
     }
