@@ -1373,6 +1373,45 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "XR Toggle",
+            "id": "ac408d04-5569-4824-8a12-589d4168f063",
+            "actions": [
+                {
+                    "name": "Toggle",
+                    "type": "Button",
+                    "id": "e5ac1c6b-83f2-4bbf-a1b1-61f8e3897cb1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "88051646-1e66-41ca-8f0c-f55b8ddc2c4e",
+                    "path": "<XRController>{RightHand}/thumbstickClicked",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Toggle",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cfb9cf21-f834-495f-a68d-a91a3b159dea",
+                    "path": "<XRController>{LeftHand}/thumbstickClicked",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Toggle",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [
