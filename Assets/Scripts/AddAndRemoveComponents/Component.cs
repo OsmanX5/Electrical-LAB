@@ -1,8 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
-
-public class Component 
+[Serializable]
+public struct Component 
 {
     public string Name;
     public GameObject CompObject;

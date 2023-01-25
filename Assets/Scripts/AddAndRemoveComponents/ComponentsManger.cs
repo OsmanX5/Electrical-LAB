@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class ComponentsManger : MonoBehaviour
 {
-    List<Component> Components;
-
+    public List<Component> Components = new List<Component>();
     public GameObject GetComponent(string name)
     {
         foreach (var component in Components)

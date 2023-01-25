@@ -22,14 +22,14 @@ public class Cutter : PointInteractiveTool
             }
             else if(TouchedPoint is ComponentPoint)
             {
-                RemoveComponentPoint();
+                ClearComponentPoint();
             }
             TouchedPoint = null;
         }
           
     }
 
-    private void RemoveComponentPoint()
+    private void ClearComponentPoint()
     {
         ComponentPoint componentPoint = TouchedPoint as ComponentPoint;
         RemoveConnectedNodes(componentPoint);

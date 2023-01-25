@@ -629,8 +629,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1736934099}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -700,9 +699,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e10765c5ce4f8b4f97a06667d8fb8ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CreationTransform: {fileID: 1736934099}
-  Components:
-  - {fileID: 5010918757709439138, guid: 1bbb54625115dc34ba8f324791aa57ff, type: 3}
 --- !u!1 &486026643
 GameObject:
   m_ObjectHideFlags: 0
@@ -1245,16 +1241,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 476346117}
-        m_TargetAssemblyTypeName: ComponentCreator, Assembly-CSharp
-        m_MethodName: OnClickCreateLamp
-        m_Mode: 1
+      - m_Target: {fileID: 1051332494}
+        m_TargetAssemblyTypeName: ComponentCreationManger, Assembly-CSharp
+        m_MethodName: CreateNewComponent
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Lamp
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &808825874
@@ -1618,6 +1614,69 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 990257049}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1051332493
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1051332495}
+  - component: {fileID: 1051332494}
+  - component: {fileID: 1051332496}
+  m_Layer: 0
+  m_Name: ComponentCreationManger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1051332494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1051332493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a3544c1ac924bf4eb5765dc4c6a9e97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  creationPlace: {fileID: 1736934101}
+--- !u!4 &1051332495
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1051332493}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1736934099}
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1051332496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1051332493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da9210c290a89f247a6fd9a3899cf163, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Components:
+  - Name: Lamp
+    CompObject: {fileID: 5010918757709439138, guid: 1bbb54625115dc34ba8f324791aa57ff,
+      type: 3}
 --- !u!1 &1076274440
 GameObject:
   m_ObjectHideFlags: 0
@@ -3685,7 +3744,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 476346112}
+  m_Father: {fileID: 1051332495}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1736934100
@@ -3721,7 +3780,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55a13028127ae664789fb76c208c78c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnPlaceObjects: []
+  ObjectsInPlace: []
 --- !u!1 &1739949446
 GameObject:
   m_ObjectHideFlags: 0

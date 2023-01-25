@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class ComponentCreationManger : MonoBehaviour
 {
-    CreationPlace creationPlace;
+    public CreationPlace creationPlace;
     ComponentsManger components;
     ComponentCreator creator;
     private void Start()
     {
+        if (creationPlace == null) 
+            creationPlace = GetComponentInChildren<CreationPlace>();
+        components = this.GetComponent<ComponentsManger>();
         creator = this.AddComponent<ComponentCreator>();
         creator.CreationTransform = creationPlace.transform;
     }

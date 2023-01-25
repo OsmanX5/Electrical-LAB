@@ -31,4 +31,9 @@ public class LoadsManger : MonoBehaviour
             }
         }
     }
+
+    public static void RemoveLoad(Load load)
+    {
+        Loads.Remove(load);
+    }
 }
