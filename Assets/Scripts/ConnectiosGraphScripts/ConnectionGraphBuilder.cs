@@ -75,7 +75,27 @@ public class ConnectionGraphBuilder : ConnectionGraph
             return false;
         }
         Graph.RemovePoint(a);
+        return true;   
+    }
+    public void ClearPoint(Point a)
+    {
+        bool DisconnectingSuccess = ClearPointInGraph(a);
+        if (DisconnectingSuccess)
+        {
+            Debug.Log("Points disconnected" + a.ID);
+            OnPointDeleted?.Invoke(a);
+            OnGraphUpdated?.Invoke();
+        }
+    }
+
+    private bool ClearPointInGraph(Point a)
+    {
+        if (!Graph.IsInGraph(a.ID))
+        {
+            Debug.LogError("Point with ID: " + a.ID + " does not exist in graph");
+            return false;
+        }
+        Graph.ClearPoint(a);
         return true;
-        throw new NotImplementedException();
     }
 }
