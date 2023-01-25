@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
@@ -17,11 +18,31 @@ public class Cutter : PointInteractiveTool
         {
             if(TouchedPoint is NodePoint)
             {
-                GameManger.GraphManger.RemovePoint(TouchedPoint);
-                TouchedPoint.Delet();
-                TouchedPoint = null;
+                RemoveNodePoint();
             }
+            else if(TouchedPoint is ComponentPoint)
+            {
+                RemoveComponentPoint();
+            }
+            TouchedPoint.Delet();
+            TouchedPoint = null;
         }
           
+    }
+
+    private void RemoveComponentPoint()
+    {
+        ComponentPoint componentPoint = TouchedPoint as ComponentPoint;
+        GameManger.GraphManger.ClearPoint(componentPoint);
+        if ( componentPoint.ElectricalComponent is Load)
+        {
+            Load load = componentPoint.ElectricalComponent as Load;
+            PointsConnector.ConnectPoints(componentPoint, componentPoint.PairPoint, load.Resistance);
+        }
+    }
+
+    void RemoveNodePoint()
+    {
+        GameManger.GraphManger.RemovePoint(TouchedPoint);
     }
 }
