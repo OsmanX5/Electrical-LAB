@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Load : ElectricalComponent
 {
-    [SerializeField] float resistance = 10f;
+    [SerializeField] protected float resistance;
+    public float Resistance { get =>resistance; set => resistance = value; }
     private void Start()
     {
         InitiateLoad();
@@ -12,7 +13,9 @@ public class Load : ElectricalComponent
     protected void InitiateLoad()
     {
         IniciatePoints();
-        PointsConnector.ConnectPoints(posativePoint, negativePoint, resistance);
+        posativePoint.PairPoint = negativePoint;
+        negativePoint.PairPoint = posativePoint;
+        PointsConnector.ConnectPoints(posativePoint, negativePoint, Resistance);
         LoadsManger.AddLoad(this);
     }
     public virtual void TurnOn() {
