@@ -25,6 +25,7 @@ public class ElectricalGraph : UndirectedWeightedGraphPathProvider
     {
         ClearPoint(a.ID);
     }
+    
 
     public override string ToString()
     {

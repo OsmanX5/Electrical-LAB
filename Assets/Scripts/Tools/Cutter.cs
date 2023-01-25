@@ -24,7 +24,6 @@ public class Cutter : PointInteractiveTool
             {
                 RemoveComponentPoint();
             }
-            TouchedPoint.Delet();
             TouchedPoint = null;
         }
           
@@ -33,6 +32,7 @@ public class Cutter : PointInteractiveTool
     private void RemoveComponentPoint()
     {
         ComponentPoint componentPoint = TouchedPoint as ComponentPoint;
+        RemoveConnectedNodes(componentPoint);
         GameManger.GraphManger.ClearPoint(componentPoint);
         if ( componentPoint.ElectricalComponent is Load)
         {
@@ -43,6 +43,22 @@ public class Cutter : PointInteractiveTool
 
     void RemoveNodePoint()
     {
-        GameManger.GraphManger.RemovePoint(TouchedPoint);
+        NodePoint nodePoint = TouchedPoint as NodePoint;
+        RemoveConnectedNodes(nodePoint);
+        TouchedPoint.Delet();
     }
+    void RemoveConnectedNodes(Point ToDeletPoint)
+    {
+        List<NodePoint> ToDelet = GameManger.GraphManger.GetConnectedNodePoints(ToDeletPoint);
+        foreach (NodePoint point in ToDelet)
+        {
+            GameManger.GraphManger.RemovePoint(point);
+
+        }
+        foreach (NodePoint point in ToDelet)
+        {
+            point.Delet();
+        }
+    }
+
 }

@@ -18,4 +18,12 @@ public class PointsManger
     {
         Points.Remove(point.ID);
     }
+    public static bool IsNode(Point point)
+    {
+        return point is NodePoint;
+    }
+    public static bool IsNode(int pointID)
+    {
+        return Points[pointID] is NodePoint;
+    }
 }
