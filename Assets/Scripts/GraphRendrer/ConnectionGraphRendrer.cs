@@ -7,6 +7,7 @@ using UnityEngine;
 public class ConnectionGraphRendrer : MonoBehaviour
 {
     public GameObject LRPrefab;
+    public event Action<GameObject> CreatedNewLineRendrer;  
     [SerializeField] List<GameObject> lineRenderers = new List<GameObject>();
 
     private void Start()
@@ -19,7 +20,8 @@ public class ConnectionGraphRendrer : MonoBehaviour
         GameObject temp = Instantiate(LRPrefab, this.transform);
         temp.name = "LineRendrer" + lineRenderers.Count().ToString();
         temp.GetComponent<PathRendrer>().SetPoints(PathPoints);
-        lineRenderers.Add(temp);        
+        lineRenderers.Add(temp);
+        CreatedNewLineRendrer?.Invoke(temp);
     }
     private void DeletPointFromLines(Point deletedPoint) {
         foreach (var line in lineRenderers)
