@@ -5,6 +5,7 @@ using UnityEngine;
 public class ComponentPoint : Point
 {
     public ElectricalComponent ElectricalComponent { get; set; }
+    public Point PairPoint { get; set; }
     public override void Initlize()
     {
         base.Initlize();
