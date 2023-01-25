@@ -3,21 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class ComponentCreator : MonoBehaviour
+public class ComponentCreator:  MonoBehaviour
 {
-    public Transform CreationTransform;
-    public List<GameObject> Components;
-    CreationPlace creationPlaceControl;
-    private void Start()
-    {
-        creationPlaceControl = CreationTransform.GetComponent<CreationPlace>();
-    }
+    Transform creationTransform;
 
-    public void OnClickCreateLamp()
-    {
-        if(creationPlaceControl.IsPlaceIsEmpty())
-        CreateNewComponent(Components[0]);
-    }
+    public Transform CreationTransform { get => creationTransform; set => creationTransform = value; }
+
     public void CreateNewComponent(GameObject component) { 
         Debug.Log("Creating new component");
         GameObject newComponent = Instantiate(component, CreationTransform.position, Quaternion.identity);

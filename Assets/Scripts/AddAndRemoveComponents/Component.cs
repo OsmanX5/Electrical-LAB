@@ -1,21 +1,9 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace Assets.Scripts.AddAndRemoveComponents
+
+public class Component 
 {
-    public class Component : MonoBehaviour
-    {
-
-        // Use this for initialization
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-    }
+    public string Name;
+    public GameObject CompObject;
 }
