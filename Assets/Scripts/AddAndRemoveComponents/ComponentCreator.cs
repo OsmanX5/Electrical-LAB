@@ -15,10 +15,9 @@ public class ComponentCreator : MonoBehaviour
 
     public void OnClickCreateLamp()
     {
-        if(IsPlaceIsEmpty())
+        if(creationPlaceControl.IsPlaceIsEmpty())
         CreateNewComponent(Components[0]);
     }
-    public bool IsPlaceIsEmpty()=> creationPlaceControl.OnPlaceObjects.Count == 0;
     public void CreateNewComponent(GameObject component) { 
         Debug.Log("Creating new component");
         GameObject newComponent = Instantiate(component, CreationTransform.position, Quaternion.identity);

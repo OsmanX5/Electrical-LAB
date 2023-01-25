@@ -4,19 +4,21 @@ using UnityEngine;
 
 public class CreationPlace : MonoBehaviour
 {
-    public List<GameObject> OnPlaceObjects;
+    public List<GameObject> ObjectsInPlace;
     // Start is called before the first frame update
     void Start()
     {
-        OnPlaceObjects = new();
+        ObjectsInPlace = new();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        OnPlaceObjects.Add(other.gameObject);
+        ObjectsInPlace.Add(other.gameObject);
     }
     private void OnTriggerExit(Collider other)
     {
-        OnPlaceObjects.Remove(other.gameObject);
+        ObjectsInPlace.Remove(other.gameObject);
     }
+    public bool IsPlaceIsEmpty() => ObjectsInPlace.Count == 0;
+
 }
