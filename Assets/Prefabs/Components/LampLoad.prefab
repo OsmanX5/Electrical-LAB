@@ -305,7 +305,7 @@ GameObject:
   - component: {fileID: 5010918757709439139}
   - component: {fileID: -507020556549616899}
   - component: {fileID: 2572900931978180373}
-  - component: {fileID: 1250361071945139775}
+  - component: {fileID: 7665031200778799466}
   m_Layer: 0
   m_Name: LampLoad
   m_TagString: Untagged
@@ -400,7 +400,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1250361071945139775
+--- !u!114 &7665031200778799466
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -479,7 +479,7 @@ MonoBehaviour:
   m_OnDeactivate:
     m_PersistentCalls:
       m_Calls: []
-  m_AttachTransform: {fileID: 2065435002545542488}
+  m_AttachTransform: {fileID: 0}
   m_UseDynamicAttach: 0
   m_MatchAttachPosition: 1
   m_MatchAttachRotation: 1

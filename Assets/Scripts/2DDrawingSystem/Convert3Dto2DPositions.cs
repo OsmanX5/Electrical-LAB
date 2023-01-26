@@ -24,7 +24,7 @@ public class Convert3Dto2DPositions : MonoBehaviour
         Vector3 temp = new Vector3();
         temp.x = (point.x - _UpLeftTable.position.x) / (_DownRightTable.position.x - _UpLeftTable.position.x) * (_DownRightCanvas.position.x - _UpLeftCanvas.position.x) + _UpLeftCanvas.position.x;
         temp.y = (point.z - _UpLeftTable.position.z) / (_DownRightTable.position.z - _UpLeftTable.position.z) * (_DownRightCanvas.position.y - _UpLeftCanvas.position.y) + _UpLeftCanvas.position.y;
-        temp.z = point.z;
+        temp.z = SimulationCanvas.canvas.transform.position.z+0.01f;
         return temp;
     }
 }

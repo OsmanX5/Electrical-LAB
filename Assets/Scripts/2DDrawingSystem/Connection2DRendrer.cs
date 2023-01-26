@@ -9,14 +9,10 @@ public class Connection2DRendrer : MonoBehaviour
     List<GameObject> ClonedLineRendrers;
     void Start()
     {
+        ClonedLineRendrers = new List<GameObject>();
         Rendrer3D.CreatedNewLineRendrer += AddNewRendrer;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void AddNewRendrer(GameObject obj)
     {
         GameObject temp2DRendrer = Instantiate(LRPrefab2D, this.transform);

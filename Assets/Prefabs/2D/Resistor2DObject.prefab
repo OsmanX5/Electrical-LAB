@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2618326722161654926}
   - component: {fileID: 2618326722161654912}
   - component: {fileID: 2618326722161654927}
-  - component: {fileID: 8788410091199858143}
+  - component: {fileID: 1023598552329415093}
   m_Layer: 5
   m_Name: Resistor2DObject
   m_TagString: Untagged
@@ -78,7 +78,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8788410091199858143
+--- !u!114 &1023598552329415093
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -87,11 +87,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2618326722161654925}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57db94dc2565e3944939be73477d4e25, type: 3}
+  m_Script: {fileID: 11500000, guid: 32c8823105609d34fa1dafdedea52550, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   refrence: {fileID: 0}
-  canvas: {fileID: 0}
+  offset: {x: 0, y: 0, z: 0}
+  refLoad: {fileID: 0}
 --- !u!1 &2618326722990063579
 GameObject:
   m_ObjectHideFlags: 0

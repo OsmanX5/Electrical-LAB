@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PowerSource : ElectricalComponent
 {
-    [SerializeField] float voltage;
+    public float voltage;
     void Start()
     {
         InitiatePowerSource();
