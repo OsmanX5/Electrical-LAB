@@ -4,7 +4,7 @@ using UnityEngine;
 public class ComponentsManger : MonoBehaviour
 {
     public List<Component> Components = new List<Component>();
-    public GameObject GetComponent(string name)
+    public GameObject GetComponentByName(string name)
     {
         foreach (var component in Components)
         {

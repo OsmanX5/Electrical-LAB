@@ -5,19 +5,13 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class Point2DPosition : MonoBehaviour
+public class Point2DPosition : Component2DPosition
 {
-    public Point refrence; 
+    public Point PointRefrence;
     void Start()
     {
+        PointRefrence = refrence.GetComponent<Point>();
         TMP_Text Point2DText = this.GetComponentInChildren<TMP_Text>();
-        Point2DText.text = refrence.ID.ToString();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        Vector3 newPos = Convert3Dto2DPositions.Convert3Dto2D(refrence.transform.position);
-        transform.position = newPos;
+        Point2DText.text = PointRefrence.ID.ToString();
     }
 }

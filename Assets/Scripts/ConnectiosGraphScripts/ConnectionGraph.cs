@@ -5,8 +5,7 @@ using UnityEngine;
 using TMPro;
 using Unity.VisualScripting;
 
-public class ConnectionGraph : MonoBehaviour
-{
+public class ConnectionGraph { 
     public  ElectricalGraph Graph;
     public  int StartID;
     public  int EndID;

@@ -19,7 +19,7 @@ public class ComponentCreationManger : MonoBehaviour
     {
         if (creationPlace.IsPlaceIsEmpty())
         {
-            GameObject prefab = components.GetComponent(name);
+            GameObject prefab = components.GetComponentByName(name);
             creator.CreateNewComponent(prefab);
         }
     }

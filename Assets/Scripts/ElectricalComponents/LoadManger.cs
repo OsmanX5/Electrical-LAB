@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class LoadsManger : MonoBehaviour
 {
+    public static event Action<Load> OnAddNewLoad;
     public static List<Load> Loads = new List<Load>();
     public List<Load> loads;
     private void Start()
@@ -26,7 +27,10 @@ public class LoadsManger : MonoBehaviour
         loads = Loads;
     }
 
-    public static void AddLoad(Load load)=>Loads.Add(load);
+    public static void AddLoad(Load load) { 
+        Loads.Add(load); 
+        OnAddNewLoad?.Invoke(load) ; 
+    }
     public static void LoadsTurningOnControl()
     {
         foreach (Load load in Loads)
