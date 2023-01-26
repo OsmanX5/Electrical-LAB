@@ -4,7 +4,6 @@ using System.Drawing;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
-using TMPro;
 
 public class Point2DPosition : MonoBehaviour
 {

@@ -8,11 +8,8 @@ public class ConnectionGraphChecker : ConnectioGraphPathesProvider
     public  event Action OnCircuitClose;
     public event Action OnCircuitOpen;
 
-    public  ConnectionGraphChecker()
-    {
-        OnGraphUpdated += CheckCircuit;
-    }
-    void CheckCircuit()
+
+    protected void CheckCircuit()
     {
         List<List<int>> AllPathesOfBattery = GetAllPathesOfBattery();
         if (AllPathesOfBattery.Count>0)

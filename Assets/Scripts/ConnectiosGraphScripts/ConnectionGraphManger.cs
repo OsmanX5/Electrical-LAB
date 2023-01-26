@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class ConnectionGraphManger : ConnectionGraphChecker
 {
-    public ConnectionGraphManger(){
+    public void InitlizeGraph(){
         Graph = new ElectricalGraph();
         IsCircuitClosed = false;
-        Debug.Log("Is Circuit close = " + IsCircuitClosed);
+        OnGraphUpdated += CheckCircuit;
     }
     public List<NodePoint> GetConnectedNodePoints(Point point)
     {
