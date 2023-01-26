@@ -5,7 +5,7 @@ using UnityEngine;
 public class PathRendrer : MonoBehaviour
 {
     public List<Point> points = new List<Point>();
-    LineRenderer LR;
+    protected LineRenderer LR;
     private void Start()
     {
         LR = GetComponent<LineRenderer>();
@@ -14,7 +14,7 @@ public class PathRendrer : MonoBehaviour
     {
         UpdateLR();
     }
-    public void UpdateLR()
+    public virtual void UpdateLR()
     {
         Vector3[] positions = PointsConverter.ToPositions(points);
         LineRendrerOperator.PutPointsInLine(LR, positions);

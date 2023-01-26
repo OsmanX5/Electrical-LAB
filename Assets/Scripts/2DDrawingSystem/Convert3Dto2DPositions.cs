@@ -19,11 +19,12 @@ public class Convert3Dto2DPositions : MonoBehaviour
         _UpLeftTable = UpLeftTable;
         _DownRightTable = DownRightTable;
     }
-    public static Vector2 Convert3Dto2D(Vector3 point)
+    public static Vector3 Convert3Dto2D(Vector3 point)
     {
-        Vector2 temp = new Vector2();
+        Vector3 temp = new Vector3();
         temp.x = (point.x - _UpLeftTable.position.x) / (_DownRightTable.position.x - _UpLeftTable.position.x) * (_DownRightCanvas.position.x - _UpLeftCanvas.position.x) + _UpLeftCanvas.position.x;
         temp.y = (point.z - _UpLeftTable.position.z) / (_DownRightTable.position.z - _UpLeftTable.position.z) * (_DownRightCanvas.position.y - _UpLeftCanvas.position.y) + _UpLeftCanvas.position.y;
+        temp.z = point.z;
         return temp;
     }
 }

@@ -18,7 +18,7 @@ public class Point2DPosition : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 positions = Convert3Dto2DPositions.Convert3Dto2D(refrence.transform.position);
-        transform.position = new Vector3(positions.x, positions.y, transform.position.z);
+        Vector3 newPos = Convert3Dto2DPositions.Convert3Dto2D(refrence.transform.position);
+        transform.position = newPos;
     }
 }

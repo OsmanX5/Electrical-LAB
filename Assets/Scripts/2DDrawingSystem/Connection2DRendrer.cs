@@ -19,7 +19,8 @@ public class Connection2DRendrer : MonoBehaviour
     }
     public void AddNewRendrer(GameObject obj)
     {
-        GameObject temp = Instantiate(LRPrefab2D, this.transform);
-        ClonedLineRendrers.Add(temp);
+        GameObject temp2DRendrer = Instantiate(LRPrefab2D, this.transform);
+        temp2DRendrer.GetComponent<PathRendrer2D>().SetPoints(obj.GetComponent<PathRendrer>().points);
+        ClonedLineRendrers.Add(temp2DRendrer);
     }
 }
