@@ -6,7 +6,7 @@ public class SimulationCanvas : MonoBehaviour
 {
     public static Canvas canvas;
     public Canvas simulationCanvas;
-    void Start()
+    void Awake()
     {
         canvas = simulationCanvas;
     }
