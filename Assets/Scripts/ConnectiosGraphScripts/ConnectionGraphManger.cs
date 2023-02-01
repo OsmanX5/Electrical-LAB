@@ -40,7 +40,6 @@ public class ConnectionGraphManger : ConnectionGraphChecker
         }
         return res;
     }
-
     public List<NodePoint> GetConnectedNodePoints(ComponentPoint point)
     {
         List<NodePoint> res = new();

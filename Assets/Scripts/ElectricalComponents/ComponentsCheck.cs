@@ -8,7 +8,7 @@ public class ComponentsCheck
     {
         int Point1ID = load.GetPoints()[0].ID;
         int Point2ID = load.GetPoints()[1].ID;
-        var allPathes = GameManger.GraphManger.GetAllPathesOfBattery();
+        var allPathes = GameManger.GraphManger.GetAllPathesOfBatteryIDs();
         foreach (var path in allPathes)
         {
             if (path.Contains(Point1ID) && path.Contains(Point2ID))

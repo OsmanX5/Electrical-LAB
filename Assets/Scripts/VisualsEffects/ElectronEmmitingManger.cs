@@ -35,7 +35,7 @@ public class ElectronEmmitingManger : MonoBehaviour
             var pathes = GameManger.GraphManger.GetAllPathesOfBattery();
             foreach (var path in pathes)
             {
-                Point[] ElectronPath = PointsConverter.ToPoints(path);
+                Point[] ElectronPath = path.ToArray();
                 EmmitElectron(ElectronPath);
                 yield return new WaitForSeconds(1.0f / (EmmitingFreq *(pathes.Count*0.2f +1)));
             }
