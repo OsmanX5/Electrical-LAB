@@ -57,6 +57,29 @@ public class UndirectedWeightedGraphPathProvider : UndirectedWeightedGraphBuilde
         }
         return res;
     }
-   
+    
+    public float WeightBetween(int a,int b)
+    {
+        if (IsConnected(a, b))
+        {
+            foreach (var edge in AdjacencyList[a])
+            {
+                if (edge.NextPoint == b) return edge.Weight;
+            }
+            foreach (var edge in AdjacencyList[b])
+            {
+                if (edge.NextPoint == a) return edge.Weight;
+            }
+        }
+        return -1;
+    }
 
+    public int PairPoint(int a)
+    {
+        foreach (var edge in AdjacencyList[a])
+        {
+            if (edge.Weight != 0) return edge.NextPoint;
+        }
+        return -1;
+    }
 }

@@ -25,7 +25,7 @@ public class UndirectedWeightedGraphTest : MonoBehaviour
         for (int i = 0; i < Nodes.Count; i++)
         {
             Debug.Log(Nodes[i]);
-            graph.AddNewPoint(Nodes[i]);
+            graph.UWGraph.AddNewPoint(Nodes[i]);
         }
         Debug.Log("#####Adding New node test end####");
     }
@@ -39,7 +39,7 @@ public class UndirectedWeightedGraphTest : MonoBehaviour
         foreach(var connection in connections)
         {
             Debug.Log($"connecting {connection.Item1} <=={connection.Item3} ===> {connection.Item2}");
-            graph.AddConnection(connection.Item1, connection.Item2, connection.Item3);
+            graph.UWGraph.AddConnection(connection.Item1, connection.Item2, connection.Item3);
         }
         Debug.Log("#####Connect2NodesTest####");
     }
@@ -51,7 +51,7 @@ public class UndirectedWeightedGraphTest : MonoBehaviour
         foreach (var i in new List<int> { 1,30})
         {
             Debug.Log(i);
-            graph.RemovePoint(i);
+            graph.UWGraph.RemovePoint(i);
         }
         Debug.Log("#####End of RemovePoint####");
     }
@@ -62,7 +62,7 @@ public class UndirectedWeightedGraphTest : MonoBehaviour
         foreach (var i in new List<int> { 1 })
         {
             Debug.Log(i);
-            graph.ClearPoint(i);
+            graph.UWGraph.ClearPoint(i);
         }
         Debug.Log("#####End of ClearPointTest####");
     }

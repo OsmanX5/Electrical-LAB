@@ -36,12 +36,12 @@ public class ConnectionGraphBuilder : ConnectionGraph
     }
     private  bool ConnectNodesInGraph(Point a, Point b,float res = 0)
     {
-        if (!Graph.IsInGraph(a.ID))
+        if (!Graph.UWGraph.IsInGraph(a.ID))
         {
             Debug.LogError("Point with ID: " + a.ID + " does not exist in graph");
             return false;
         }
-        if (!Graph.IsInGraph(b.ID))
+        if (!Graph.UWGraph.IsInGraph(b.ID))
         {
             Debug.LogError("Point with ID: " + b.ID + " does not exist in graph");
             return false;
@@ -69,7 +69,7 @@ public class ConnectionGraphBuilder : ConnectionGraph
 
     private bool RemovePointInGraph(Point a)
     {
-        if (!Graph.IsInGraph(a.ID))
+        if (!Graph.UWGraph.IsInGraph(a.ID))
         {
             Debug.LogError("Point with ID: " + a.ID + " does not exist in graph");
             return false;
@@ -90,7 +90,7 @@ public class ConnectionGraphBuilder : ConnectionGraph
 
     private bool ClearPointInGraph(Point a)
     {
-        if (!Graph.IsInGraph(a.ID))
+        if (!Graph.UWGraph.IsInGraph(a.ID))
         {
             Debug.LogError("Point with ID: " + a.ID + " does not exist in graph");
             return false;

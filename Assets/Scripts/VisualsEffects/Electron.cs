@@ -32,6 +32,7 @@ public class Electron : MonoBehaviour
         delet();
     }
     public void delet() {
+        ElectronsManger.RemoveElectron(this);
         Destroy(this.gameObject);
     }
         

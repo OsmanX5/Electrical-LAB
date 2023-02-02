@@ -6,7 +6,7 @@ public class ConnectioGraphPathesProvider : ConnectionGraphBuilder
 {
     public List<List<int>> GetAllPathesOfBatteryIDs()
     {
-        return Graph.GetAllPaths(StartID, EndID);
+        return Graph.UWGraph.GetAllPaths(StartID, EndID);
     }
     public List<List<Point>> GetAllPathesOfBattery()
     {
@@ -25,7 +25,7 @@ public class ConnectioGraphPathesProvider : ConnectionGraphBuilder
     }
     public string GetPathesOfBatterySTR() {
         string res = "Pathes : \n";
-        res += Graph.GetAllPathesSTR(StartID, EndID);
+        res += Graph.UWGraph.GetAllPathesSTR(StartID, EndID);
         return res;
     }
 }

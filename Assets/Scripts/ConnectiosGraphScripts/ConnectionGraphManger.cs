@@ -25,7 +25,7 @@ public class ConnectionGraphManger : ConnectionGraphChecker
         while (stack.Count > 0)
         {
             NodePoint current = stack.Pop();
-            foreach (var edge in Graph.GetPointConnections(current.ID))
+            foreach (var edge in Graph.UWGraph.GetPointConnections(current.ID))
             {
                 if (PointsManger.IsNode(edge.NextPoint))
                 {
@@ -43,7 +43,7 @@ public class ConnectionGraphManger : ConnectionGraphChecker
     public List<NodePoint> GetConnectedNodePoints(ComponentPoint point)
     {
         List<NodePoint> res = new();
-        foreach (Edge next in Graph.GetPointConnections(point.ID))
+        foreach (Edge next in Graph.UWGraph.GetPointConnections(point.ID))
         {
             if (PointsManger.IsNode(next.NextPoint))
             {
