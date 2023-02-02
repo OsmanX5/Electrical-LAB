@@ -13,11 +13,14 @@ public class UndirectedWeightedGraph : UndirectedWeightedGraphPathProvider,IClon
 
     public object Clone()
     {
-        return new UndirectedWeightedGraph()
+        Dictionary<int, List<Edge>> copyDict = new Dictionary<int, List<Edge>>();
+        foreach (var item in AdjacencyList)
         {
-            AdjacencyList = new Dictionary<int, List<Edge>>(AdjacencyList),
-            n = n
-        };
+            copyDict.Add(item.Key, new List<Edge>(item.Value));
+        }
+        UndirectedWeightedGraph copy = new UndirectedWeightedGraph();
+        copy.AdjacencyList = copyDict;
+        return copy;
         throw new NotImplementedException();
     }
 

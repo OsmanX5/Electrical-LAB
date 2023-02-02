@@ -6,6 +6,7 @@ using TMPro;
 public class CalculationStatus : MonoBehaviour
 {
     public TMP_Text statues;
+    public TMP_Text totalResistor;
     void Start()
     {
         
@@ -14,6 +15,7 @@ public class CalculationStatus : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        statues.text = ResistorsSerialConnect.graph.ToString();
+        statues.text = GraphCalculator.graph.ToString();
+        totalResistor.text = "Total Resistor: " + TotalResistorCalculate.TotalResistor;
     }
 }

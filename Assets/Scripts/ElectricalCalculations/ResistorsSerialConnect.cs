@@ -2,11 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ResistorsSerialConnect
+public class ResistorsSerialConnect : GraphCalculator
 {
-    public static UndirectedWeightedGraph graph = new();
-    public static int startID = 0;
-    public static int endID = 1;
+
     public static bool IsSerialConnected(int a, int b)
     {
         List<Edge> ConnectedToA = graph.GetPointConnections(a);
@@ -28,8 +26,7 @@ public class ResistorsSerialConnect
             graph.RemovePoint(b);
         }
     }
-
-    public static void CalculateNextSeries()
+    public static bool CalculateNextSeries()
     {
         List<int> path = graph.GetPath(startID, endID);
         for (int i = 0; i < path.Count - 1; i++)
@@ -37,12 +34,14 @@ public class ResistorsSerialConnect
             if (IsSerialConnected(path[i], path[i + 1]))
             {
                 Connect(path[i], path[i + 1]);
-                return;
+                return true;
             }
         }
+        return false;
     }
-    public override string ToString()
+
+    public static void CalculateAllSeries()
     {
-        return graph.ToString();
+        while (CalculateNextSeries()) ;
     }
 }

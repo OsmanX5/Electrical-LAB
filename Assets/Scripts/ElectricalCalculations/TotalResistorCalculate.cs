@@ -4,17 +4,29 @@ using UnityEngine;
 
 public class TotalResistorCalculate : MonoBehaviour
 {
-    
+    public static float TotalResistor = 0;
     public void Calculate()
     {
         UpdateResistorGraphFromManger();
-        ResistorsSerialConnect.CalculateNextSeries();
+        CalculateTotalResistor();
     }
+        
     public void UpdateResistorGraphFromManger()
     {
-        ResistorsSerialConnect.graph = GameManger.GraphManger.Graph.UWGraph.Clone() as UndirectedWeightedGraph;
-        ResistorsSerialConnect.startID = GameManger.GraphManger.StartID;
-        ResistorsSerialConnect.endID = GameManger.GraphManger.EndID;
+        GraphCalculator.graph = GameManger.GraphManger.Graph.UWGraph.Clone() as UndirectedWeightedGraph;
+        GraphCalculator.startID = GameManger.GraphManger.StartID;
+        GraphCalculator.endID = GameManger.GraphManger.EndID;
+    }
+    public bool ConnectNextSeries()
+    {
+        Debug.Log("Calc next Series");
+        return ResistorsSerialConnect.CalculateNextSeries(); 
+    }
+    
+    public void CalculateTotalResistor()
+    {
+        ResistorsSerialConnect.CalculateAllSeries();
+        TotalResistor = GraphCalculator.GetTotalResistor();
     }
 
 }
