@@ -16,6 +16,6 @@ public class CalculationStatus : MonoBehaviour
     void Update()
     {
         statues.text = GraphCalculator.graph.ToString();
-        totalResistor.text = "Total Resistor: " + TotalResistorCalculate.TotalResistor;
+        totalResistor.text = "Total Resistor: " + ResistorCalculator.TotalResistor;
     }
 }
