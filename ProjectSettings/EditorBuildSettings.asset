@@ -6,8 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/ElectricalLab/ElectricalLab.unity
-    guid: 9f4a082bb238eb949a98bd79bc697072
+    path: Assets/Scenes/GameLunch.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/ElectricalLab/ElectricalLab2.unity
+    guid: dacd0292ca6374c40946582426e63fa2
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: bfa1182bd221b4ca89619141f66f1260,
       type: 2}
