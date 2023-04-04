@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: efadcbc8437da1e4c85e25802b059534
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - TogleButton: {fileID: -8194613400610290350, guid: c348712bda248c246b8c49b3db54643f,
+      type: 3}
+  - DirectInteractor: {instanceID: 0}
+  - RayInteractor: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: a9c8a4e5f761c2d429198e6e84ec6f12
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - StartPoint: {instanceID: 0}
+  - triggerClicked: {fileID: 83097790271614945, guid: c348712bda248c246b8c49b3db54643f,
+      type: 3}
+  - PointPrefab: {fileID: 1814432017630611985, guid: 87cbe23f5611ce743995e1e4449410d9,
+      type: 3}
+  - PointOff: {fileID: 2100000, guid: 2ddff0e83dfd3ba4894a7a480545c7ea, type: 2}
+  - PointOn: {fileID: 2100000, guid: e7f89a57d2bda1a4b9c290a948c0ca3a, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

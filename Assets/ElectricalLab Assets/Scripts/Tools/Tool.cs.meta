@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 9a816876cc0b75e4e99f95e4376264f9
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - PointOff: {fileID: 2100000, guid: 2ddff0e83dfd3ba4894a7a480545c7ea, type: 2}
+  - PointOn: {fileID: 2100000, guid: e7f89a57d2bda1a4b9c290a948c0ca3a, type: 2}
+  - triggerClicked: {fileID: 83097790271614945, guid: c348712bda248c246b8c49b3db54643f,
+      type: 3}
+  - TouchedPoint: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

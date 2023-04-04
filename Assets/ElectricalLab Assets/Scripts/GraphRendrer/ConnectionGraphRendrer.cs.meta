@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 1e9c370901581574590b65253190caf7
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - LRPrefab: {fileID: 8086125108142990576, guid: bf581d1c1d1e8d148ae3f5176fddb3f8,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
