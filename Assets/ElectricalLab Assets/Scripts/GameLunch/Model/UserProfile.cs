@@ -18,7 +18,7 @@ public enum PlayMode
 	Local,
 	Online
 }
-public class UserSettings : MonoBehaviour
+public class UserProfile : MonoBehaviour
 {
 	private DeviceType deviceType;
 	private PlayMode playMode;

@@ -51,5 +51,7 @@ public class PanelsShowManger : MonoBehaviour
 
 	public void ShowInsideRoom() => ShowPanel(PanelName.InsideRoom);
 
+	public void ShowCreateRoom() => ShowPanel(PanelName.CreateRoom);
+
 
 }

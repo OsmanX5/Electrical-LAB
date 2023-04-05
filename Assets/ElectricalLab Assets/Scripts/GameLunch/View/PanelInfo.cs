@@ -10,6 +10,7 @@ public enum PanelName
     ConnectWithName,
     Connecting,
     Error,
+    CreateRoom,
     ListRoom,
     InsideRoom
 }
