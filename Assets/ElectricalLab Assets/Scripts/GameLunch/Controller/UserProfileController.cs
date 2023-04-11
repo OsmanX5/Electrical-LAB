@@ -6,7 +6,7 @@ using UnityEngine;
 public class UserProfileController : MonoBehaviour
 {
     public UserProfile userProfile;
-    void Start()
+    void Awake()
     {
 		userProfile = gameObject.AddComponent<UserProfile>();
     }
@@ -39,8 +39,5 @@ public class UserProfileController : MonoBehaviour
     {
         userProfile.PlayMode = PlayMode.Online;
     }
-	public void SetUserName(string x)
-	{
-		PhotonNetwork.NickName = x;
-	}
+	
 }
