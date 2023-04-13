@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 446928627144001633}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0.547, z: 0}
+  m_LocalPosition: {x: -0, y: 0.78, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -299,11 +299,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c13c9a5e1b4c61f49b36ce8e2e73992b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MainAvatarTransform: {fileID: 0}
-  HeadTransform: {fileID: 0}
-  BodyTransform: {fileID: 0}
-  HandLeftTransform: {fileID: 0}
-  HandRightTransform: {fileID: 0}
+  MainAvatarTransform: {fileID: 355517853944651810}
+  HeadTransform: {fileID: 201407631523307094}
+  BodyTransform: {fileID: 5383712445752567507}
+  HandLeftTransform: {fileID: 2705689969903974190}
+  HandRightTransform: {fileID: 1617342106925813877}
 --- !u!1 &4636999383082096290
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,16 +5,19 @@ using UnityEngine;
 
 public class SetupPlayerName : MonoBehaviourPun
 {
-    // Start is called before the first frame update
-    void Start()
+	public TMPro.TMP_Text NameText;
+
+	void Start()
     {
-        photonView.RPC("SetName", RpcTarget.AllBuffered, PhotonNetwork.NickName);
+		photonView.RPC("SetName", RpcTarget.AllBuffered, PhotonNetwork.NickName);
 		photonView.RPC("SayHelloToAll", RpcTarget.AllBuffered, PhotonNetwork.NickName);
+
     }
     [PunRPC]
     public void SetName(string name)
     {
 		this.name = name;
+        NameText.text = name;
 	}
     [PunRPC]
     public void SayHelloToAll(string name)

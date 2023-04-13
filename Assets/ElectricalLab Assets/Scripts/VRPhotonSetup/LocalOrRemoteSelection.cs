@@ -7,10 +7,8 @@ public class LocalOrRemoteSelection : MonoBehaviourPunCallbacks
 {
     public List<GameObject> LocalControllObjects;
 	public List<MonoBehaviour> LocalControllScripts;
-    public TMPro.TMP_Text NameText;
     void Start()
     {
-		NameText.text = photonView.Owner.NickName;
 		if (photonView.IsMine)
 			SetupAsLoaclControll();
 		else
