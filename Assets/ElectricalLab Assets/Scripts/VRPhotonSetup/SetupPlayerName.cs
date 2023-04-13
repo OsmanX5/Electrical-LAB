@@ -9,7 +9,7 @@ public class SetupPlayerName : MonoBehaviourPun
     void Start()
     {
         photonView.RPC("SetName", RpcTarget.AllBuffered, PhotonNetwork.NickName);
-		photonView.RPC("SayHelloToAll", RpcTarget.AllBuffered);
+		photonView.RPC("SayHelloToAll", RpcTarget.AllBuffered, PhotonNetwork.NickName);
     }
     [PunRPC]
     public void SetName(string name)
@@ -17,9 +17,9 @@ public class SetupPlayerName : MonoBehaviourPun
 		this.name = name;
 	}
     [PunRPC]
-    public void SayHelloToAll()
+    public void SayHelloToAll(string name)
     {
-        Debug.Log("Say hello to "+ PhotonNetwork.NickName);
+        Debug.Log("Say hello to "+name);
     }
 
 }
