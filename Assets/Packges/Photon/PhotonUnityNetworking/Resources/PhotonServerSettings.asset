@@ -43,6 +43,8 @@ MonoBehaviour:
   - SetupAsStudent
   - SetupAsTeacher
   - SetupAvatar
+  - SetName
+  - SayHelloToAll
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

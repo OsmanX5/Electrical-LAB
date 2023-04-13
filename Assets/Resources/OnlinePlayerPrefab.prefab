@@ -1279,6 +1279,7 @@ GameObject:
   - component: {fileID: 6047053576293107718}
   - component: {fileID: -5514019105207684012}
   - component: {fileID: -8260572037305486209}
+  - component: {fileID: -1712858323888736778}
   m_Layer: 0
   m_Name: OnlinePlayerPrefab
   m_TagString: Untagged
@@ -1375,6 +1376,18 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &-1712858323888736778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6047053576293107712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbf5566679274a14b93e31af19cdcc5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6047053576520068213
 GameObject:
   m_ObjectHideFlags: 0
