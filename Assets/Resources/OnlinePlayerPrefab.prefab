@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7017758670857146226}
   - component: {fileID: 5487476373531163407}
+  - component: {fileID: 6570744935404349089}
   m_Layer: 0
   m_Name: TeacherAvatarControl
   m_TagString: Untagged
@@ -52,8 +53,26 @@ MonoBehaviour:
   XRHead: {fileID: 6047053576520068212}
   XRHand_Left: {fileID: 6047053574990193949}
   XRHand_Right: {fileID: 6047053574859345560}
-  headPositionOffset: {x: 0, y: 0.9, z: 0}
+  headPositionOffset: {x: 0, y: 0, z: 0}
   handRotationOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &6570744935404349089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 739193652187854437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68cd3b5718a185f4aafdf03ec6221021, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  generalVRPlayerTransform: {fileID: 6047053576293107714}
+  mainAvatarTransform: {fileID: 8852528918874337922}
+  headTransform: {fileID: 9006643522969881846}
+  bodyTransform: {fileID: 3783943209879663731}
+  leftHandTransform: {fileID: 6609321684295493006}
+  rightHandTransform: {fileID: 7513263871513510613}
 --- !u!1 &3136259460789403307
 GameObject:
   m_ObjectHideFlags: 0
@@ -106,7 +125,7 @@ MonoBehaviour:
   XRHead: {fileID: 6047053576520068212}
   XRHand_Left: {fileID: 6047053574990193949}
   XRHand_Right: {fileID: 6047053574859345560}
-  headPositionOffset: {x: 0, y: -0.9, z: 0}
+  headPositionOffset: {x: 0, y: 0, z: 0}
   handRotationOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &4142024564608741462
 GameObject:
@@ -1365,7 +1384,6 @@ GameObject:
   - component: {fileID: -8260572037305486209}
   - component: {fileID: -1712858323888736778}
   - component: {fileID: 8790180413874467637}
-  - component: {fileID: 7746183025184181358}
   m_Layer: 0
   m_Name: OnlinePlayerPrefab
   m_TagString: Untagged
@@ -1441,7 +1459,7 @@ MonoBehaviour:
   observableSearch: 2
   ObservedComponents:
   - {fileID: -8260572037305486209}
-  - {fileID: 7746183025184181358}
+  - {fileID: 6570744935404349089}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -1490,24 +1508,6 @@ MonoBehaviour:
   - {fileID: 8536803600334218225}
   - {fileID: 6047053575566284307}
   LocalControllScripts: []
---- !u!114 &7746183025184181358
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6047053576293107712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68cd3b5718a185f4aafdf03ec6221021, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  generalVRPlayerTransform: {fileID: 6047053576293107714}
-  mainAvatarTransform: {fileID: 8852528918874337922}
-  headTransform: {fileID: 9006643522969881846}
-  bodyTransform: {fileID: 3783943209879663731}
-  leftHandTransform: {fileID: 6609321684295493006}
-  rightHandTransform: {fileID: 7513263871513510613}
 --- !u!1 &6047053576520068213
 GameObject:
   m_ObjectHideFlags: 0
