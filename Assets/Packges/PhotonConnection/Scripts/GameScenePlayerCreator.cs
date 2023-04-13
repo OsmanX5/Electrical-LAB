@@ -6,12 +6,17 @@ using Photon.Realtime;
 
 public class GameScenePlayerCreator : MonoBehaviourPunCallbacks
 {
-    [SerializeField] GameObject PlayerPrefab;
+    [SerializeField] GameObject OnlinePlayerPrefab;
+    [SerializeField] GameObject OfflinePlayerPrefab;
     public void Start()
     {
-        PhotonNetwork.Instantiate(PlayerPrefab.name,new Vector3(Random.Range(-2,2),0,-2),Quaternion.identity);
-    }
-    public override void OnPlayerEnteredRoom(Player newPlayer)
-    {
+        if(UserProfile.PlayMode == PlayMode.Online)
+        {
+			PhotonNetwork.Instantiate(OnlinePlayerPrefab.name, new Vector3(Random.Range(-2, 2), 0, -2), Quaternion.identity);
+		}
+		else
+        {
+			Instantiate(OfflinePlayerPrefab, new Vector3(Random.Range(-2, 2), 0, -2), Quaternion.identity);
+		}
     }
 }

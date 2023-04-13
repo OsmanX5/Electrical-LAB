@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class LocalModeLoader : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public string GameSceneName;
 
-    // Update is called once per frame
-    void Update()
+    public void LoadGameScene()
     {
-        
-    }
+		UnityEngine.SceneManagement.SceneManager.LoadScene(GameSceneName);
+	}
 }

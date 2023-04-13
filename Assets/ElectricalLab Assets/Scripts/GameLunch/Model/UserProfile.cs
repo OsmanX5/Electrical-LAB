@@ -22,15 +22,12 @@ public enum PlayMode
 public class UserProfile : MonoBehaviour
 {
 
-	private DeviceType _deviceType ;
-	private PlayMode _playMode;
-	private UserRole _userRole;
+	public static DeviceType DeviceType ;
+	public static PlayMode PlayMode;
+	public static UserRole UserRole;
 
-	public DeviceType DeviceType { get => _deviceType; set => _deviceType = value; }
-	public PlayMode PlayMode { get => _playMode; set => _playMode = value; }
-	public UserRole UserRole { get => _userRole; set => _userRole = value; }
 
-	public Hashtable GetProfile()
+	public static Hashtable GetProfile()
 	{
 		Hashtable profile = new Hashtable();
 		profile["DeviceType"] = DeviceType;

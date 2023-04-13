@@ -12,6 +12,7 @@ public class MemberListInfo : MonoBehaviour
 	public GameObject TeacherBadge;
 	public GameObject StudentBadge;
 	public Player MemberPlayer;
+
 	public void SetPlayerInfo(Player player)
 	{
 		this.MemberPlayer = player;
@@ -19,7 +20,7 @@ public class MemberListInfo : MonoBehaviour
 		UserRole role = UserRole.Student;
 		if (player.CustomProperties.ContainsKey("UserRole"))
 		{
-			object roleObj = PhotonNetwork.LocalPlayer.CustomProperties["UserRole"];
+			object roleObj = player.CustomProperties["UserRole"];
 			if (roleObj != null && Enum.IsDefined(typeof(UserRole), roleObj))
 			{
 				role = (UserRole)roleObj;
@@ -29,10 +30,6 @@ public class MemberListInfo : MonoBehaviour
 		else
 		{
 			Debug.Log("No Key and all keys are");
-			foreach (var x in player.CustomProperties)
-			{
-				Debug.Log(x.Key);
-			}
 		}
 		Debug.Log("Custome role : "+ role);
 		if(role == UserRole.Teacher)
@@ -45,7 +42,6 @@ public class MemberListInfo : MonoBehaviour
 		{
 			TeacherBadge.SetActive(false);
 			StudentBadge.SetActive(true);
-
 		}
 	}
 

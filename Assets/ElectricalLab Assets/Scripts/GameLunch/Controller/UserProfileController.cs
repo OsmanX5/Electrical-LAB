@@ -5,39 +5,33 @@ using UnityEngine;
 
 public class UserProfileController : MonoBehaviour
 {
-    public UserProfile userProfile;
-    void Awake()
-    {
-		userProfile = gameObject.AddComponent<UserProfile>();
-    }
-
     public void SetDeviceTypeMobile()
     {
-        userProfile.DeviceType = DeviceType.Mobile;
+        UserProfile.DeviceType = DeviceType.Mobile;
     }
     public void SetDeviceTypeVR()
     {
-        userProfile.DeviceType = DeviceType.VR;
+        UserProfile.DeviceType = DeviceType.VR;
     }
     public void SetDeviceTypeDesktop()
     {
-		userProfile.DeviceType = DeviceType.Desktop;
+		UserProfile.DeviceType = DeviceType.Desktop;
 	}
     public void SetRoleAsTeacher()
     {
-        userProfile.UserRole = UserRole.Teacher;
+        UserProfile.UserRole = UserRole.Teacher;
     }
     public void SetRoleAsStudent()
     {
-        userProfile.UserRole = UserRole.Student;
+        UserProfile.UserRole = UserRole.Student;
     }
     public void SetPlayModeAsLocal()
     {
-        userProfile.PlayMode = PlayMode.Local;
+        UserProfile.PlayMode = PlayMode.Local;
     }
     public void SetPlayModeAsOnline()
     {
-        userProfile.PlayMode = PlayMode.Online;
+        UserProfile.PlayMode = PlayMode.Online;
     }
 	
 }
